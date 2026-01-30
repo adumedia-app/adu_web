@@ -8,8 +8,8 @@ Handles webhooks from Supabase database triggers.
 from fastapi import APIRouter, HTTPException, Header
 from typing import Optional
 
-from ..auth import verify_webhook_secret
-from ..models import WebhookPayload
+from auth import verify_webhook_secret
+from models import WebhookPayload
 
 
 router = APIRouter(prefix="/api/webhook", tags=["webhook"])

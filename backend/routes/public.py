@@ -11,7 +11,7 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import Response
 
-from ..database import (
+from database import (
     get_editions,
     get_edition_by_date,
     get_latest_edition,

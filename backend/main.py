@@ -25,15 +25,19 @@ Environment Variables:
 """
 
 import os
-import uvicorn
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 
-from .routes import public_router, admin_router, webhook_router
-from .database import test_connection
+from routes import public_router, admin_router, webhook_router
+from database import test_connection
 
 
 # =============================================================================
@@ -203,7 +207,7 @@ def main():
     print(f"")
     
     uvicorn.run(
-        "backend.main:app",
+        "main:app",
         host="0.0.0.0",
         port=port,
         reload=debug,

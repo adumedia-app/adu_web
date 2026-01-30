@@ -9,8 +9,8 @@ from datetime import datetime
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query, Depends
 
-from ..auth import get_current_user, verify_password, create_access_token
-from ..database import (
+from auth import get_current_user, verify_password, create_access_token
+from database import (
     get_editions,
     get_edition_by_id,
     update_edition,
@@ -21,14 +21,14 @@ from ..database import (
     remove_article_from_edition,
     get_stats,
 )
-from ..models import (
+from models import (
     LoginRequest,
     LoginResponse,
     UserInfo,
     ArticleUpdate,
     EditionUpdate,
 )
-from .public import transform_article, transform_edition
+from routes.public import transform_article, transform_edition
 
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
@@ -120,7 +120,7 @@ async def get_edition_admin(
     user: dict = Depends(get_current_user),
 ):
     """Get single edition with full details."""
-    from ..database import get_articles_by_ids
+    from database import get_articles_by_ids
     
     edition = get_edition_by_id(edition_id)
     
