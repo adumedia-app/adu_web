@@ -84,7 +84,7 @@ def transform_edition(edition: dict, articles: list = None) -> dict:
 async def list_editions(
     limit: int = Query(20, ge=1, le=100),
     offset: int = Query(0, ge=0),
-    type: Optional[str] = Query(None, regex="^(daily|weekend|weekly)$"),
+    type: Optional[str] = Query(None, pattern="^(daily|weekend|weekly)$"),
 ):
     """
     List editions (digests) with pagination.
