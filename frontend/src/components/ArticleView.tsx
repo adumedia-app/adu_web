@@ -1,15 +1,11 @@
+// src/components/ArticleView.tsx
+/**
+ * Article View Component - Full article display
+ */
+
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-
-interface Article {
-  id: string;
-  title: string;
-  source_name: string;
-  url: string;
-  ai_summary: string;
-  image_url?: string;
-  category?: string;
-}
+import type { Article } from "@/lib/types";
 
 interface ArticleViewProps {
   article: Article;
@@ -18,6 +14,11 @@ interface ArticleViewProps {
 }
 
 const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
+  // Safely handle content splitting
+  const paragraphs = article.content 
+    ? article.content.split("\n\n").filter(p => p.trim())
+    : [];
+
   return (
     <motion.div
       className="min-h-screen bg-background"
@@ -39,29 +40,36 @@ const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
       <article className="px-5 py-6">
         <header className="mb-6">
           <h1 className="text-2xl font-medium leading-tight mb-2">
-            {article.title}
+            {article.headline}
           </h1>
           <p className="text-base text-muted-foreground italic">
-            {article.source_name}
+            {article.source}
           </p>
         </header>
 
         {/* Featured image */}
-        {article.image_url && (
+        {article.image && (
           <figure className="mb-6 -mx-5">
             <img
-              src={article.image_url}
-              alt={article.title}
+              src={article.image}
+              alt={article.headline}
               className="w-full img-grayscale"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
             />
           </figure>
         )}
 
         {/* Article summary */}
         <div className="article-body space-y-4">
-          {article.ai_summary.split("\n\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {paragraphs.length > 0 ? (
+            paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))
+          ) : (
+            <p className="text-muted-foreground italic">No summary available.</p>
+          )}
         </div>
 
         {/* Read original link */}

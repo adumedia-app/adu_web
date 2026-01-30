@@ -107,6 +107,7 @@ const Digest = () => {
                     key={article.id}
                     headline={article.headline}
                     source={article.source}
+                    summary={article.content}
                     image={article.image}
                     onClick={() => setSelectedArticle(article)}
                   />
