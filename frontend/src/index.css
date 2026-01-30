@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm cream background */
+    --background: 40 33% 97%;
+    --foreground: 30 10% 15%;
+
+    /* Card surfaces */
+    --card: 40 33% 97%;
+    --card-foreground: 30 10% 15%;
+
+    /* Popover */
+    --popover: 40 33% 97%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Primary - terracotta/orange accent */
+    --primary: 20 70% 45%;
+    --primary-foreground: 40 33% 97%;
+
+    /* Secondary - subtle warm gray */
+    --secondary: 30 10% 92%;
+    --secondary-foreground: 30 10% 25%;
+
+    /* Muted text */
+    --muted: 30 10% 92%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Accent */
+    --accent: 20 70% 45%;
+    --accent-foreground: 40 33% 97%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 33% 97%;
+
+    /* Borders */
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 20 70% 45%;
+
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  /* Logo typography */
+  .logo-text {
+    @apply text-4xl font-medium tracking-wide;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .logo-slash {
+    @apply text-primary mx-1;
+  }
+
+  .logo-italic {
+    @apply italic;
+  }
+
+  /* Tagline */
+  .tagline {
+    @apply text-sm tracking-widest text-muted-foreground uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* Article typography */
+  .article-headline {
+    @apply text-lg font-medium leading-snug tracking-tight;
+  }
+
+  .article-source {
+    @apply text-sm text-muted-foreground italic;
+  }
+
+  .article-body {
+    @apply text-lg leading-relaxed;
+  }
+
+  /* Date display */
+  .date-primary {
+    @apply text-lg font-medium;
+  }
+
+  .date-secondary {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply border-t border-border;
+  }
+
+  .divider-thick {
+    @apply border-t-2 border-foreground;
+  }
+
+  /* Footer nav */
+  .footer-nav {
+    @apply flex items-center justify-center gap-4 py-4 text-base;
+  }
+
+  .footer-nav-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .footer-nav-separator {
+    @apply text-border;
+  }
+}
+
+@layer utilities {
+  /* Grayscale filter for images */
+  .img-grayscale {
+    @apply grayscale;
+    filter: grayscale(100%) contrast(1.1);
+  }
+
+  /* Safe area padding for PWA */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Line clamp utility */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
