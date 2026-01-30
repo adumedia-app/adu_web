@@ -3,18 +3,16 @@
  * Archive Page - List of past editions
  */
 
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DigestEntry from "@/components/DigestEntry";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
-import { useEditions } from "@/hooks/useEditions";
+import { useArchive } from "@/hooks/useEditions";
+import { getEditionTypeLabel, type Digest } from "@/lib/types";
 
 const Archive = () => {
-  const navigate = useNavigate();
-  const { data: editions, isLoading, error, refetch } = useEditions(50);
+  const { data, isLoading, error, refetch } = useArchive(50);
 
   // Loading state
   if (isLoading) {
@@ -30,7 +28,7 @@ const Archive = () => {
   }
 
   // Error state
-  if (error) {
+  if (error || !data) {
     return (
       <div className="min-h-screen flex flex-col bg-background safe-area-top">
         <Header />
@@ -45,42 +43,63 @@ const Archive = () => {
     );
   }
 
-  // Skip the first edition (today's) since it's on the home page
-  const archiveEditions = editions?.slice(1) || [];
+  const { editions } = data;
+
+  // Group editions by month
+  const groupedByMonth: Record<string, Digest[]> = {};
+  editions.forEach((edition: Digest) => {
+    // Parse the formatted date to get month/year
+    const parts = edition.date.split(" "); // "30 January 2026"
+    const monthYear = `${parts[1]} ${parts[2]}`; // "January 2026"
+    
+    if (!groupedByMonth[monthYear]) {
+      groupedByMonth[monthYear] = [];
+    }
+    groupedByMonth[monthYear].push(edition);
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background safe-area-top">
       <Header />
 
-      {/* Archive title */}
-      <div className="px-5 py-4 text-center border-b border-border">
-        <h2 className="text-xl font-medium">Archive</h2>
-      </div>
+      <main className="flex-1 px-5 py-6">
+        <h2 className="text-2xl font-medium mb-6">Archive</h2>
 
-      {/* Digest list */}
-      <main className="flex-1 px-5">
-        {archiveEditions.length === 0 ? (
+        {editions.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">
-            No past editions yet.
+            No editions yet.
           </div>
         ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {archiveEditions.map((edition) => (
-              <DigestEntry
-                key={edition.id}
-                dayOfWeek={edition.day_of_week}
-                date={edition.date}
-                dateIso={edition.date_iso}
-                editionType={edition.edition_type}
-                articleCount={edition.article_count}
-                onClick={() => navigate(`/digest/${edition.date_iso}`)}
-              />
+          <div className="space-y-8">
+            {Object.entries(groupedByMonth).map(([monthYear, monthEditions]) => (
+              <div key={monthYear}>
+                <h3 className="text-lg font-medium text-muted-foreground mb-3">
+                  {monthYear}
+                </h3>
+                <div className="space-y-2">
+                  {monthEditions.map((edition: Digest) => (
+                    <Link
+                      key={edition.id}
+                      to={`/digest/${edition.dateIso}`}
+                      className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 transition-colors"
+                    >
+                      <div>
+                        <div className="font-medium">
+                          {edition.dayOfWeek}, {edition.date}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          {getEditionTypeLabel(edition.editionType)}
+                        </div>
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {edition.articles.length || "—"} articles
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         )}
       </main>
 

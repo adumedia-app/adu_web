@@ -1,117 +1,123 @@
-import { useState, useEffect } from "react";
+// src/pages/Digest.tsx
+/**
+ * Digest Page - View a specific date's edition
+ */
+
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { api } from "@/lib/api";
+import { AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
-
-interface Article {
-  id: string;
-  title: string;
-  source_name: string;
-  url: string;
-  ai_summary: string;
-  image_url?: string;
-}
-
-interface Edition {
-  id: string;
-  edition_type: string;
-  edition_date: string;
-  article_count: number;
-  date_formatted: string;
-  day_of_week: string;
-  articles: Article[];
-}
+import ArticleView from "@/components/ArticleView";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorMessage from "@/components/ErrorMessage";
+import { useEditionByDate } from "@/hooks/useEditions";
+import type { Article } from "@/lib/types";
 
 const Digest = () => {
   const { date } = useParams<{ date: string }>();
-  const [edition, setEdition] = useState<Edition | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const { data: digest, isLoading, error, refetch } = useEditionByDate(date || "");
 
-  useEffect(() => {
-    const fetchEdition = async () => {
-      if (!date) return;
-
-      setLoading(true);
-      setError(null);
-
-      try {
-        const data = await api.getEditionByDate(date);
-        setEdition(data);
-      } catch (err) {
-        setError("Edition not found");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEdition();
-  }, [date]);
-
-  if (loading) {
+  // Loading state
+  if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-muted-foreground">Loading...</div>
-      </div>
-    );
-  }
-
-  if (error || !edition) {
-    return (
-      <div className="min-h-screen bg-background safe-area-top">
+      <div className="min-h-screen flex flex-col bg-background safe-area-top">
         <Header />
-        <main className="px-5 py-8 text-center">
-          <p className="text-muted-foreground mb-4">
-            {error || "Edition not found"}
-          </p>
-          <Link to="/archive" className="text-primary hover:underline">
-            View archive
-          </Link>
-        </main>
+        <div className="flex-1 flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
         <Footer />
       </div>
     );
   }
 
+  // Error state
+  if (error || !digest) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background safe-area-top">
+        <Header />
+        <div className="flex-1 flex items-center justify-center px-5">
+          <ErrorMessage
+            message="Could not load this edition"
+            onRetry={() => refetch()}
+          />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Get edition label
+  const getEditionLabel = () => {
+    switch (digest.editionType) {
+      case "weekly":
+        return "Weekly Edition";
+      case "weekend":
+        return "Weekend Catch-Up";
+      default:
+        return "Daily Edition";
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background safe-area-top">
-      <Header />
+      <AnimatePresence mode="wait">
+        {selectedArticle ? (
+          <ArticleView
+            key="article"
+            article={selectedArticle}
+            digestLabel={digest.date}
+            onBack={() => setSelectedArticle(null)}
+          />
+        ) : (
+          <div key="digest" className="flex-1 flex flex-col">
+            <Header />
 
-      <main className="flex-1">
-        {/* Back to archive */}
-        <Link
-          to="/archive"
-          className="flex items-center gap-2 px-5 py-3 text-muted-foreground hover:text-foreground border-b border-border"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Archive
-        </Link>
+            {/* Back to archive */}
+            <Link
+              to="/archive"
+              className="flex items-center gap-2 px-5 py-3 text-muted-foreground hover:text-foreground border-b border-border"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Archive
+            </Link>
 
-        {/* Edition header */}
-        <div className="px-5 py-6 border-b border-border">
-          <h1 className="text-2xl font-medium">{edition.date_formatted}</h1>
-          <p className="text-muted-foreground capitalize">
-            {edition.day_of_week} - {edition.edition_type} Edition
-          </p>
-        </div>
+            {/* Date and intro */}
+            <div className="px-5 py-4 text-center border-b border-border">
+              <p className="date-primary">
+                {digest.dayOfWeek}, {digest.date}
+              </p>
+              <p className="text-muted-foreground mt-1">
+                {getEditionLabel()}
+              </p>
+            </div>
 
-        {/* Articles */}
-        <div className="divide-y divide-border">
-          {edition.articles.map((article) => (
-            <ArticleCard
-              key={article.id}
-              article={article}
-              onClick={() => window.open(article.url, "_blank")}
-            />
-          ))}
-        </div>
-      </main>
+            {/* Articles list */}
+            <main className="flex-1 px-5">
+              {digest.articles.length === 0 ? (
+                <div className="py-12 text-center text-muted-foreground">
+                  No articles in this edition.
+                </div>
+              ) : (
+                digest.articles.map((article: Article) => (
+                  <ArticleCard
+                    key={article.id}
+                    headline={article.headline}
+                    source={article.source}
+                    image={article.image}
+                    onClick={() => setSelectedArticle(article)}
+                  />
+                ))
+              )}
+            </main>
 
-      <Footer />
+            <Footer />
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
