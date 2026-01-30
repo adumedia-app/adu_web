@@ -1,11 +1,15 @@
-// src/components/ArticleView.tsx
-/**
- * Article View Component - Full article display
- */
-
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import type { Article } from "@/lib/types";
+
+interface Article {
+  id: string;
+  title: string;
+  source_name: string;
+  url: string;
+  ai_summary: string;
+  image_url?: string;
+  category?: string;
+}
 
 interface ArticleViewProps {
   article: Article;
@@ -35,61 +39,42 @@ const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
       <article className="px-5 py-6">
         <header className="mb-6">
           <h1 className="text-2xl font-medium leading-tight mb-2">
-            {article.headline}
+            {article.title}
           </h1>
-          <p className="text-base text-muted-foreground">{article.source}</p>
+          <p className="text-base text-muted-foreground italic">
+            {article.source_name}
+          </p>
         </header>
 
         {/* Featured image */}
-        {article.image && (
+        {article.image_url && (
           <figure className="mb-6 -mx-5">
             <img
-              src={article.image}
-              alt={article.imageCaption || article.headline}
+              src={article.image_url}
+              alt={article.title}
               className="w-full img-grayscale"
-              onError={(e) => {
-                (e.target as HTMLImageElement).parentElement!.style.display = "none";
-              }}
             />
-            {(article.imageCaption || article.imageCredit) && (
-              <figcaption className="px-5 mt-3 text-sm text-muted-foreground">
-                {article.imageCaption}
-                {article.imageCredit && (
-                  <>
-                    <br />
-                    {article.imageCredit}
-                  </>
-                )}
-              </figcaption>
-            )}
           </figure>
         )}
 
         {/* Article summary */}
         <div className="article-body space-y-4">
-          {article.content.split("\n\n").map((paragraph, index) => (
+          {article.ai_summary.split("\n\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
 
         {/* Read original link */}
-        {article.url && (
-          <div className="mt-8 pt-6 border-t border-border">
-
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:underline"
-            >
-              <span>Read the original article</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
-        )}
-
-        {/* Read time */}
-        <div className="mt-6 text-sm text-muted-foreground">
-          ~{article.readTime} min read
+        <div className="mt-8 pt-6 border-t border-border">
+          <a
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-primary hover:underline"
+          >
+            Read original article
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </article>
     </motion.div>

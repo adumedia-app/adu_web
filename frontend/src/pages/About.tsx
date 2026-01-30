@@ -1,8 +1,3 @@
-// src/pages/About.tsx
-/**
- * About Page
- */
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -16,27 +11,27 @@ const About = () => {
 
         <div className="article-body space-y-4">
           <p>
-            <strong>a/d/u</strong> is a curated daily digest of the most
+            <strong>ADUmedia</strong> is a curated daily digest of the most
             important stories in architecture, design, and urbanism.
           </p>
 
           <p>
-            Each day, our editorial system scans dozens of publications to bring you 5-7
-            essential reads. We prioritize critical discourse over product
-            announcements, long-form analysis over press releases.
+            Each day, our AI-powered editorial system scans dozens of publications 
+            to bring you 5-7 essential reads. We prioritize critical discourse over 
+            product announcements, long-form analysis over press releases.
           </p>
 
           <p>
-            Our sources include ArchDaily, Dezeen, Places Journal, Architectural
-            Record, The Guardian, Metropolis, and many others. We aim to
+            Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural
+            Record, The Architectural Review, and many others. We aim to
             represent global perspectives and emerging voices alongside
             established publications.
           </p>
 
           <p>
             Weekly editions appear each Monday with a broader selection of
-            longer reads. Weekend editions on Tuesdays help you catch up on 
-            what you might have missed.
+            longer reads. Weekend catch-up editions on Tuesday cover anything
+            you might have missed.
           </p>
 
           <h3 className="text-xl font-medium mt-8 mb-4">Contact</h3>
@@ -44,35 +39,12 @@ const About = () => {
           <p>
             For suggestions, corrections, or inquiries:
             <br />
-
+            <a
               href="mailto:hello@adu.media"
               className="text-primary hover:underline"
             >
               hello@adu.media
             </a>
-          </p>
-
-          <h3 className="text-xl font-medium mt-8 mb-4">Follow</h3>
-
-          <p>
-            Get daily updates on Telegram:
-            <br />
-
-              href="https://t.me/adumedia"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              @adumedia
-            </a>
-          </p>
-
-          <h3 className="text-xl font-medium mt-8 mb-4">Install</h3>
-
-          <p>
-            Add a/d/u to your home screen for the best reading experience. On
-            iOS, tap the share button and select "Add to Home Screen." On
-            Android, tap the menu and select "Install app."
           </p>
         </div>
       </main>
