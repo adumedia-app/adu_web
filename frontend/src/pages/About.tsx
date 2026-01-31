@@ -14,15 +14,7 @@ const About = () => {
           </p>
 
           <p>
-            Available as a web app and on{" "}
-
-              href="https://t.me/a_d_u_media"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Telegram
-            </a>.
+            Available as a web app and on <a href="https://t.me/a_d_u_media" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Telegram</a>.
           </p>
 
           <p>
@@ -52,12 +44,12 @@ const About = () => {
 
           <p className="text-sm">
             <strong>On iPhone/iPad:</strong> Tap the Share button in Safari, 
-            then scroll down and tap "Add to Home Screen"
+            then scroll down and tap &quot;Add to Home Screen&quot;
           </p>
 
           <p className="text-sm">
             <strong>On Android:</strong> Tap the menu (three dots) in Chrome, 
-            then tap "Add to Home screen" or "Install app"
+            then tap &quot;Add to Home screen&quot; or &quot;Install app&quot;
           </p>
 
           <h3 className="text-xl font-medium mt-8 mb-4">Contact</h3>
@@ -65,12 +57,7 @@ const About = () => {
           <p>
             For suggestions, corrections, or inquiries:
             <br />
-
-              href="mailto:hello@adu.media"
-              className="text-primary hover:underline"
-            >
-              hello@adu.media
-            </a>
+            <a href="mailto:admin@adu.media" className="text-primary hover:underline">admin@adu.media</a>
           </p>
         </div>
       </main>
