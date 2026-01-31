@@ -22,8 +22,7 @@ const About = () => {
               className="text-primary hover:underline"
             >
               Telegram
-            </a>
-            .
+            </a>.
           </p>
 
           <p>
@@ -48,7 +47,7 @@ const About = () => {
           <h3 className="text-xl font-medium mt-8 mb-4">Install the App</h3>
 
           <p>
-            You can add ADUmedia to your phone's homescreen for quick access:
+            You can add ADUmedia to your phone homescreen for quick access:
           </p>
 
           <p className="text-sm">
