@@ -54,7 +54,7 @@ const ArticleCard = ({ headline, source, summary, image, onClick }: ArticleCardP
         </h3>
         {/* Summary preview */}
         {truncatedSummary && (
-          <p className="text-sm text-muted-foreground leading-snug line-clamp-2">
+          <p className="text-base text-muted-foreground leading-snug line-clamp-2">
             {truncatedSummary}
           </p>
         )}

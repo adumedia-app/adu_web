@@ -93,7 +93,7 @@
   }
 
   .article-body {
-    @apply text-lg leading-relaxed;
+    @apply text-xl leading-relaxed;
   }
 
   /* Date display */

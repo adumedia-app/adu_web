@@ -53,7 +53,7 @@ const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
             <img
               src={article.image}
               alt={article.headline}
-              className="w-full img-grayscale"
+              className="w-full"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
