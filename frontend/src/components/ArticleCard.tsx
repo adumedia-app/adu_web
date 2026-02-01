@@ -29,7 +29,7 @@ const ArticleCard = ({ headline, source, image, onClick }: ArticleCardProps) => 
           <img
             src={image}
             alt=""
-            className="w-full h-full object-cover img-grayscale"
+            className="w-full h-full object-cover"
             loading="lazy"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = "none";
