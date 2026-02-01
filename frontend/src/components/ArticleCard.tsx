@@ -29,7 +29,7 @@ const ArticleCard = ({ headline, source, image, onClick }: ArticleCardProps) => 
           <img
             src={image}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover img-grayscale"
             loading="lazy"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = "none";
@@ -43,7 +43,7 @@ const ArticleCard = ({ headline, source, image, onClick }: ArticleCardProps) => 
       {/* Content */}
       <div className="flex-1 min-w-0">
         {/* Headline in bold */}
-        <h3 className="font-semibold text-base leading-snug line-clamp-3">
+        <h3 className="font-semibold text-lg leading-snug line-clamp-3">
           {headline}
         </h3>
         {/* Source */}
