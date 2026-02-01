@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import InstallButton from "@/components/InstallButton";
 
 const About = () => {
   return (
@@ -39,18 +40,12 @@ const About = () => {
           <h3 className="text-xl font-medium mt-8 mb-4">Install the App</h3>
 
           <p>
-            You can add ADUmedia to your phone homescreen for quick access:
+            Install ADUmedia to your device for quick access and a native app experience:
           </p>
 
-          <p className="text-sm">
-            <strong>On iPhone/iPad:</strong> Tap the Share button in Safari, 
-            then scroll down and tap &quot;Add to Home Screen&quot;
-          </p>
-
-          <p className="text-sm">
-            <strong>On Android:</strong> Tap the menu (three dots) in Chrome, 
-            then tap &quot;Add to Home screen&quot; or &quot;Install app&quot;
-          </p>
+          <div className="py-4">
+            <InstallButton />
+          </div>
 
           <h3 className="text-xl font-medium mt-8 mb-4">Contact</h3>
 
