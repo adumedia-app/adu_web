@@ -13,7 +13,7 @@ const Header = () => {
           src="/logo.png" 
           alt="a/d/u - architecture / design / urbanism"
           className="h-auto mx-auto"
-          style={{ maxWidth: "240px" }}
+          style={{ maxWidth: "200px" }}
         />
       </Link>
     </header>
