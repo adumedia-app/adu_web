@@ -180,7 +180,7 @@ const EditEdition = () => {
                   <img
                     src={article.image_url}
                     alt=""
-                    className="w-20 h-20 object-cover rounded img-grayscale flex-shrink-0"
+                    className="w-20 h-20 object-cover rounded flex-shrink-0"
                   />
                 )}
 

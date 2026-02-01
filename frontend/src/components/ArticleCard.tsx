@@ -23,8 +23,8 @@ const ArticleCard = ({ headline, source, image, onClick }: ArticleCardProps) => 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Thumbnail */}
-      <div className="flex-shrink-0 w-20 h-20 overflow-hidden bg-secondary">
+      {/* Thumbnail - 4:3 aspect ratio, same height as before */}
+      <div className="flex-shrink-0 w-[107px] h-20 overflow-hidden bg-secondary rounded">
         {image ? (
           <img
             src={image}
