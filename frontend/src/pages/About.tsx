@@ -32,16 +32,6 @@ const About = () => {
             you might have missed.
           </p>
 
-          <h3 className="text-xl font-medium mt-8 mb-4">Install the App</h3>
-
-          <p>
-            Install a/d/u to your device for quick access and a native app experience:
-          </p>
-
-          <div className="py-4">
-            <InstallButton />
-          </div>
-
           <h3 className="text-xl font-medium mt-8 mb-4">Contact</h3>
 
           <p>
@@ -49,6 +39,12 @@ const About = () => {
             <br />
             <a href="mailto:admin@adu.media" className="text-primary hover:underline">admin@adu.media</a>
           </p>
+
+          <div className="divider my-8" />
+
+          <div className="text-sm text-center">
+            <InstallButton />
+          </div>
         </div>
       </main>
 
