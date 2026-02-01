@@ -10,12 +10,7 @@ const About = () => {
       <main className="flex-1 px-5 py-8">
         <div className="article-body space-y-4">
           <p>
-            <strong>ADUmedia</strong> is a curated daily digest of the most
-            important stories in architecture, design, and urbanism.
-          </p>
-
-          <p>
-            Available as a web app and on <a href="https://t.me/a_d_u_media" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Telegram</a>.
+            <strong>a/d/u</strong> is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on <a href="https://t.me/a_d_u_media" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Telegram</a>.
           </p>
 
           <p>
@@ -40,7 +35,7 @@ const About = () => {
           <h3 className="text-xl font-medium mt-8 mb-4">Install the App</h3>
 
           <p>
-            Install ADUmedia to your device for quick access and a native app experience:
+            Install a/d/u to your device for quick access and a native app experience:
           </p>
 
           <div className="py-4">
