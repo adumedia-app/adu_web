@@ -1,6 +1,3 @@
-
-Copy
-
 # backend/models.py
 """
 Pydantic Models for ADUmedia Website API
