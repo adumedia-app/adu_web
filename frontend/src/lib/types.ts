@@ -36,6 +36,8 @@ export interface ArticleDetail {
   image_url?: string;
   tags?: string[];
   category?: string;
+  headline_translations?: Record<string, string>;
+  ai_summary_translations?: Record<string, string>;
 }
 
 // =============================================================================
@@ -55,6 +57,8 @@ export interface Article {
   content: string;
   readTime: number;
   url: string;
+  headline_translations?: Record<string, string>;
+  ai_summary_translations?: Record<string, string>;
 }
 
 /**
@@ -103,6 +107,8 @@ export function mapArticleDetailToArticle(article: ArticleDetail): Article {
     content: article.ai_summary,
     readTime: Math.ceil((article.ai_summary || "").split(" ").length / 200),
     url: article.url,
+    headline_translations: article.headline_translations || {},
+    ai_summary_translations: article.ai_summary_translations || {},
   };
 }
 

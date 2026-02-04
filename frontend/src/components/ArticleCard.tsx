@@ -1,7 +1,7 @@
 // src/components/ArticleCard.tsx
 /**
  * Article Card Component
- * Shows headline aligned with image
+ * Shows headline aligned with image with translation support
  */
 
 import { motion } from "framer-motion";
@@ -11,11 +11,17 @@ interface ArticleCardProps {
   headline: string;
   source: string;
   image: string;
-  onClick: () => void;
   headline_translations?: Record<string, string>;
+  onClick: () => void;
 }
 
-const ArticleCard = ({ headline, source, image, onClick, headline_translations }: ArticleCardProps) => {
+const ArticleCard = ({ 
+  headline, 
+  source, 
+  image, 
+  headline_translations,
+  onClick 
+}: ArticleCardProps) => {
   const { language } = useLanguage();
 
   // Get translated headline or fallback to original

@@ -1,6 +1,6 @@
 // src/components/ArticleView.tsx
 /**
- * Article View Component - Full article display
+ * Article View Component - Full article display with translation support
  */
 
 import { motion } from "framer-motion";
