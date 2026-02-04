@@ -37,23 +37,10 @@ def get_day_of_week(d: date) -> str:
     return d.strftime("%A")
 
 
-def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
-    """
-    Transform database article to API format.
-
-    Args:
-        article: Article dict from Supabase
-        use_thumbnail: If True, use thumbnail image; if False, use full-size
-    """
+def transform_article(article: dict) -> dict:
+    """Transform database article to API format."""
     r2_url = os.getenv("R2_PUBLIC_URL", "")
-
-    # Choose image path based on context
-    if use_thumbnail and article.get("r2_thumbnail_path"):
-        # Use thumbnail for list views (faster loading)
-        image_path = article.get("r2_thumbnail_path")
-    else:
-        # Use full-size for detail views or if no thumbnail available
-        image_path = article.get("r2_image_path") or article.get("image_key")
+    image_key = article.get("image_key", "")
 
     # Prefer headline over original_title if available
     title = article.get("headline") or article.get("original_title", "")
@@ -66,21 +53,16 @@ def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
         "url": article.get("article_url", ""),
         "published_date": article.get("original_published", ""),
         "ai_summary": article.get("ai_summary", "") or "",
-        "image_url": f"{r2_url}/{image_path}" if image_path and r2_url else None,
+        "image_url": f"{r2_url}/{image_key}" if image_key and r2_url else None,
         "tags": article.get("ai_tags") or [],
         "category": article.get("ai_category", ""),
+        "headline_translations": article.get("headline_translations") or {},
+        "ai_summary_translations": article.get("ai_summary_translations") or {},
     }
 
 
-def transform_edition(edition: dict, articles: list = None, use_thumbnails: bool = False) -> dict:
-    """
-    Transform database edition to API format.
-
-    Args:
-        edition: Edition dict from Supabase
-        articles: Optional list of article dicts
-        use_thumbnails: If True, use thumbnails for article images
-    """
+def transform_edition(edition: dict, articles: list = None) -> dict:
+    """Transform database edition to API format."""
     edition_date = date.fromisoformat(edition["edition_date"])
 
     result = {
@@ -93,7 +75,7 @@ def transform_edition(edition: dict, articles: list = None, use_thumbnails: bool
     }
 
     if articles is not None:
-        result["articles"] = [transform_article(a, use_thumbnail=use_thumbnails) for a in articles]
+        result["articles"] = [transform_article(a) for a in articles]
         result["edition_summary"] = edition.get("edition_summary", "")
 
     return result
@@ -118,7 +100,7 @@ async def list_editions(
         type: Filter by edition type
 
     Returns:
-        List of edition summaries (without articles)
+        List of edition summaries
     """
     editions = get_editions(limit=limit + 1, offset=offset, edition_type=type)
 
@@ -127,7 +109,7 @@ async def list_editions(
         editions = editions[:limit]
 
     return {
-        "editions": [transform_edition(e, use_thumbnails=True) for e in editions],
+        "editions": [transform_edition(e) for e in editions],
         "total": len(editions),
         "has_more": has_more,
     }
@@ -139,7 +121,6 @@ async def get_today():
     Get today's edition.
 
     Returns the latest edition if today has no edition.
-    Uses thumbnails for list-style display.
     """
     # Try today first
     edition = get_edition_by_date(date.today())
@@ -157,13 +138,12 @@ async def get_today():
 
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
-    # Use thumbnails for today view (list of articles)
-    return transform_edition(edition, articles, use_thumbnails=True)
+    return transform_edition(edition, articles)
 
 
 @router.get("/editions/latest")
 async def get_latest():
-    """Get the most recent edition. Uses thumbnails."""
+    """Get the most recent edition."""
     edition = get_latest_edition()
 
     if not edition:
@@ -174,8 +154,7 @@ async def get_latest():
     article_ids = [str(aid) for aid in raw_article_ids] if raw_article_ids else []
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
-    # Use thumbnails for list view
-    return transform_edition(edition, articles, use_thumbnails=True)
+    return transform_edition(edition, articles)
 
 
 @router.get("/editions/{edition_date}")
@@ -185,8 +164,6 @@ async def get_by_date(edition_date: str):
 
     Args:
         edition_date: Date in YYYY-MM-DD format
-
-    Uses thumbnails for list-style display.
     """
     try:
         d = date.fromisoformat(edition_date)
@@ -203,8 +180,7 @@ async def get_by_date(edition_date: str):
     article_ids = [str(aid) for aid in raw_article_ids] if raw_article_ids else []
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
-    # Use thumbnails for digest view
-    return transform_edition(edition, articles, use_thumbnails=True)
+    return transform_edition(edition, articles)
 
 
 # =============================================================================
@@ -218,16 +194,13 @@ async def get_article(article_id: str):
 
     Args:
         article_id: Article UUID
-
-    Returns full-size image (not thumbnail) for detail view.
     """
     article = get_article_by_id(article_id)
 
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
 
-    # Use full-size image for article detail view
-    return transform_article(article, use_thumbnail=False)
+    return transform_article(article)
 
 
 # =============================================================================

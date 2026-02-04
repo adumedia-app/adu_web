@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import { useLanguage, getTranslatedContent } from "@/lib/language";
 import type { Article } from "@/lib/types";
 
 interface ArticleViewProps {
@@ -14,9 +15,24 @@ interface ArticleViewProps {
 }
 
 const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
+  const { language } = useLanguage();
+
+  // Get translated content or fallback to original
+  const displayHeadline = getTranslatedContent(
+    article.headline, 
+    article.headline_translations, 
+    language
+  );
+
+  const displayContent = getTranslatedContent(
+    article.content, 
+    article.ai_summary_translations, 
+    language
+  );
+
   // Safely handle content splitting
-  const paragraphs = article.content 
-    ? article.content.split("\n\n").filter(p => p.trim())
+  const paragraphs = displayContent 
+    ? displayContent.split("\n\n").filter(p => p.trim())
     : [];
 
   return (
@@ -40,7 +56,7 @@ const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
       <article className="px-5 py-6">
         <header className="mb-6">
           <h1 className="text-2xl font-medium leading-tight mb-2">
-            {article.headline}
+            {displayHeadline}
           </h1>
           <p className="text-base text-muted-foreground italic">
             {article.source}
@@ -52,8 +68,8 @@ const ArticleView = ({ article, digestLabel, onBack }: ArticleViewProps) => {
           <figure className="mb-6 -mx-5">
             <img
               src={article.image}
-              alt={article.headline}
-              className="w-full"
+              alt={displayHeadline}
+              className="w-full img-grayscale"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
