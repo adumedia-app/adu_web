@@ -47,8 +47,6 @@ class ArticleBase(BaseModel):
     ai_summary: Optional[str] = None
     image_url: Optional[str] = None
     tags: List[str] = Field(default_factory=list)
-    headline_translations: dict = Field(default_factory=dict)
-    ai_summary_translations: dict = Field(default_factory=dict)
 
 
 class ArticleDetail(ArticleBase):
@@ -81,7 +79,7 @@ class EditionBase(BaseModel):
     edition_type: str  # daily, weekend, weekly
     edition_date: str  # "2026-01-30"
     article_count: int
-
+    
 
 class EditionSummary(EditionBase):
     """Edition summary for lists."""
