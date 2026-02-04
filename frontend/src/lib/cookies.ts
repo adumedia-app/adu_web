@@ -53,7 +53,15 @@ export function setLanguagePreference(language: Language): void {
   }
 
   // Set cookie with 1 year expiration
-  document.cookie = `${LANGUAGE_COOKIE}=${language}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+  // Note: Secure flag only works on HTTPS, so we conditionally add it
+  const isSecure = window.location.protocol === "https:";
+  const secureFlag = isSecure ? "; Secure" : "";
+
+  document.cookie = `${LANGUAGE_COOKIE}=${language}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax${secureFlag}`;
+
+  // Debug log to verify cookie was set
+  console.log(`[Language] Cookie set: ${LANGUAGE_COOKIE}=${language}`);
+  console.log(`[Language] Current cookies:`, document.cookie);
 }
 
 /**

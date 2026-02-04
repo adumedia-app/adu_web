@@ -24,13 +24,16 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Load language preference on mount
   useEffect(() => {
     const savedLanguage = getLanguagePreference();
+    console.log(`[Language] Initial language loaded: ${savedLanguage}`);
     setLanguageState(savedLanguage);
   }, []);
 
   // Update language and save to cookie
   const setLanguage = (lang: Language) => {
+    console.log(`[Language] Changing language from ${language} to ${lang}`);
     setLanguageState(lang);
     setLanguagePreference(lang);
+    console.log(`[Language] Language changed successfully`);
   };
 
   return (
