@@ -4,6 +4,7 @@
  */
 
 import { Link, useLocation } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 
 const Footer = () => {
   const location = useLocation();
@@ -21,6 +22,8 @@ const Footer = () => {
           <Link to="/about" className="footer-nav-link">
             About
           </Link>
+          <span className="footer-nav-separator">|</span>
+          <LanguageSelector />
         </>
       ) : (
         <>
@@ -31,6 +34,8 @@ const Footer = () => {
           <Link to="/about" className="footer-nav-link">
             About
           </Link>
+          <span className="footer-nav-separator">|</span>
+          <LanguageSelector />
         </>
       )}
     </footer>

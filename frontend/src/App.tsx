@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/lib/auth";
+import { LanguageProvider } from "@/lib/language";
 
 // Pages
 import Index from "./pages/Index";
@@ -23,11 +24,11 @@ const queryClient = new QueryClient();
 // Protected route wrapper
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/admin" replace />;
   }
-  
+
   return <>{children}</>;
 };
 
@@ -41,7 +42,7 @@ const AppRoutes = () => {
       <Route path="/archive" element={<Archive />} />
       <Route path="/digest/:date" element={<Digest />} />
       <Route path="/about" element={<About />} />
-      
+
       {/* Admin routes */}
       <Route 
         path="/admin" 
@@ -71,7 +72,7 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-      
+
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -81,13 +82,15 @@ const AppRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </AuthProvider>
   </QueryClientProvider>
 );
