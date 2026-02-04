@@ -100,8 +100,8 @@ const Index = () => {
                     key={article.id}
                     headline={article.headline}
                     source={article.source}
-                    summary={article.content}
                     image={article.image}
+                    headline_translations={article.headline_translations}
                     onClick={() => setSelectedArticle(article)}
                   />
                 ))

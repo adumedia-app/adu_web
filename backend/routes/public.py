@@ -69,6 +69,8 @@ def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
         "image_url": f"{r2_url}/{image_path}" if image_path and r2_url else None,
         "tags": article.get("ai_tags") or [],
         "category": article.get("ai_category", ""),
+        "headline_translations": article.get("headline_translations") or {},
+        "ai_summary_translations": article.get("ai_summary_translations") or {},
     }
 
 
