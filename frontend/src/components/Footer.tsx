@@ -18,11 +18,11 @@ const Footer = () => {
           <Link to="/" className="footer-nav-link">
             Today
           </Link>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <Link to="/about" className="footer-nav-link">
             About
           </Link>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <a 
             href="https://t.me/a_d_u_media" 
             target="_blank" 
@@ -31,7 +31,7 @@ const Footer = () => {
           >
             Telegram
           </a>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <LanguageSelector />
         </>
       ) : (
@@ -39,11 +39,11 @@ const Footer = () => {
           <Link to="/archive" className="footer-nav-link">
             Archive
           </Link>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <Link to="/about" className="footer-nav-link">
             About
           </Link>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <a 
             href="https://t.me/a_d_u_media" 
             target="_blank" 
@@ -52,7 +52,7 @@ const Footer = () => {
           >
             Telegram
           </a>
-          <span className="footer-nav-separator">|</span>
+          <span className="footer-nav-separator mx-3">|</span>
           <LanguageSelector />
         </>
       )}
