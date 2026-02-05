@@ -32,14 +32,14 @@ const SWIPE_VELOCITY = 400;
 const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? "100%" : "-100%",
-    opacity: 0,
+    opacity: 0.5,
   }),
   center: {
     x: 0,
     opacity: 1,
   },
   exit: (direction: number) => ({
-    x: direction > 0 ? "-100%" : "100%",
+    x: direction > 0 ? "-50%" : "50%",
     opacity: 0,
   }),
 };
@@ -50,7 +50,7 @@ const ArticlePage = () => {
   const { language } = useLanguage();
 
   // Swipe direction: 1 = forward (swipe left), -1 = backward (swipe right)
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Load the edition to get article list for navigation
