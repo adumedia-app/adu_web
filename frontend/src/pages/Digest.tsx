@@ -1,9 +1,7 @@
 // src/pages/Digest.tsx
 /**
  * Digest Page - View a specific date's edition
- *
- * Shows the article list for a given date.
- * Tapping an article navigates to /digest/:date/:index.
+ * Clicking an article navigates to /article/:articleId
  */
 
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -92,14 +90,14 @@ const Digest = () => {
             No articles in this edition.
           </div>
         ) : (
-          digest.articles.map((article: Article, index: number) => (
+          digest.articles.map((article: Article) => (
             <ArticleCard
               key={article.id}
               headline={article.headline}
               source={article.source}
               image={article.image}
               headline_translations={article.headline_translations}
-              onClick={() => navigate(`/digest/${date}/${index}`)}
+              onClick={() => navigate(`/article/${article.id}?from=${digest.dateIso}`)}
             />
           ))
         )}

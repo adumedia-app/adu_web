@@ -1,9 +1,7 @@
 // src/pages/Index.tsx
 /**
  * Home Page - Today's Digest
- *
- * Shows the article list for today's (or latest) edition.
- * Tapping an article navigates to /digest/:date/:index.
+ * Clicking an article navigates to /article/:articleId
  */
 
 import { useNavigate } from "react-router-dom";
@@ -85,14 +83,14 @@ const Index = () => {
             No articles in this edition.
           </div>
         ) : (
-          digest.articles.map((article, index) => (
+          digest.articles.map((article) => (
             <ArticleCard
               key={article.id}
               headline={article.headline}
               source={article.source}
               image={article.image}
               headline_translations={article.headline_translations}
-              onClick={() => navigate(`/digest/${digest.dateIso}/${index}`)}
+              onClick={() => navigate(`/article/${article.id}?from=${digest.dateIso}`)}
             />
           ))
         )}
