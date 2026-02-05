@@ -1,21 +1,21 @@
 // src/pages/Index.tsx
 /**
  * Home Page - Today's Digest
+ *
+ * Shows the article list for today's (or latest) edition.
+ * Tapping an article navigates to /digest/:date/:index.
  */
 
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
-import ArticleView from "@/components/ArticleView";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useTodayDigest } from "@/hooks/useEditions";
-import type { Article } from "@/lib/types";
 
 const Index = () => {
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const navigate = useNavigate();
   const { data: digest, isLoading, error, refetch } = useTodayDigest();
 
   // Loading state
@@ -61,57 +61,44 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background safe-area-top">
-      <AnimatePresence mode="wait">
-        {selectedArticle ? (
-          <ArticleView
-            key="article"
-            article={selectedArticle}
-            digestLabel="Today"
-            onBack={() => setSelectedArticle(null)}
-          />
-        ) : (
-          <div key="digest" className="flex-1 flex flex-col">
-            <Header />
+      <Header />
 
-            {/* Date and intro */}
-            <div className="px-5 py-4 text-center border-b border-border">
-              <p className="date-primary">
-                {digest.dayOfWeek}, {digest.date}
-                {digest.editionType !== "daily" && (
-                  <span className="text-muted-foreground">
-                    {" "}/ {digest.editionType === "weekly" ? "Weekly" : "Weekend"}
-                  </span>
-                )}
-              </p>
-              <p className="text-muted-foreground mt-1">
-                {getIntroText()}
-              </p>
-            </div>
+      {/* Date and intro */}
+      <div className="px-5 py-4 text-center border-b border-border">
+        <p className="date-primary">
+          {digest.dayOfWeek}, {digest.date}
+          {digest.editionType !== "daily" && (
+            <span className="text-muted-foreground">
+              {" "}/ {digest.editionType === "weekly" ? "Weekly" : "Weekend"}
+            </span>
+          )}
+        </p>
+        <p className="text-muted-foreground mt-1">
+          {getIntroText()}
+        </p>
+      </div>
 
-            {/* Articles list */}
-            <main className="flex-1 px-5">
-              {digest.articles.length === 0 ? (
-                <div className="py-12 text-center text-muted-foreground">
-                  No articles in this edition.
-                </div>
-              ) : (
-                digest.articles.map((article) => (
-                  <ArticleCard
-                    key={article.id}
-                    headline={article.headline}
-                    source={article.source}
-                    image={article.image}
-                    headline_translations={article.headline_translations}
-                    onClick={() => setSelectedArticle(article)}
-                  />
-                ))
-              )}
-            </main>
-
-            <Footer />
+      {/* Articles list */}
+      <main className="flex-1 px-5">
+        {digest.articles.length === 0 ? (
+          <div className="py-12 text-center text-muted-foreground">
+            No articles in this edition.
           </div>
+        ) : (
+          digest.articles.map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              headline={article.headline}
+              source={article.source}
+              image={article.image}
+              headline_translations={article.headline_translations}
+              onClick={() => navigate(`/digest/${digest.dateIso}/${index}`)}
+            />
+          ))
         )}
-      </AnimatePresence>
+      </main>
+
+      <Footer />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/lib/language";
 import Index from "./pages/Index";
 import Archive from "./pages/Archive";
 import Digest from "./pages/Digest";
+import Article from "./pages/Article";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -41,6 +42,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Index />} />
       <Route path="/archive" element={<Archive />} />
       <Route path="/digest/:date" element={<Digest />} />
+      <Route path="/digest/:date/:articleIndex" element={<Article />} />
       <Route path="/about" element={<About />} />
 
       {/* Admin routes */}
