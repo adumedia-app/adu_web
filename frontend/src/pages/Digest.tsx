@@ -1,7 +1,7 @@
 // src/pages/Digest.tsx
 /**
  * Digest Page - View a specific date's edition
- * Clicking an article navigates to /article/:articleId
+ * Clicking an article navigates to /article/:date/:slug
  */
 
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -97,7 +97,7 @@ const Digest = () => {
               source={article.source}
               image={article.image}
               headline_translations={article.headline_translations}
-              onClick={() => navigate(`/article/${article.id}?from=${digest.dateIso}`)}
+              onClick={() => navigate(`/article/${digest.dateIso}/${article.slug}`)}
             />
           ))
         )}

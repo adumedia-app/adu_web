@@ -42,7 +42,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Index />} />
       <Route path="/archive" element={<Archive />} />
       <Route path="/digest/:date" element={<Digest />} />
-      <Route path="/article/:articleId" element={<ArticlePage />} />
+      <Route path="/article/:date/:slug" element={<ArticlePage />} />
       <Route path="/about" element={<About />} />
 
       {/* Admin routes */}

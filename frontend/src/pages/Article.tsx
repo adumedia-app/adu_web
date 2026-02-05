@@ -1,10 +1,11 @@
 // src/pages/Article.tsx
 /**
- * Article Page - Individual article with its own URL
- * URL: /article/:articleId?from=2026-02-05
+ * Article Page - Individual article with SEO-friendly URL
+ * URL: /article/:date/:slug
+ * Example: /article/2026-02-05/zaha-hadid-architects-new-tower-beijing
  *
  * Features:
- * - Each article has a unique, shareable URL
+ * - Human-readable, shareable URLs with date and headline slug
  * - Swipe left/right to navigate between articles in the same edition
  * - Direction-aware slide animations
  * - Keyboard arrow key support on desktop
@@ -12,7 +13,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
@@ -44,23 +45,19 @@ const slideVariants = {
 };
 
 const ArticlePage = () => {
-  const { articleId } = useParams<{ articleId: string }>();
-  const [searchParams] = useSearchParams();
+  const { date, slug } = useParams<{ date: string; slug: string }>();
   const navigate = useNavigate();
   const { language } = useLanguage();
-
-  // Get the edition date from query param (for prev/next navigation)
-  const fromDate = searchParams.get("from") || "";
 
   // Swipe direction: 1 = forward (swipe left), -1 = backward (swipe right)
   const [direction, setDirection] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Load the edition to get article list for navigation
-  const { data: digest, isLoading: editionLoading } = useEditionByDate(fromDate);
+  const { data: digest, isLoading: editionLoading } = useEditionByDate(date || "");
 
-  // Find current article index within the edition
-  const currentIndex = digest?.articles.findIndex((a) => a.id === articleId) ?? -1;
+  // Find current article by matching slug
+  const currentIndex = digest?.articles.findIndex((a) => a.slug === slug) ?? -1;
   const currentArticle = currentIndex >= 0 ? digest?.articles[currentIndex] : null;
   const totalArticles = digest?.articles.length || 0;
 
@@ -74,9 +71,9 @@ const ArticlePage = () => {
   const goToArticle = useCallback(
     (article: ArticleType, dir: number) => {
       setDirection(dir);
-      navigate(`/article/${article.id}?from=${fromDate}`, { replace: true });
+      navigate(`/article/${date}/${article.slug}`, { replace: true });
     },
-    [navigate, fromDate]
+    [navigate, date]
   );
 
   const goNext = useCallback(() => {
@@ -101,7 +98,7 @@ const ArticlePage = () => {
   useEffect(() => {
     contentRef.current?.scrollTo(0, 0);
     window.scrollTo(0, 0);
-  }, [articleId]);
+  }, [slug]);
 
   // Handle swipe gesture
   const handleDragEnd = (_: any, info: PanInfo) => {
@@ -121,8 +118,8 @@ const ArticlePage = () => {
 
   // Back navigation
   const handleBack = () => {
-    if (fromDate) {
-      navigate(`/digest/${fromDate}`);
+    if (date) {
+      navigate(`/digest/${date}`);
     } else {
       navigate("/");
     }
@@ -198,7 +195,7 @@ const ArticlePage = () => {
       {/* Article content with swipe */}
       <AnimatePresence mode="wait" custom={direction}>
         <motion.article
-          key={articleId}
+          key={slug}
           custom={direction}
           variants={slideVariants}
           initial="enter"

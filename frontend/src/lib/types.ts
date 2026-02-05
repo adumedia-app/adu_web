@@ -30,6 +30,7 @@ export interface EditionDetail extends EditionSummary {
 export interface ArticleDetail {
   id: string;
   title: string;
+  slug: string;
   source_name: string;
   url: string;
   ai_summary: string;
@@ -50,6 +51,7 @@ export interface ArticleDetail {
 export interface Article {
   id: string;
   headline: string;
+  slug: string;
   source: string;
   image: string;
   imageCaption: string;
@@ -100,6 +102,7 @@ export function mapArticleDetailToArticle(article: ArticleDetail): Article {
   return {
     id: article.id,
     headline: article.title,
+    slug: article.slug || generateSlug(article.title),
     source: article.source_name,
     image: article.image_url || "",
     imageCaption: "",
@@ -160,4 +163,27 @@ export function getEditionTypeLabel(type: EditionType): string {
     default:
       return "Daily";
   }
+}
+
+/**
+ * Generate a URL-friendly slug from a title (frontend fallback).
+ * Matches the backend generate_slug() function.
+ */
+export function generateSlug(title: string, maxLength = 80): string {
+  if (!title) return "untitled";
+
+  let slug = title
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .toLowerCase()
+    .replace(/[''`]/g, "")           // Remove apostrophes
+    .replace(/[^a-z0-9]+/g, "-")     // Non-alphanumeric -> hyphens
+    .replace(/-+/g, "-")             // Collapse multiple hyphens
+    .replace(/^-|-$/g, "");          // Trim hyphens
+
+  if (slug.length > maxLength) {
+    slug = slug.substring(0, maxLength).replace(/-[^-]*$/, "");
+  }
+
+  return slug || "untitled";
 }

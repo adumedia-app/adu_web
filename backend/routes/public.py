@@ -6,6 +6,8 @@ Unauthenticated endpoints for the public website.
 """
 
 import os
+import re
+import unicodedata
 from datetime import date, datetime
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
@@ -37,6 +39,44 @@ def get_day_of_week(d: date) -> str:
     return d.strftime("%A")
 
 
+def generate_slug(title: str, max_length: int = 80) -> str:
+    """
+    Generate a URL-friendly slug from a title.
+
+    Examples:
+        "Zaha Hadid Architects' New Tower in Beijing" -> "zaha-hadid-architects-new-tower-in-beijing"
+        "BIG Designs $2.5B Mixed-Use Complex" -> "big-designs-2-5b-mixed-use-complex"
+
+    Args:
+        title: Article title/headline
+        max_length: Maximum slug length
+
+    Returns:
+        URL-safe slug string
+    """
+    if not title:
+        return "untitled"
+
+    # Normalize unicode characters (e.g., accented chars -> ascii)
+    slug = unicodedata.normalize("NFKD", title)
+    slug = slug.encode("ascii", "ignore").decode("ascii")
+
+    # Lowercase
+    slug = slug.lower()
+
+    # Replace common separators with hyphens
+    slug = re.sub(r"[''`]", "", slug)          # Remove apostrophes
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)    # Replace non-alphanumeric with hyphens
+    slug = re.sub(r"-+", "-", slug)             # Collapse multiple hyphens
+    slug = slug.strip("-")                       # Remove leading/trailing hyphens
+
+    # Truncate at word boundary
+    if len(slug) > max_length:
+        slug = slug[:max_length].rsplit("-", 1)[0]
+
+    return slug or "untitled"
+
+
 def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
     """
     Transform database article to API format.
@@ -61,6 +101,7 @@ def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
     return {
         "id": str(article.get("id", "")),
         "title": title,
+        "slug": generate_slug(title),
         "source_id": article.get("source_id", ""),
         "source_name": article.get("source_name", ""),
         "url": article.get("article_url", ""),
@@ -254,6 +295,19 @@ async def sitemap():
         urls.append(
             f'  <url><loc>{base_url}/digest/{edition_date}</loc><changefreq>never</changefreq><priority>0.7</priority></url>'
         )
+
+        # Include individual article URLs in sitemap
+        raw_article_ids = edition.get("article_ids", [])
+        article_ids = [str(aid) for aid in raw_article_ids] if raw_article_ids else []
+        if article_ids:
+            articles = get_articles_by_ids(article_ids)
+            for article in articles:
+                title = article.get("headline") or article.get("original_title", "")
+                slug = generate_slug(title)
+                article_id = str(article.get("id", ""))
+                urls.append(
+                    f'  <url><loc>{base_url}/article/{edition_date}/{slug}</loc><changefreq>never</changefreq><priority>0.6</priority></url>'
+                )
 
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
