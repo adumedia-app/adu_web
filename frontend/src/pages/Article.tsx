@@ -2,21 +2,20 @@
 /**
  * Article Page - Individual article with SEO-friendly URL
  * URL: /article/:date/:slug
- * Example: /article/2026-02-05/zaha-hadid-architects-new-tower-beijing
  *
  * Features:
- * - Human-readable, shareable URLs with date and headline slug
+ * - Smooth horizontal slide-in animation (matching original ArticleView)
  * - Swipe left/right to navigate between articles in the same edition
- * - Direction-aware slide animations
+ * - Direction-aware slide animations for swiping
  * - Keyboard arrow key support on desktop
  * - Back button returns to edition view
+ * - No scroll jump on initial load — scroll resets only after exit animation
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
@@ -28,18 +27,26 @@ import type { Article as ArticleType } from "@/lib/types";
 const SWIPE_THRESHOLD = 80;
 const SWIPE_VELOCITY = 400;
 
-// Direction-aware animation variants
+// Animation variants
+// "isInitial" flag differentiates first load (slide from right) from swipe navigation
 const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? "100%" : "-100%",
-    opacity: 0.5,
-  }),
+  enter: (ctx: { direction: number; isInitial: boolean }) => {
+    if (ctx.isInitial) {
+      // First load: slide in from right, matching original ArticleView
+      return { x: "100%", opacity: 1 };
+    }
+    // Swipe navigation: direction-aware slide
+    return {
+      x: ctx.direction > 0 ? "100%" : "-100%",
+      opacity: 0.6,
+    };
+  },
   center: {
     x: 0,
     opacity: 1,
   },
-  exit: (direction: number) => ({
-    x: direction > 0 ? "-50%" : "50%",
+  exit: (ctx: { direction: number; isInitial: boolean }) => ({
+    x: ctx.direction > 0 ? "-40%" : "40%",
     opacity: 0,
   }),
 };
@@ -49,9 +56,10 @@ const ArticlePage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  // Swipe direction: 1 = forward (swipe left), -1 = backward (swipe right)
-  const [direction, setDirection] = useState(1);
-  const contentRef = useRef<HTMLDivElement>(null);
+  // Track whether this is the first render (for initial slide-in from right)
+  const isInitialLoad = useRef(true);
+  const [direction, setDirection] = useState(1); // 1 = from right on first load
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Load the edition to get article list for navigation
   const { data: digest, isLoading: editionLoading } = useEditionByDate(date || "");
@@ -67,9 +75,10 @@ const ArticlePage = () => {
       ? digest?.articles[currentIndex + 1]
       : null;
 
-  // Navigate to another article
+  // Navigate to another article (swipe)
   const goToArticle = useCallback(
     (article: ArticleType, dir: number) => {
+      isInitialLoad.current = false;
       setDirection(dir);
       navigate(`/article/${date}/${article.slug}`, { replace: true });
     },
@@ -94,24 +103,12 @@ const ArticlePage = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [goNext, goPrev]);
 
-  // Scroll to top when article changes
-  useEffect(() => {
-    contentRef.current?.scrollTo(0, 0);
-    window.scrollTo(0, 0);
-  }, [slug]);
-
   // Handle swipe gesture
   const handleDragEnd = (_: any, info: PanInfo) => {
     const { offset, velocity } = info;
-    if (
-      offset.x < -SWIPE_THRESHOLD ||
-      velocity.x < -SWIPE_VELOCITY
-    ) {
+    if (offset.x < -SWIPE_THRESHOLD || velocity.x < -SWIPE_VELOCITY) {
       goNext();
-    } else if (
-      offset.x > SWIPE_THRESHOLD ||
-      velocity.x > SWIPE_VELOCITY
-    ) {
+    } else if (offset.x > SWIPE_THRESHOLD || velocity.x > SWIPE_VELOCITY) {
       goPrev();
     }
   };
@@ -125,18 +122,22 @@ const ArticlePage = () => {
     }
   };
 
-  // Get back label
+  // Back label
   const getBackLabel = () => {
     if (!digest) return "Back";
     const parts = digest.date.split(" ");
     return `${digest.dayOfWeek}, ${parts[0]} ${parts[1]}`;
   };
 
+  // Reset scroll ONLY after exit animation completes (prevents diagonal jump)
+  const handleExitComplete = () => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  };
+
   // Loading state
   if (editionLoading) {
     return (
       <div className="min-h-screen flex flex-col bg-background safe-area-top">
-        <Header />
         <div className="flex-1 flex items-center justify-center">
           <LoadingSpinner />
         </div>
@@ -145,16 +146,12 @@ const ArticlePage = () => {
     );
   }
 
-  // Article not found in edition
+  // Article not found
   if (!currentArticle) {
     return (
       <div className="min-h-screen flex flex-col bg-background safe-area-top">
-        <Header />
         <div className="flex-1 flex items-center justify-center px-5">
-          <ErrorMessage
-            message="Article not found"
-            onRetry={handleBack}
-          />
+          <ErrorMessage message="Article not found" onRetry={handleBack} />
         </div>
         <Footer />
       </div>
@@ -176,12 +173,18 @@ const ArticlePage = () => {
     ? displayContent.split("\n\n").filter((p) => p.trim())
     : [];
 
+  // Build animation context
+  const animationCtx = {
+    direction,
+    isInitial: isInitialLoad.current,
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-background safe-area-top" ref={contentRef}>
-      {/* Back navigation */}
+    <div className="min-h-screen bg-background safe-area-top" ref={scrollContainerRef}>
+      {/* Back navigation — stays fixed, outside AnimatePresence */}
       <button
         onClick={handleBack}
-        className="flex items-center gap-2 px-5 py-3 w-full border-b border-border text-left hover:bg-secondary/50 transition-colors flex-shrink-0"
+        className="flex items-center gap-2 px-5 py-3 w-full border-b border-border text-left hover:bg-secondary/50 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         <span className="text-base">{getBackLabel()}</span>
@@ -192,21 +195,29 @@ const ArticlePage = () => {
         )}
       </button>
 
-      {/* Article content with swipe */}
-      <AnimatePresence mode="wait" custom={direction}>
+      {/* Article content with animation */}
+      <AnimatePresence
+        mode="wait"
+        custom={animationCtx}
+        onExitComplete={handleExitComplete}
+      >
         <motion.article
           key={slug}
-          custom={direction}
+          custom={animationCtx}
           variants={slideVariants}
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ type: "spring", damping: 30, stiffness: 300 }}
+          transition={
+            isInitialLoad.current
+              ? { type: "spring", damping: 25, stiffness: 200 }
+              : { type: "spring", damping: 30, stiffness: 300 }
+          }
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
+          dragElastic={0.15}
           onDragEnd={handleDragEnd}
-          className="flex-1 px-5 py-6 touch-pan-y"
+          className="px-5 py-6 touch-pan-y"
         >
           <header className="mb-6">
             <h1 className="text-2xl font-medium leading-tight mb-2">
