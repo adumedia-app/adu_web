@@ -16,6 +16,11 @@ const Header = () => {
           style={{ maxWidth: "200px" }}
         />
       </Link>
+
+      {/* Tagline */}
+      <p className="tagline mt-3">
+        Curated for Professionals
+      </p>
     </header>
   );
 };

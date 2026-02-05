@@ -1,56 +1,63 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import InstallButton from "@/components/InstallButton";
+// src/components/Footer.tsx
+/**
+ * Footer Component
+ */
 
-const About = () => {
+import { Link, useLocation } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
+
+const Footer = () => {
+  const location = useLocation();
+  const isArchive = location.pathname === "/archive";
+  const isDigest = location.pathname.startsWith("/digest/");
+
   return (
-    <div className="min-h-screen flex flex-col bg-background safe-area-top">
-      <Header />
-
-      <main className="flex-1 px-5 py-8">
-        <div className="article-body space-y-4">
-          <p>
-            <strong>a/d/u</strong> is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on <a href="https://t.me/a_d_u_media" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Telegram</a>.
-          </p>
-
-          <p>
-            Each day, our AI-powered editorial system scans dozens of publications 
-            to bring you 7 essential reads. We prioritize critical discourse over 
-            product announcements, long-form analysis over press releases.
-          </p>
-
-          <p>
-            Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural
-            Record, The Architectural Review, and many others. We aim to
-            represent global perspectives and emerging voices alongside
-            established publications.
-          </p>
-
-          <p>
-            Weekly editions appear each Monday with a broader selection of
-            longer reads. Weekend catch-up editions on Tuesday cover anything
-            you might have missed.
-          </p>
-
-          <h3 className="text-xl font-medium mt-8 mb-4">Contact</h3>
-
-          <p>
-            For suggestions, corrections, or inquiries:
-            <br />
-            <a href="mailto:admin@adu.media" className="text-primary hover:underline">admin@adu.media</a>
-          </p>
-
-          <div className="divider my-8" />
-
-          <div className="text-sm text-center">
-            <InstallButton />
-          </div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+    <footer className="footer-nav border-t border-border safe-area-bottom">
+      {isArchive || isDigest ? (
+        <>
+          <Link to="/" className="footer-nav-link">
+            Today
+          </Link>
+          <span className="footer-nav-separator">|</span>
+          <Link to="/about" className="footer-nav-link">
+            About
+          </Link>
+          <span className="footer-nav-separator">|</span>
+          <a 
+            href="https://t.me/a_d_u_media" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-nav-link"
+          >
+            Telegram
+          </a>
+          <span className="footer-nav-separator">|</span>
+          <LanguageSelector />
+        </>
+      ) : (
+        <>
+          <Link to="/archive" className="footer-nav-link">
+            Archive
+          </Link>
+          <span className="footer-nav-separator">|</span>
+          <Link to="/about" className="footer-nav-link">
+            About
+          </Link>
+          <span className="footer-nav-separator">|</span>
+          <a 
+            href="https://t.me/a_d_u_media" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-nav-link"
+          >
+            Telegram
+          </a>
+          <span className="footer-nav-separator">|</span>
+          <LanguageSelector />
+        </>
+      )}
+    </footer>
   );
 };
 
-export default About;
+export default Footer;

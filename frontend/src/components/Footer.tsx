@@ -23,6 +23,15 @@ const Footer = () => {
             About
           </Link>
           <span className="footer-nav-separator">|</span>
+          <a 
+            href="https://t.me/a_d_u_media" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-nav-link"
+          >
+            Telegram
+          </a>
+          <span className="footer-nav-separator">|</span>
           <LanguageSelector />
         </>
       ) : (
@@ -34,6 +43,15 @@ const Footer = () => {
           <Link to="/about" className="footer-nav-link">
             About
           </Link>
+          <span className="footer-nav-separator">|</span>
+          <a 
+            href="https://t.me/a_d_u_media" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-nav-link"
+          >
+            Telegram
+          </a>
           <span className="footer-nav-separator">|</span>
           <LanguageSelector />
         </>
