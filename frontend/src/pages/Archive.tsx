@@ -1,6 +1,7 @@
 // src/pages/Archive.tsx
 /**
  * Archive Page - List of past editions
+ * With multilingual support
  */
 
 import { Link } from "react-router-dom";
@@ -9,9 +10,17 @@ import Footer from "@/components/Footer";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useArchive } from "@/hooks/useEditions";
-import { getEditionTypeLabel, type Digest } from "@/lib/types";
+import { useLanguage } from "@/lib/language";
+import {
+  t,
+  translateDate,
+  translateDay,
+  getTranslatedEditionTypeLabel,
+} from "@/lib/translations";
+import type { Digest } from "@/lib/types";
 
 const Archive = () => {
+  const { language } = useLanguage();
   const { data, isLoading, error, refetch } = useArchive(50);
 
   // Loading state
@@ -34,7 +43,7 @@ const Archive = () => {
         <Header />
         <div className="flex-1 flex items-center justify-center px-5">
           <ErrorMessage
-            message="Could not load archive"
+            message={t("error_load_archive", language)}
             onRetry={() => refetch()}
           />
         </div>
@@ -51,7 +60,7 @@ const Archive = () => {
     // Parse the formatted date to get month/year
     const parts = edition.date.split(" "); // "30 January 2026"
     const monthYear = `${parts[1]} ${parts[2]}`; // "January 2026"
-    
+
     if (!groupedByMonth[monthYear]) {
       groupedByMonth[monthYear] = [];
     }
@@ -63,18 +72,20 @@ const Archive = () => {
       <Header />
 
       <main className="flex-1 px-5 py-6">
-        <h2 className="text-2xl font-medium mb-6">Archive</h2>
+        <h2 className="text-2xl font-medium mb-6">
+          {t("archive_title", language)}
+        </h2>
 
         {editions.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">
-            No editions yet.
+            {t("archive_empty", language)}
           </div>
         ) : (
           <div className="space-y-8">
             {Object.entries(groupedByMonth).map(([monthYear, monthEditions]) => (
               <div key={monthYear}>
                 <h3 className="text-lg font-medium text-muted-foreground mb-3">
-                  {monthYear}
+                  {translateDate(monthYear, language)}
                 </h3>
                 <div className="space-y-2">
                   {monthEditions.map((edition: Digest) => (
@@ -85,14 +96,16 @@ const Archive = () => {
                     >
                       <div>
                         <div className="font-medium">
-                          {edition.dayOfWeek}, {edition.date}
+                          {translateDay(edition.dayOfWeek, language)},{" "}
+                          {translateDate(edition.date, language)}
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          {getEditionTypeLabel(edition.editionType)}
+                          {getTranslatedEditionTypeLabel(edition.editionType, language)}
                         </div>
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {edition.articles.length || "—"} articles
+                        {edition.articles.length || "--"}{" "}
+                        {t("archive_articles", language)}
                       </div>
                     </Link>
                   ))}
