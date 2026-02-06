@@ -70,9 +70,9 @@ type TranslationKeys = {
 const translations: Record<Language, TranslationKeys> = {
   en: {
     about_intro:
-      "is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
+      "a/d/u is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
     about_editorial:
-      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms."",
+      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms.",
     about_sources:
       "Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, and many others. We aim to represent global perspectives and emerging voices alongside established publications.",
     about_schedule:
@@ -129,7 +129,7 @@ const translations: Record<Language, TranslationKeys> = {
 
   es: {
     about_intro:
-      "es un resumen diario curado de las noticias mas importantes en arquitectura, diseno y urbanismo, disponible como aplicacion web y en",
+      "a/d/u es un resumen diario curado de las noticias mas importantes en arquitectura, diseno y urbanismo, disponible como aplicacion web y en",
     about_editorial:
       "Cada dia, nuestro sistema editorial impulsado por IA analiza decenas de publicaciones para ofrecer 7 lecturas esenciales. Priorizamos grandes proyectos de importancia publica de estudios de arquitectura reconocidos.",
     about_sources:
@@ -247,7 +247,7 @@ const translations: Record<Language, TranslationKeys> = {
 
   "pt-br": {
     about_intro:
-      "e um resumo diario curado das noticias mais importantes em arquitetura, design e urbanismo, disponivel como aplicativo web e no",
+      "a/d/u e um resumo diario curado das noticias mais importantes em arquitetura, design e urbanismo, disponivel como aplicativo web e no",
     about_editorial:
       "Todos os dias, nosso sistema editorial com IA analisa dezenas de publicacoes para trazer 7 leituras essenciais. Priorizamos grandes projetos de importancia publica de escritorios de arquitetura consagrados.",
     about_sources:
