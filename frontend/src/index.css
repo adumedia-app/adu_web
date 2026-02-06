@@ -77,10 +77,10 @@
     @apply italic;
   }
 
-  /* Tagline */
   .tagline {
     @apply text-sm tracking-widest text-muted-foreground uppercase;
     letter-spacing: 0.15em;
+    font-weight: 600;
   }
 
   /* Article typography */
