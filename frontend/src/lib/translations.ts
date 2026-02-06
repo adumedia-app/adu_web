@@ -12,7 +12,6 @@ type TranslationKeys = {
   about_editorial: string;
   about_sources: string;
   about_schedule: string;
-  about_install_title: string;
   about_install_text: string;
   about_contact: string;
 
@@ -73,14 +72,13 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
     about_editorial:
-      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize critical discourse over product announcements, long-form analysis over press releases.",
+      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms."",
     about_sources:
       "Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, and many others. We aim to represent global perspectives and emerging voices alongside established publications.",
     about_schedule:
       "Weekly editions appear each Monday with a broader selection of longer reads. Weekend catch-up editions on Tuesday cover anything you might have missed.",
-    about_install_title: "Install the App",
     about_install_text:
-      "Install a/d/u to your device for quick access and a native app experience:",
+      "a/d/u also lives in an app, providing quick access and a native experience.",
     about_contact: "For suggestions, corrections, or inquiries:",
 
     archive_title: "Archive",
@@ -133,14 +131,13 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "es un resumen diario curado de las noticias mas importantes en arquitectura, diseno y urbanismo, disponible como aplicacion web y en",
     about_editorial:
-      "Cada dia, nuestro sistema editorial impulsado por IA analiza decenas de publicaciones para ofrecer 7 lecturas esenciales. Priorizamos el discurso critico sobre los anuncios de productos, el analisis profundo sobre las notas de prensa.",
+      "Cada dia, nuestro sistema editorial impulsado por IA analiza decenas de publicaciones para ofrecer 7 lecturas esenciales. Priorizamos grandes proyectos de importancia publica de estudios de arquitectura reconocidos.",
     about_sources:
       "Nuestras fuentes incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, y muchas otras. Buscamos representar perspectivas globales y voces emergentes junto a publicaciones consolidadas.",
     about_schedule:
       "Las ediciones semanales aparecen cada lunes con una seleccion mas amplia de lecturas largas. Las ediciones de resumen del fin de semana los martes cubren lo que puedas haber perdido.",
-    about_install_title: "Instalar la aplicacion",
     about_install_text:
-      "Instala a/d/u en tu dispositivo para acceso rapido y una experiencia nativa:",
+      "a/d/u tambien vive en una app, ofreciendo acceso rapido y una experiencia nativa.",
     about_contact: "Para sugerencias, correcciones o consultas:",
 
     archive_title: "Archivo",
@@ -191,16 +188,15 @@ const translations: Record<Language, TranslationKeys> = {
 
   fr: {
     about_intro:
-      "est un resume quotidien des actualites les plus importantes en architecture, design et urbanisme, disponible en application web et sur",
+      "a/d/u est un résumé quotidien des actualités les plus importantes en architecture, design et urbanisme, disponible sous forme d’application web et sur Telegram.",
     about_editorial:
-      "Chaque jour, notre systeme editorial alimente par l'IA analyse des dizaines de publications pour vous proposer 7 lectures essentielles. Nous privilegions le discours critique aux annonces de produits, l'analyse approfondie aux communiques de presse.",
+      "Chaque jour, notre systeme editorial alimente par l'IA analyse des dizaines de publications pour vous proposer 7 lectures essentielles. Nous privilegions les grands projets d'importance publique des agences d'architecture etablies.",
     about_sources:
-      "Nos sources incluent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, et bien d'autres. Nous visons a representer des perspectives mondiales et des voix emergentes aux cotes des publications etablies.",
+      "Nos sources incluent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, entre autres. Nous cherchons à représenter des perspectives mondiales et des voix émergentes, aux côtés de publications établies.",
     about_schedule:
-      "Les editions hebdomadaires paraissent chaque lundi avec une selection plus large de lectures longues. Les editions de rattrapage du week-end le mardi couvrent ce que vous auriez pu manquer.",
-    about_install_title: "Installer l'application",
+      "Les éditions hebdomadaires paraissent chaque lundi et proposent une sélection élargie de lectures longues. Les éditions de rattrapage du week-end, publiées le mardi, couvrent ce que vous auriez pu manquer.",
     about_install_text:
-      "Installez a/d/u sur votre appareil pour un acces rapide et une experience native :",
+      "a/d/u existe aussi en application, offrant un acces rapide et une experience native.",
     about_contact: "Pour suggestions, corrections ou questions :",
 
     archive_title: "Archives",
@@ -253,14 +249,13 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "e um resumo diario curado das noticias mais importantes em arquitetura, design e urbanismo, disponivel como aplicativo web e no",
     about_editorial:
-      "Todos os dias, nosso sistema editorial com IA analisa dezenas de publicacoes para trazer 7 leituras essenciais. Priorizamos o discurso critico sobre anuncios de produtos, a analise aprofundada sobre releases de imprensa.",
+      "Todos os dias, nosso sistema editorial com IA analisa dezenas de publicacoes para trazer 7 leituras essenciais. Priorizamos grandes projetos de importancia publica de escritorios de arquitetura consagrados.",
     about_sources:
       "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, e muitas outras. Buscamos representar perspectivas globais e vozes emergentes ao lado de publicacoes consagradas.",
     about_schedule:
       "As edicoes semanais aparecem toda segunda-feira com uma selecao mais ampla de leituras longas. As edicoes de resumo do fim de semana na terca-feira cobrem o que voce pode ter perdido.",
-    about_install_title: "Instalar o aplicativo",
     about_install_text:
-      "Instale o a/d/u no seu dispositivo para acesso rapido e uma experiencia nativa:",
+      "a/d/u tambem existe como app, oferecendo acesso rapido e uma experiencia nativa.",
     about_contact: "Para sugestoes, correcoes ou duvidas:",
 
     archive_title: "Arquivo",
@@ -313,14 +308,13 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "-- ежедневный кураторский дайджест самых важных новостей в области архитектуры, дизайна и урбанистики, доступный как веб-приложение и в",
     about_editorial:
-      "Каждый день наша редакционная система на базе ИИ анализирует десятки изданий, чтобы предложить вам 7 ключевых материалов. Мы отдаем приоритет критическому дискурсу перед рекламными анонсами, аналитическим материалам перед пресс-релизами.",
+      "Каждый день наша редакционная система на базе ИИ анализирует десятки изданий, чтобы предложить вам 7 ключевых материалов. Мы отдаем приоритет крупным общественно значимым проектам от авторитетных архитектурных бюро.",
     about_sources:
-      "Наши источники включают ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие. Мы стремимся представлять глобальные перспективы и новые голоса наряду с авторитетными изданиями.",
+      "Наши источники включают ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие издания. Мы стремимся представлять глобальные перспективы и новые голоса наряду с авторитетными изданиями.",
     about_schedule:
-      "Еженедельные выпуски выходят каждый понедельник с расширенной подборкой длинных материалов. Выпуски выходного дня по вторникам покрывают все, что вы могли пропустить.",
-    about_install_title: "Установить приложение",
+      "Еженедельные выпуски выходят каждый понедельник с расширенной подборкой материалов. Выпуски выходного дня выходят по вторникам.",
     about_install_text:
-      "Установите a/d/u на ваше устройство для быстрого доступа:",
+      "a/d/u -- это ещё и приложение, обеспечивающее быстрый доступ и нативный опыт.",
     about_contact: "Для предложений, исправлений или вопросов:",
 
     archive_title: "Архив",
@@ -341,7 +335,7 @@ const translations: Record<Language, TranslationKeys> = {
     error_retry: "Попробовать снова",
     error_connection: "Проверьте подключение и попробуйте снова.",
     back: "Назад",
-    read_original: "Читать оригинал",
+    read_original: "Читать статью полностью",
     previous: "Предыдущая",
     next: "Следующая",
     no_articles: "В этом выпуске нет статей.",

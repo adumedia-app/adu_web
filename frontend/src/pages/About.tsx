@@ -37,16 +37,6 @@ const About = () => {
 
           <p>{t("about_schedule", language)}</p>
 
-          <h3 className="text-xl font-medium mt-8 mb-4">
-            {t("about_install_title", language)}
-          </h3>
-
-          <p>{t("about_install_text", language)}</p>
-
-          <div className="py-4">
-            <InstallButton />
-          </div>
-
           <div className="divider my-8" />
 
           <p>
@@ -59,6 +49,14 @@ const About = () => {
               admin@adu.media
             </a>
           </p>
+
+          <div className="divider my-8" />
+
+          <p>{t("about_install_text", language)}</p>
+
+          <div className="py-4">
+            <InstallButton />
+          </div>
         </div>
       </main>
 
