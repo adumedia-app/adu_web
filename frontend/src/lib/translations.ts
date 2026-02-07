@@ -72,7 +72,7 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
     about_editorial:
-      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms.,
+      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms.",
     about_sources:
       "Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, and many others. We aim to represent global perspectives and emerging voices alongside established publications.",
     about_schedule:
