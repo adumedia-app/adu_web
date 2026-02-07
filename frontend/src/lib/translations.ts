@@ -70,9 +70,9 @@ type TranslationKeys = {
 const translations: Record<Language, TranslationKeys> = {
   en: {
     about_intro:
-      "a/d/u is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
+      "is a curated daily digest of the most important stories in architecture, design, and urbanism, available as a web app and on",
     about_editorial:
-      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms.",
+      "Each day, our AI-powered editorial system scans dozens of publications to bring you 7 essential reads. We prioritize major publicly significant projects from established architectural firms.,
     about_sources:
       "Our sources include ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, and many others. We aim to represent global perspectives and emerging voices alongside established publications.",
     about_schedule:
@@ -129,47 +129,47 @@ const translations: Record<Language, TranslationKeys> = {
 
   es: {
     about_intro:
-      "a/d/u es un resumen diario curado de las noticias mas importantes en arquitectura, diseno y urbanismo, disponible como aplicacion web y en",
+      "es un resumen diario seleccionado de las noticias m\u00e1s importantes sobre arquitectura, dise\u00f1o y urbanismo, disponible como aplicaci\u00f3n web y en",
     about_editorial:
-      "Cada dia, nuestro sistema editorial impulsado por IA analiza decenas de publicaciones para ofrecer 7 lecturas esenciales. Priorizamos grandes proyectos de importancia publica de estudios de arquitectura reconocidos.",
+      "Cada día, nuestro sistema editorial basado en inteligencia artificial analiza docenas de publicaciones para ofrecerte siete lecturas imprescindibles. Priorizamos grandes proyectos de importancia pública de estudios de arquitectura reconocidos.",
     about_sources:
-      "Nuestras fuentes incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, y muchas otras. Buscamos representar perspectivas globales y voces emergentes junto a publicaciones consolidadas.",
+      "Entre nuestras fuentes se incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review y muchas otras. Nuestro objetivo es representar perspectivas globales y voces emergentes junto con publicaciones consolidadas.",
     about_schedule:
-      "Las ediciones semanales aparecen cada lunes con una seleccion mas amplia de lecturas largas. Las ediciones de resumen del fin de semana los martes cubren lo que puedas haber perdido.",
+      "Las ediciones semanales aparecen cada lunes con una selecci\u00f3n m\u00e1s amplia de lecturas m\u00e1s largas. Las ediciones de fin de semana, que se publican los martes, cubren todo lo que te hayas podido perder.",
     about_install_text:
-      "a/d/u tambien vive en una app, ofreciendo acceso rapido y una experiencia nativa.",
+      "a/d/u tambi\u00e9n est\u00e1 disponible en una aplicaci\u00f3n, que proporciona un acceso r\u00e1pido y una experiencia nativa.",
     about_contact: "Para sugerencias, correcciones o consultas:",
 
     archive_title: "Archivo",
-    archive_empty: "Aun no hay ediciones.",
-    archive_articles: "articulos",
+    archive_empty: "A\u00fan no hay ediciones.",
+    archive_articles: "art\u00edculos",
 
     edition_daily: "Diaria",
     edition_weekly: "Semanal",
     edition_weekend: "Resumen del fin de semana",
 
-    intro_daily: "Nuestra seleccion editorial para hoy.",
-    intro_weekly: "Nuestra seleccion semanal de lecturas esenciales.",
-    intro_weekend: "Ponte al dia con lo mas destacado de la semana.",
+    intro_daily: "Nuestra selecci\u00f3n editorial para hoy.",
+    intro_weekly: "Nuestra selecci\u00f3n semanal de lecturas esenciales.",
+    intro_weekend: "Ponte al d\u00eda con lo m\u00e1s destacado de la semana.",
 
     loading: "Cargando...",
     error_load_archive: "No se pudo cargar el archivo",
     error_load_digest: "No se pudo cargar el resumen de hoy",
     error_retry: "Intentar de nuevo",
-    error_connection: "Verifica tu conexion e intenta de nuevo.",
+    error_connection: "Verifica tu conexi\u00f3n e intenta de nuevo.",
     back: "Volver",
-    read_original: "Leer articulo original",
+    read_original: "Leer art\u00edculo original",
     previous: "Anterior",
     next: "Siguiente",
-    no_articles: "No hay articulos en esta edicion.",
+    no_articles: "No hay art\u00edculos en esta edici\u00f3n.",
     no_summary: "Resumen no disponible.",
 
     monday: "Lunes",
     tuesday: "Martes",
-    wednesday: "Miercoles",
+    wednesday: "Mi\u00e9rcoles",
     thursday: "Jueves",
     friday: "Viernes",
-    saturday: "Sabado",
+    saturday: "S\u00e1bado",
     sunday: "Domingo",
 
     january: "Enero",
@@ -188,40 +188,40 @@ const translations: Record<Language, TranslationKeys> = {
 
   fr: {
     about_intro:
-      "a/d/u est un résumé quotidien des actualités les plus importantes en architecture, design et urbanisme, disponible sous forme d’application web et sur Telegram.",
+      "est un condens\u00e9 quotidien des articles les plus importants dans les domaines de l'architecture, du design et de l'urbanisme, disponible sous forme d'application web et sur",
     about_editorial:
-      "Chaque jour, notre systeme editorial alimente par l'IA analyse des dizaines de publications pour vous proposer 7 lectures essentielles. Nous privilegions les grands projets d'importance publique des agences d'architecture etablies.",
+      "Chaque jour, notre système éditorial alimenté par l'IA passe au crible des dizaines de publications pour vous proposer 7 articles incontournables. Nous privilégions les discours critiques aux annonces de produits, les analyses approfondies aux communiqués de presse.",
     about_sources:
-      "Nos sources incluent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, entre autres. Nous cherchons à représenter des perspectives mondiales et des voix émergentes, aux côtés de publications établies.",
+      "Nos sources comprennent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review et bien d'autres. Notre objectif est de repr\u00e9senter les perspectives mondiales et les voix \u00e9mergentes en compl\u00e9ment des publications \u00e9tablies.",
     about_schedule:
-      "Les éditions hebdomadaires paraissent chaque lundi et proposent une sélection élargie de lectures longues. Les éditions de rattrapage du week-end, publiées le mardi, couvrent ce que vous auriez pu manquer.",
+      "Les \u00e9ditions hebdomadaires paraissent chaque lundi avec une s\u00e9lection plus large d'articles plus longs. Les \u00e9ditions de rattrapage du week-end, publi\u00e9es le mardi, couvrent tout ce que vous avez pu manquer.",
     about_install_text:
-      "a/d/u existe aussi en application, offrant un acces rapide et une experience native.",
-    about_contact: "Pour suggestions, corrections ou questions :",
+      "a/d/u existe \u00e9galement sous forme d'application, offrant un acc\u00e8s rapide et une exp\u00e9rience fluide.",
+    about_contact: "Pour toute suggestion, correction ou demande de renseignements :",
 
     archive_title: "Archives",
-    archive_empty: "Aucune edition pour le moment.",
+    archive_empty: "Aucune \u00e9dition pour le moment.",
     archive_articles: "articles",
 
     edition_daily: "Quotidienne",
     edition_weekly: "Hebdomadaire",
     edition_weekend: "Rattrapage du week-end",
 
-    intro_daily: "Notre selection editoriale du jour.",
-    intro_weekly: "Notre selection hebdomadaire de lectures essentielles.",
+    intro_daily: "Notre s\u00e9lection \u00e9ditoriale du jour.",
+    intro_weekly: "Notre s\u00e9lection hebdomadaire de lectures essentielles.",
     intro_weekend: "Rattrapez les temps forts de la semaine.",
 
     loading: "Chargement...",
     error_load_archive: "Impossible de charger les archives",
-    error_load_digest: "Impossible de charger le resume du jour",
-    error_retry: "Reessayer",
-    error_connection: "Verifiez votre connexion et reessayez.",
+    error_load_digest: "Impossible de charger le r\u00e9sum\u00e9 du jour",
+    error_retry: "R\u00e9essayer",
+    error_connection: "V\u00e9rifiez votre connexion et r\u00e9essayez.",
     back: "Retour",
     read_original: "Lire l'article original",
-    previous: "Precedent",
+    previous: "Pr\u00e9c\u00e9dent",
     next: "Suivant",
-    no_articles: "Aucun article dans cette edition.",
-    no_summary: "Resume non disponible.",
+    no_articles: "Aucun article dans cette \u00e9dition.",
+    no_summary: "R\u00e9sum\u00e9 non disponible.",
 
     monday: "Lundi",
     tuesday: "Mardi",
@@ -232,67 +232,67 @@ const translations: Record<Language, TranslationKeys> = {
     sunday: "Dimanche",
 
     january: "Janvier",
-    february: "Fevrier",
+    february: "F\u00e9vrier",
     march: "Mars",
     april: "Avril",
     may: "Mai",
     june: "Juin",
     july: "Juillet",
-    august: "Aout",
+    august: "Ao\u00fbt",
     september: "Septembre",
     october: "Octobre",
     november: "Novembre",
-    december: "Decembre",
+    december: "D\u00e9cembre",
   },
 
   "pt-br": {
     about_intro:
-      "a/d/u e um resumo diario curado das noticias mais importantes em arquitetura, design e urbanismo, disponivel como aplicativo web e no",
+      "\u00e9 um resumo di\u00e1rio com curadoria das not\u00edcias mais importantes sobre arquitetura, design e urbanismo, dispon\u00edvel como aplicativo web e no",
     about_editorial:
-      "Todos os dias, nosso sistema editorial com IA analisa dezenas de publicacoes para trazer 7 leituras essenciais. Priorizamos grandes projetos de importancia publica de escritorios de arquitetura consagrados.",
+      "Todos os dias, nosso sistema editorial alimentado por IA analisa dezenas de publicações para trazer a você 7 leituras essenciais. Priorizamos o discurso crítico em vez de anúncios de produtos, análises longas em vez de comunicados à imprensa.",
     about_sources:
-      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review, e muitas outras. Buscamos representar perspectivas globais e vozes emergentes ao lado de publicacoes consagradas.",
+      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review e muitas outras. Nosso objetivo \u00e9 representar perspectivas globais e vozes emergentes, juntamente com publica\u00e7\u00f5es estabelecidas.",
     about_schedule:
-      "As edicoes semanais aparecem toda segunda-feira com uma selecao mais ampla de leituras longas. As edicoes de resumo do fim de semana na terca-feira cobrem o que voce pode ter perdido.",
+      "As edi\u00e7\u00f5es semanais s\u00e3o publicadas todas as segundas-feiras, com uma sele\u00e7\u00e3o mais ampla de leituras mais longas. As edi\u00e7\u00f5es de atualiza\u00e7\u00e3o do fim de semana, \u00e0s ter\u00e7as-feiras, cobrem tudo o que voc\u00ea pode ter perdido.",
     about_install_text:
-      "a/d/u tambem existe como app, oferecendo acesso rapido e uma experiencia nativa.",
-    about_contact: "Para sugestoes, correcoes ou duvidas:",
+      "a/d/u tamb\u00e9m est\u00e1 dispon\u00edvel em um aplicativo, proporcionando acesso r\u00e1pido e uma experi\u00eancia nativa.",
+    about_contact: "Para sugest\u00f5es, corre\u00e7\u00f5es ou d\u00favidas:",
 
     archive_title: "Arquivo",
-    archive_empty: "Nenhuma edicao ainda.",
+    archive_empty: "Nenhuma edi\u00e7\u00e3o ainda.",
     archive_articles: "artigos",
 
-    edition_daily: "Diaria",
+    edition_daily: "Di\u00e1ria",
     edition_weekly: "Semanal",
     edition_weekend: "Resumo do fim de semana",
 
-    intro_daily: "Nossa selecao editorial para hoje.",
-    intro_weekly: "Nossa selecao semanal de leituras essenciais.",
+    intro_daily: "Nossa sele\u00e7\u00e3o editorial para hoje.",
+    intro_weekly: "Nossa sele\u00e7\u00e3o semanal de leituras essenciais.",
     intro_weekend: "Fique por dentro dos destaques da semana.",
 
     loading: "Carregando...",
-    error_load_archive: "Nao foi possivel carregar o arquivo",
-    error_load_digest: "Nao foi possivel carregar o resumo de hoje",
+    error_load_archive: "N\u00e3o foi poss\u00edvel carregar o arquivo",
+    error_load_digest: "N\u00e3o foi poss\u00edvel carregar o resumo de hoje",
     error_retry: "Tentar novamente",
-    error_connection: "Verifique sua conexao e tente novamente.",
+    error_connection: "Verifique sua conex\u00e3o e tente novamente.",
     back: "Voltar",
     read_original: "Ler artigo original",
     previous: "Anterior",
-    next: "Proximo",
-    no_articles: "Nenhum artigo nesta edicao.",
-    no_summary: "Resumo nao disponivel.",
+    next: "Pr\u00f3ximo",
+    no_articles: "Nenhum artigo nesta edi\u00e7\u00e3o.",
+    no_summary: "Resumo n\u00e3o dispon\u00edvel.",
 
     monday: "Segunda-feira",
-    tuesday: "Terca-feira",
+    tuesday: "Ter\u00e7a-feira",
     wednesday: "Quarta-feira",
     thursday: "Quinta-feira",
     friday: "Sexta-feira",
-    saturday: "Sabado",
+    saturday: "S\u00e1bado",
     sunday: "Domingo",
 
     january: "Janeiro",
     february: "Fevereiro",
-    march: "Marco",
+    march: "Mar\u00e7o",
     april: "Abril",
     may: "Maio",
     june: "Junho",
@@ -306,61 +306,61 @@ const translations: Record<Language, TranslationKeys> = {
 
   ru: {
     about_intro:
-      "-- ежедневный кураторский дайджест самых важных новостей в области архитектуры, дизайна и урбанистики, доступный как веб-приложение и в",
+      "-- \u0435\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0439 \u0434\u0430\u0439\u0434\u0436\u0435\u0441\u0442 \u0441\u0430\u043c\u044b\u0445 \u0432\u0430\u0436\u043d\u044b\u0445 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439 \u0432 \u043e\u0431\u043b\u0430\u0441\u0442\u0438 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u044b, \u0434\u0438\u0437\u0430\u0439\u043d\u0430 \u0438 \u0443\u0440\u0431\u0430\u043d\u0438\u0441\u0442\u0438\u043a\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0439 \u043a\u0430\u043a \u0432\u0435\u0431-\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0432",
     about_editorial:
-      "Каждый день наша редакционная система на базе ИИ анализирует десятки изданий, чтобы предложить вам 7 ключевых материалов. Мы отдаем приоритет крупным общественно значимым проектам от авторитетных архитектурных бюро.",
+      "\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u043d\u0430\u0448\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u043d\u0430 \u0431\u0430\u0437\u0435 \u0438\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0438\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0430 \u0430\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0434\u0435\u0441\u044f\u0442\u043a\u0438 \u0438\u0437\u0434\u0430\u043d\u0438\u0439, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0438\u0442\u044c 7 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0439. \u041c\u044b \u043e\u0442\u0434\u0430\u0451\u043c \u043f\u0440\u0438\u043e\u0440\u0438\u0442\u0435\u0442 \u043a\u0440\u0443\u043f\u043d\u044b\u043c \u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e \u0437\u043d\u0430\u0447\u0438\u043c\u044b\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c \u0438 \u0440\u0430\u0431\u043e\u0442\u0430\u043c \u0430\u0432\u0442\u043e\u0440\u0438\u0442\u0435\u0442\u043d\u044b\u0445 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u043d\u044b\u0445 \u0431\u044e\u0440\u043e.",
     about_sources:
-      "Наши источники включают ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие издания. Мы стремимся представлять глобальные перспективы и новые голоса наряду с авторитетными изданиями.",
+      "\u0421\u0440\u0435\u0434\u0438 \u043d\u0430\u0448\u0438\u0445 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432 -- ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review \u0438 \u043c\u043d\u043e\u0433\u0438\u0435 \u0434\u0440\u0443\u0433\u0438\u0435. \u041c\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u043c \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0443\u044e \u043f\u043e\u0432\u0435\u0441\u0442\u043a\u0443, \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u044f\u044f \u0432\u0435\u0434\u0443\u0449\u0438\u0435 \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u043c\u0435\u0434\u0438\u0430 \u0438 \u043d\u0438\u0448\u0435\u0432\u044b\u0435 \u0440\u0435\u0433\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u044f.",
     about_schedule:
-      "Еженедельные выпуски выходят каждый понедельник с расширенной подборкой материалов. Выпуски выходного дня выходят по вторникам.",
+      "\u0415\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u044b\u0435 \u0434\u0430\u0439\u0434\u0436\u0435\u0441\u0442\u044b \u0432\u044b\u0445\u043e\u0434\u044f\u0442 \u043f\u043e \u043f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a\u0430\u043c \u0438 \u043f\u043e\u0434\u0432\u043e\u0434\u044f\u0442 \u0438\u0442\u043e\u0433\u0438 \u043d\u0435\u0434\u0435\u043b\u0438. \u0412\u044b\u043f\u0443\u0441\u043a\u0438, \u043f\u043e\u0441\u0432\u044f\u0449\u0451\u043d\u043d\u044b\u0435 \u0432\u044b\u0445\u043e\u0434\u043d\u044b\u043c, \u043f\u0443\u0431\u043b\u0438\u043a\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u0432\u0442\u043e\u0440\u043d\u0438\u043a\u0430\u043c \u0438 \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044e\u0442 \u0432\u0441\u0451, \u0447\u0442\u043e \u0432\u044b \u043c\u043e\u0433\u043b\u0438 \u043f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c.",
     about_install_text:
-      "a/d/u -- это ещё и приложение, обеспечивающее быстрый доступ и нативный опыт.",
-    about_contact: "Для предложений, исправлений или вопросов:",
+      "a/d/u \u0442\u0430\u043a\u0436\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f, \u043e\u0431\u0435\u0441\u043f\u0435\u0447\u0438\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u0438 \u0443\u0434\u043e\u0431\u0441\u0442\u0432\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u044f.",
+    about_contact: "\u0414\u043b\u044f \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439, \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439 \u0438 \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432:",
 
-    archive_title: "Архив",
-    archive_empty: "Выпусков пока нет.",
-    archive_articles: "статей",
+    archive_title: "\u0410\u0440\u0445\u0438\u0432",
+    archive_empty: "\u0412\u044b\u043f\u0443\u0441\u043a\u043e\u0432 \u043f\u043e\u043a\u0430 \u043d\u0435\u0442.",
+    archive_articles: "\u0441\u0442\u0430\u0442\u0435\u0439",
 
-    edition_daily: "Ежедневный",
-    edition_weekly: "Еженедельный",
-    edition_weekend: "Обзор выходных",
+    edition_daily: "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0439",
+    edition_weekly: "\u0415\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u044b\u0439",
+    edition_weekend: "\u041e\u0431\u0437\u043e\u0440 \u0432\u044b\u0445\u043e\u0434\u043d\u044b\u0445",
 
-    intro_daily: "Наша редакционная подборка на сегодня.",
-    intro_weekly: "Наша еженедельная подборка ключевых материалов.",
-    intro_weekend: "Обзор главного за неделю.",
+    intro_daily: "\u041d\u0430\u0448\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0434\u0431\u043e\u0440\u043a\u0430 \u043d\u0430 \u0441\u0435\u0433\u043e\u0434\u043d\u044f.",
+    intro_weekly: "\u041d\u0430\u0448\u0430 \u0435\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0431\u043e\u0440\u043a\u0430 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u043e\u0432.",
+    intro_weekend: "\u041e\u0431\u0437\u043e\u0440 \u0433\u043b\u0430\u0432\u043d\u043e\u0433\u043e \u0437\u0430 \u043d\u0435\u0434\u0435\u043b\u044e.",
 
-    loading: "Загрузка...",
-    error_load_archive: "Не удалось загрузить архив",
-    error_load_digest: "Не удалось загрузить сегодняшний выпуск",
-    error_retry: "Попробовать снова",
-    error_connection: "Проверьте подключение и попробуйте снова.",
-    back: "Назад",
-    read_original: "Читать статью полностью",
-    previous: "Предыдущая",
-    next: "Следующая",
-    no_articles: "В этом выпуске нет статей.",
-    no_summary: "Описание недоступно.",
+    loading: "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430...",
+    error_load_archive: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0430\u0440\u0445\u0438\u0432",
+    error_load_digest: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0441\u0435\u0433\u043e\u0434\u043d\u044f\u0448\u043d\u0438\u0439 \u0432\u044b\u043f\u0443\u0441\u043a",
+    error_retry: "\u041f\u043e\u043f\u0440\u043e\u0431\u043e\u0432\u0430\u0442\u044c \u0441\u043d\u043e\u0432\u0430",
+    error_connection: "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u0438 \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.",
+    back: "\u041d\u0430\u0437\u0430\u0434",
+    read_original: "\u0427\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u044c\u044e \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e",
+    previous: "\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0430\u044f",
+    next: "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0430\u044f",
+    no_articles: "\u0412 \u044d\u0442\u043e\u043c \u0432\u044b\u043f\u0443\u0441\u043a\u0435 \u043d\u0435\u0442 \u0441\u0442\u0430\u0442\u0435\u0439.",
+    no_summary: "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e.",
 
-    monday: "Понедельник",
-    tuesday: "Вторник",
-    wednesday: "Среда",
-    thursday: "Четверг",
-    friday: "Пятница",
-    saturday: "Суббота",
-    sunday: "Воскресенье",
+    monday: "\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a",
+    tuesday: "\u0412\u0442\u043e\u0440\u043d\u0438\u043a",
+    wednesday: "\u0421\u0440\u0435\u0434\u0430",
+    thursday: "\u0427\u0435\u0442\u0432\u0435\u0440\u0433",
+    friday: "\u041f\u044f\u0442\u043d\u0438\u0446\u0430",
+    saturday: "\u0421\u0443\u0431\u0431\u043e\u0442\u0430",
+    sunday: "\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435",
 
-    january: "Январь",
-    february: "Февраль",
-    march: "Март",
-    april: "Апрель",
-    may: "Май",
-    june: "Июнь",
-    july: "Июль",
-    august: "Август",
-    september: "Сентябрь",
-    october: "Октябрь",
-    november: "Ноябрь",
-    december: "Декабрь",
+    january: "\u042f\u043d\u0432\u0430\u0440\u044c",
+    february: "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
+    march: "\u041c\u0430\u0440\u0442",
+    april: "\u0410\u043f\u0440\u0435\u043b\u044c",
+    may: "\u041c\u0430\u0439",
+    june: "\u0418\u044e\u043d\u044c",
+    july: "\u0418\u044e\u043b\u044c",
+    august: "\u0410\u0432\u0433\u0443\u0441\u0442",
+    september: "\u0421\u0435\u043d\u0442\u044f\u0431\u0440\u044c",
+    october: "\u041e\u043a\u0442\u044f\u0431\u0440\u044c",
+    november: "\u041d\u043e\u044f\u0431\u0440\u044c",
+    december: "\u0414\u0435\u043a\u0430\u0431\u0440\u044c",
   },
 };
 
