@@ -18,7 +18,8 @@ type TranslationKeys = {
   // Archive page
   archive_title: string;
   archive_empty: string;
-  archive_articles: string; // "{count} articles" — use with replace
+  archive_articles: string;
+  archive_read_time: string; // "~{time} min"
 
   // Edition types
   edition_daily: string;
@@ -30,18 +31,31 @@ type TranslationKeys = {
   intro_weekly: string;
   intro_weekend: string;
 
-  // Shared
+  // Navigation
+  back: string;
+  today: string;
+  archive: string;
+  about: string;
+  telegram: string;
+  previous: string;
+  next: string;
+  dashboard: string;
+
+  // Actions
+  read_original: string;
+  install_app: string;
+  try_again: string;
+
+  // Status messages
   loading: string;
   error_load_archive: string;
   error_load_digest: string;
-  error_retry: string;
   error_connection: string;
-  back: string;
-  read_original: string;
-  previous: string;
-  next: string;
   no_articles: string;
   no_summary: string;
+  page_not_found: string;
+  page_not_found_description: string;
+  go_to_today: string;
 
   // Day names (for archive display)
   monday: string;
@@ -52,7 +66,21 @@ type TranslationKeys = {
   saturday: string;
   sunday: string;
 
-  // Month names
+  // Month names (genitive case for dates)
+  january_gen: string;
+  february_gen: string;
+  march_gen: string;
+  april_gen: string;
+  may_gen: string;
+  june_gen: string;
+  july_gen: string;
+  august_gen: string;
+  september_gen: string;
+  october_gen: string;
+  november_gen: string;
+  december_gen: string;
+
+  // Month names (nominative case for standalone use)
   january: string;
   february: string;
   march: string;
@@ -84,6 +112,7 @@ const translations: Record<Language, TranslationKeys> = {
     archive_title: "Archive",
     archive_empty: "No editions yet.",
     archive_articles: "articles",
+    archive_read_time: "~{time} min",
 
     edition_daily: "Daily",
     edition_weekly: "Weekly",
@@ -93,17 +122,28 @@ const translations: Record<Language, TranslationKeys> = {
     intro_weekly: "Our weekly selection of essential reads.",
     intro_weekend: "Catch up on the week's highlights.",
 
+    back: "Back",
+    today: "Today",
+    archive: "Archive",
+    about: "About",
+    telegram: "Telegram",
+    previous: "Previous",
+    next: "Next",
+    dashboard: "Dashboard",
+
+    read_original: "Read original article",
+    install_app: "Install App",
+    try_again: "Try again",
+
     loading: "Loading...",
     error_load_archive: "Could not load archive",
     error_load_digest: "Could not load today's digest",
-    error_retry: "Try again",
     error_connection: "Please check your connection and try again.",
-    back: "Back",
-    read_original: "Read original article",
-    previous: "Previous",
-    next: "Next",
     no_articles: "No articles in this edition.",
     no_summary: "No summary available.",
+    page_not_found: "Page not found",
+    page_not_found_description: "The page you're looking for doesn't exist.",
+    go_to_today: "Go to today's digest",
 
     monday: "Monday",
     tuesday: "Tuesday",
@@ -112,6 +152,20 @@ const translations: Record<Language, TranslationKeys> = {
     friday: "Friday",
     saturday: "Saturday",
     sunday: "Sunday",
+
+    // English uses same form for both cases
+    january_gen: "January",
+    february_gen: "February",
+    march_gen: "March",
+    april_gen: "April",
+    may_gen: "May",
+    june_gen: "June",
+    july_gen: "July",
+    august_gen: "August",
+    september_gen: "September",
+    october_gen: "October",
+    november_gen: "November",
+    december_gen: "December",
 
     january: "January",
     february: "February",
@@ -129,49 +183,76 @@ const translations: Record<Language, TranslationKeys> = {
 
   es: {
     about_intro:
-      "es un resumen diario seleccionado de las noticias m\u00e1s importantes sobre arquitectura, dise\u00f1o y urbanismo, disponible como aplicaci\u00f3n web y en",
+      "es un resumen diario seleccionado de las noticias más importantes sobre arquitectura, diseño y urbanismo, disponible como aplicación web y en",
     about_editorial:
       "Cada día, nuestro sistema editorial basado en inteligencia artificial analiza docenas de publicaciones para ofrecerte siete lecturas imprescindibles. Priorizamos grandes proyectos de importancia pública de estudios de arquitectura reconocidos.",
     about_sources:
       "Entre nuestras fuentes se incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review y muchas otras. Nuestro objetivo es representar perspectivas globales y voces emergentes junto con publicaciones consolidadas.",
     about_schedule:
-      "Las ediciones semanales aparecen cada lunes con una selecci\u00f3n m\u00e1s amplia de lecturas m\u00e1s largas. Las ediciones de fin de semana, que se publican los martes, cubren todo lo que te hayas podido perder.",
+      "Las ediciones semanales aparecen cada lunes con una selección más amplia de lecturas más largas. Las ediciones de fin de semana, que se publican los martes, cubren todo lo que te hayas podido perder.",
     about_install_text:
-      "a/d/u tambi\u00e9n est\u00e1 disponible en una aplicaci\u00f3n, que proporciona un acceso r\u00e1pido y una experiencia nativa.",
+      "a/d/u también está disponible en una aplicación, que proporciona un acceso rápido y una experiencia nativa.",
     about_contact: "Para sugerencias, correcciones o consultas:",
 
     archive_title: "Archivo",
-    archive_empty: "A\u00fan no hay ediciones.",
-    archive_articles: "art\u00edculos",
+    archive_empty: "Aún no hay ediciones.",
+    archive_articles: "artículos",
+    archive_read_time: "~{time} min",
 
     edition_daily: "Diaria",
     edition_weekly: "Semanal",
     edition_weekend: "Resumen del fin de semana",
 
-    intro_daily: "Nuestra selecci\u00f3n editorial para hoy.",
-    intro_weekly: "Nuestra selecci\u00f3n semanal de lecturas esenciales.",
-    intro_weekend: "Ponte al d\u00eda con lo m\u00e1s destacado de la semana.",
+    intro_daily: "Nuestra selección editorial para hoy.",
+    intro_weekly: "Nuestra selección semanal de lecturas esenciales.",
+    intro_weekend: "Ponte al día con lo más destacado de la semana.",
+
+    back: "Volver",
+    today: "Hoy",
+    archive: "Archivo",
+    about: "Acerca de",
+    telegram: "Telegram",
+    previous: "Anterior",
+    next: "Siguiente",
+    dashboard: "Panel",
+
+    read_original: "Leer artículo original",
+    install_app: "Instalar aplicación",
+    try_again: "Intentar de nuevo",
 
     loading: "Cargando...",
     error_load_archive: "No se pudo cargar el archivo",
     error_load_digest: "No se pudo cargar el resumen de hoy",
-    error_retry: "Intentar de nuevo",
-    error_connection: "Verifica tu conexi\u00f3n e intenta de nuevo.",
-    back: "Volver",
-    read_original: "Leer art\u00edculo original",
-    previous: "Anterior",
-    next: "Siguiente",
-    no_articles: "No hay art\u00edculos en esta edici\u00f3n.",
+    error_connection: "Verifica tu conexión e intenta de nuevo.",
+    no_articles: "No hay artículos en esta edición.",
     no_summary: "Resumen no disponible.",
+    page_not_found: "Página no encontrada",
+    page_not_found_description: "La página que buscas no existe.",
+    go_to_today: "Ir al resumen de hoy",
 
-    monday: "Lunes",
-    tuesday: "Martes",
-    wednesday: "Mi\u00e9rcoles",
-    thursday: "Jueves",
-    friday: "Viernes",
-    saturday: "S\u00e1bado",
-    sunday: "Domingo",
+    monday: "lunes",
+    tuesday: "martes",
+    wednesday: "miércoles",
+    thursday: "jueves",
+    friday: "viernes",
+    saturday: "sábado",
+    sunday: "domingo",
 
+    // Genitive case (de enero, de febrero, etc.)
+    january_gen: "enero",
+    february_gen: "febrero",
+    march_gen: "marzo",
+    april_gen: "abril",
+    may_gen: "mayo",
+    june_gen: "junio",
+    july_gen: "julio",
+    august_gen: "agosto",
+    september_gen: "septiembre",
+    october_gen: "octubre",
+    november_gen: "noviembre",
+    december_gen: "diciembre",
+
+    // Nominative case
     january: "Enero",
     february: "Febrero",
     march: "Marzo",
@@ -188,113 +269,167 @@ const translations: Record<Language, TranslationKeys> = {
 
   fr: {
     about_intro:
-      "est un condens\u00e9 quotidien des articles les plus importants dans les domaines de l'architecture, du design et de l'urbanisme, disponible sous forme d'application web et sur",
+      "est un condensé quotidien des articles les plus importants dans les domaines de l'architecture, du design et de l'urbanisme, disponible sous forme d'application web et sur",
     about_editorial:
       "Chaque jour, notre système éditorial alimenté par l'IA passe au crible des dizaines de publications pour vous proposer 7 articles incontournables. Nous privilégions les discours critiques aux annonces de produits, les analyses approfondies aux communiqués de presse.",
     about_sources:
-      "Nos sources comprennent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review et bien d'autres. Notre objectif est de repr\u00e9senter les perspectives mondiales et les voix \u00e9mergentes en compl\u00e9ment des publications \u00e9tablies.",
+      "Nos sources comprennent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review et bien d'autres. Notre objectif est de représenter les perspectives mondiales et les voix émergentes en complément des publications établies.",
     about_schedule:
-      "Les \u00e9ditions hebdomadaires paraissent chaque lundi avec une s\u00e9lection plus large d'articles plus longs. Les \u00e9ditions de rattrapage du week-end, publi\u00e9es le mardi, couvrent tout ce que vous avez pu manquer.",
+      "Les éditions hebdomadaires paraissent chaque lundi avec une sélection plus large d'articles plus longs. Les éditions de rattrapage du week-end, publiées le mardi, couvrent tout ce que vous avez pu manquer.",
     about_install_text:
-      "a/d/u existe \u00e9galement sous forme d'application, offrant un acc\u00e8s rapide et une exp\u00e9rience fluide.",
+      "a/d/u existe également sous forme d'application, offrant un accès rapide et une expérience fluide.",
     about_contact: "Pour toute suggestion, correction ou demande de renseignements :",
 
     archive_title: "Archives",
-    archive_empty: "Aucune \u00e9dition pour le moment.",
+    archive_empty: "Aucune édition pour le moment.",
     archive_articles: "articles",
+    archive_read_time: "~{time} min",
 
     edition_daily: "Quotidienne",
     edition_weekly: "Hebdomadaire",
     edition_weekend: "Rattrapage du week-end",
 
-    intro_daily: "Notre s\u00e9lection \u00e9ditoriale du jour.",
-    intro_weekly: "Notre s\u00e9lection hebdomadaire de lectures essentielles.",
+    intro_daily: "Notre sélection éditoriale du jour.",
+    intro_weekly: "Notre sélection hebdomadaire de lectures essentielles.",
     intro_weekend: "Rattrapez les temps forts de la semaine.",
+
+    back: "Retour",
+    today: "Aujourd'hui",
+    archive: "Archives",
+    about: "À propos",
+    telegram: "Telegram",
+    previous: "Précédent",
+    next: "Suivant",
+    dashboard: "Tableau de bord",
+
+    read_original: "Lire l'article original",
+    install_app: "Installer l'application",
+    try_again: "Réessayer",
 
     loading: "Chargement...",
     error_load_archive: "Impossible de charger les archives",
-    error_load_digest: "Impossible de charger le r\u00e9sum\u00e9 du jour",
-    error_retry: "R\u00e9essayer",
-    error_connection: "V\u00e9rifiez votre connexion et r\u00e9essayez.",
-    back: "Retour",
-    read_original: "Lire l'article original",
-    previous: "Pr\u00e9c\u00e9dent",
-    next: "Suivant",
-    no_articles: "Aucun article dans cette \u00e9dition.",
-    no_summary: "R\u00e9sum\u00e9 non disponible.",
+    error_load_digest: "Impossible de charger le résumé du jour",
+    error_connection: "Vérifiez votre connexion et réessayez.",
+    no_articles: "Aucun article dans cette édition.",
+    no_summary: "Résumé non disponible.",
+    page_not_found: "Page non trouvée",
+    page_not_found_description: "La page que vous recherchez n'existe pas.",
+    go_to_today: "Aller au résumé du jour",
 
-    monday: "Lundi",
-    tuesday: "Mardi",
-    wednesday: "Mercredi",
-    thursday: "Jeudi",
-    friday: "Vendredi",
-    saturday: "Samedi",
-    sunday: "Dimanche",
+    monday: "lundi",
+    tuesday: "mardi",
+    wednesday: "mercredi",
+    thursday: "jeudi",
+    friday: "vendredi",
+    saturday: "samedi",
+    sunday: "dimanche",
 
+    // Genitive case (not used in French)
+    january_gen: "janvier",
+    february_gen: "février",
+    march_gen: "mars",
+    april_gen: "avril",
+    may_gen: "mai",
+    june_gen: "juin",
+    july_gen: "juillet",
+    august_gen: "août",
+    september_gen: "septembre",
+    october_gen: "octobre",
+    november_gen: "novembre",
+    december_gen: "décembre",
+
+    // Nominative case
     january: "Janvier",
-    february: "F\u00e9vrier",
+    february: "Février",
     march: "Mars",
     april: "Avril",
     may: "Mai",
     june: "Juin",
     july: "Juillet",
-    august: "Ao\u00fbt",
+    august: "Août",
     september: "Septembre",
     october: "Octobre",
     november: "Novembre",
-    december: "D\u00e9cembre",
+    december: "Décembre",
   },
 
   "pt-br": {
     about_intro:
-      "\u00e9 um resumo di\u00e1rio com curadoria das not\u00edcias mais importantes sobre arquitetura, design e urbanismo, dispon\u00edvel como aplicativo web e no",
+      "é um resumo diário com curadoria das notícias mais importantes sobre arquitetura, design e urbanismo, disponível como aplicativo web e no",
     about_editorial:
       "Todos os dias, nosso sistema editorial alimentado por IA analisa dezenas de publicações para trazer a você 7 leituras essenciais. Priorizamos o discurso crítico em vez de anúncios de produtos, análises longas em vez de comunicados à imprensa.",
     about_sources:
-      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review e muitas outras. Nosso objetivo \u00e9 representar perspectivas globais e vozes emergentes, juntamente com publica\u00e7\u00f5es estabelecidas.",
+      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review e muitas outras. Nosso objetivo é representar perspectivas globais e vozes emergentes, juntamente com publicações estabelecidas.",
     about_schedule:
-      "As edi\u00e7\u00f5es semanais s\u00e3o publicadas todas as segundas-feiras, com uma sele\u00e7\u00e3o mais ampla de leituras mais longas. As edi\u00e7\u00f5es de atualiza\u00e7\u00e3o do fim de semana, \u00e0s ter\u00e7as-feiras, cobrem tudo o que voc\u00ea pode ter perdido.",
+      "As edições semanais são publicadas todas as segundas-feiras, com uma seleção mais ampla de leituras mais longas. As edições de atualização do fim de semana, às terças-feiras, cobrem tudo o que você pode ter perdido.",
     about_install_text:
-      "a/d/u tamb\u00e9m est\u00e1 dispon\u00edvel em um aplicativo, proporcionando acesso r\u00e1pido e uma experi\u00eancia nativa.",
-    about_contact: "Para sugest\u00f5es, corre\u00e7\u00f5es ou d\u00favidas:",
+      "a/d/u também está disponível em um aplicativo, proporcionando acesso rápido e uma experiência nativa.",
+    about_contact: "Para sugestões, correções ou dúvidas:",
 
     archive_title: "Arquivo",
-    archive_empty: "Nenhuma edi\u00e7\u00e3o ainda.",
+    archive_empty: "Nenhuma edição ainda.",
     archive_articles: "artigos",
+    archive_read_time: "~{time} min",
 
-    edition_daily: "Di\u00e1ria",
+    edition_daily: "Diária",
     edition_weekly: "Semanal",
     edition_weekend: "Resumo do fim de semana",
 
-    intro_daily: "Nossa sele\u00e7\u00e3o editorial para hoje.",
-    intro_weekly: "Nossa sele\u00e7\u00e3o semanal de leituras essenciais.",
+    intro_daily: "Nossa seleção editorial para hoje.",
+    intro_weekly: "Nossa seleção semanal de leituras essenciais.",
     intro_weekend: "Fique por dentro dos destaques da semana.",
 
-    loading: "Carregando...",
-    error_load_archive: "N\u00e3o foi poss\u00edvel carregar o arquivo",
-    error_load_digest: "N\u00e3o foi poss\u00edvel carregar o resumo de hoje",
-    error_retry: "Tentar novamente",
-    error_connection: "Verifique sua conex\u00e3o e tente novamente.",
     back: "Voltar",
-    read_original: "Ler artigo original",
+    today: "Hoje",
+    archive: "Arquivo",
+    about: "Sobre",
+    telegram: "Telegram",
     previous: "Anterior",
-    next: "Pr\u00f3ximo",
-    no_articles: "Nenhum artigo nesta edi\u00e7\u00e3o.",
-    no_summary: "Resumo n\u00e3o dispon\u00edvel.",
+    next: "Próximo",
+    dashboard: "Painel",
 
-    monday: "Segunda-feira",
-    tuesday: "Ter\u00e7a-feira",
-    wednesday: "Quarta-feira",
-    thursday: "Quinta-feira",
-    friday: "Sexta-feira",
-    saturday: "S\u00e1bado",
-    sunday: "Domingo",
+    read_original: "Ler artigo original",
+    install_app: "Instalar aplicativo",
+    try_again: "Tentar novamente",
 
+    loading: "Carregando...",
+    error_load_archive: "Não foi possível carregar o arquivo",
+    error_load_digest: "Não foi possível carregar o resumo de hoje",
+    error_connection: "Verifique sua conexão e tente novamente.",
+    no_articles: "Nenhum artigo nesta edição.",
+    no_summary: "Resumo não disponível.",
+    page_not_found: "Página não encontrada",
+    page_not_found_description: "A página que você procura não existe.",
+    go_to_today: "Ir para o resumo de hoje",
+
+    monday: "segunda-feira",
+    tuesday: "terça-feira",
+    wednesday: "quarta-feira",
+    thursday: "quinta-feira",
+    friday: "sexta-feira",
+    saturday: "sábado",
+    sunday: "domingo",
+
+    // Genitive case (de janeiro, de fevereiro, etc.)
+    january_gen: "janeiro",
+    february_gen: "fevereiro",
+    march_gen: "março",
+    april_gen: "abril",
+    may_gen: "maio",
+    june_gen: "junho",
+    july_gen: "julho",
+    august_gen: "agosto",
+    september_gen: "setembro",
+    october_gen: "outubro",
+    november_gen: "novembro",
+    december_gen: "dezembro",
+
+    // Nominative case
     january: "Janeiro",
     february: "Fevereiro",
-    march: "Mar\u00e7o",
+    march: "Março",
     april: "Abril",
-    may: "Maio",
+    may: "Mayo",
     june: "Junho",
     july: "Julho",
     august: "Agosto",
@@ -306,61 +441,88 @@ const translations: Record<Language, TranslationKeys> = {
 
   ru: {
     about_intro:
-      "-- \u0435\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0439 \u0434\u0430\u0439\u0434\u0436\u0435\u0441\u0442 \u0441\u0430\u043c\u044b\u0445 \u0432\u0430\u0436\u043d\u044b\u0445 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439 \u0432 \u043e\u0431\u043b\u0430\u0441\u0442\u0438 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u044b, \u0434\u0438\u0437\u0430\u0439\u043d\u0430 \u0438 \u0443\u0440\u0431\u0430\u043d\u0438\u0441\u0442\u0438\u043a\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0439 \u043a\u0430\u043a \u0432\u0435\u0431-\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0432",
+      "— ежедневный дайджест самых важных новостей в области архитектуры, дизайна и урбанистики, доступный как веб-приложение и в",
     about_editorial:
-      "\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u043d\u0430\u0448\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u043d\u0430 \u0431\u0430\u0437\u0435 \u0438\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0438\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0430 \u0430\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0434\u0435\u0441\u044f\u0442\u043a\u0438 \u0438\u0437\u0434\u0430\u043d\u0438\u0439, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0438\u0442\u044c 7 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0439. \u041c\u044b \u043e\u0442\u0434\u0430\u0451\u043c \u043f\u0440\u0438\u043e\u0440\u0438\u0442\u0435\u0442 \u043a\u0440\u0443\u043f\u043d\u044b\u043c \u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e \u0437\u043d\u0430\u0447\u0438\u043c\u044b\u043c \u043f\u0440\u043e\u0435\u043a\u0442\u0430\u043c \u0438 \u0440\u0430\u0431\u043e\u0442\u0430\u043c \u0430\u0432\u0442\u043e\u0440\u0438\u0442\u0435\u0442\u043d\u044b\u0445 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u043d\u044b\u0445 \u0431\u044e\u0440\u043e.",
+      "Каждый день наша редакционная система на базе искусственного интеллекта анализирует десятки изданий, чтобы предложить 7 ключевых публикаций. Мы отдаём приоритет крупным общественно значимым проектам и работам авторитетных архитектурных бюро.",
     about_sources:
-      "\u0421\u0440\u0435\u0434\u0438 \u043d\u0430\u0448\u0438\u0445 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432 -- ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review \u0438 \u043c\u043d\u043e\u0433\u0438\u0435 \u0434\u0440\u0443\u0433\u0438\u0435. \u041c\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u043c \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0443\u044e \u043f\u043e\u0432\u0435\u0441\u0442\u043a\u0443, \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u044f\u044f \u0432\u0435\u0434\u0443\u0449\u0438\u0435 \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u043c\u0435\u0434\u0438\u0430 \u0438 \u043d\u0438\u0448\u0435\u0432\u044b\u0435 \u0440\u0435\u0433\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u044f.",
+      "Среди наших источников — ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие. Мы собираем глобальную повестку, объединяя ведущие профессиональные медиа и нишевые региональные издания.",
     about_schedule:
-      "\u0415\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u044b\u0435 \u0434\u0430\u0439\u0434\u0436\u0435\u0441\u0442\u044b \u0432\u044b\u0445\u043e\u0434\u044f\u0442 \u043f\u043e \u043f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a\u0430\u043c \u0438 \u043f\u043e\u0434\u0432\u043e\u0434\u044f\u0442 \u0438\u0442\u043e\u0433\u0438 \u043d\u0435\u0434\u0435\u043b\u0438. \u0412\u044b\u043f\u0443\u0441\u043a\u0438, \u043f\u043e\u0441\u0432\u044f\u0449\u0451\u043d\u043d\u044b\u0435 \u0432\u044b\u0445\u043e\u0434\u043d\u044b\u043c, \u043f\u0443\u0431\u043b\u0438\u043a\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u0432\u0442\u043e\u0440\u043d\u0438\u043a\u0430\u043c \u0438 \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044e\u0442 \u0432\u0441\u0451, \u0447\u0442\u043e \u0432\u044b \u043c\u043e\u0433\u043b\u0438 \u043f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c.",
+      "Еженедельные дайджесты выходят по понедельникам и подводят итоги недели. Выпуски, посвящённые выходным, публикуются по вторникам и охватывают всё, что вы могли пропустить.",
     about_install_text:
-      "a/d/u \u0442\u0430\u043a\u0436\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f, \u043e\u0431\u0435\u0441\u043f\u0435\u0447\u0438\u0432\u0430\u044e\u0449\u0435\u0433\u043e \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u0438 \u0443\u0434\u043e\u0431\u0441\u0442\u0432\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u044f.",
-    about_contact: "\u0414\u043b\u044f \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439, \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439 \u0438 \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432:",
+      "a/d/u также доступен в формате приложения, обеспечивающего быстрый доступ и удобство использования.",
+    about_contact: "Для предложений, исправлений и запросов:",
 
-    archive_title: "\u0410\u0440\u0445\u0438\u0432",
-    archive_empty: "\u0412\u044b\u043f\u0443\u0441\u043a\u043e\u0432 \u043f\u043e\u043a\u0430 \u043d\u0435\u0442.",
-    archive_articles: "\u0441\u0442\u0430\u0442\u0435\u0439",
+    archive_title: "Архив",
+    archive_empty: "Выпусков пока нет.",
+    archive_articles: "статей",
+    archive_read_time: "~{time} мин",
 
-    edition_daily: "\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0439",
-    edition_weekly: "\u0415\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u044b\u0439",
-    edition_weekend: "\u041e\u0431\u0437\u043e\u0440 \u0432\u044b\u0445\u043e\u0434\u043d\u044b\u0445",
+    edition_daily: "Ежедневный",
+    edition_weekly: "Еженедельный",
+    edition_weekend: "Обзор выходных",
 
-    intro_daily: "\u041d\u0430\u0448\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0434\u0431\u043e\u0440\u043a\u0430 \u043d\u0430 \u0441\u0435\u0433\u043e\u0434\u043d\u044f.",
-    intro_weekly: "\u041d\u0430\u0448\u0430 \u0435\u0436\u0435\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0431\u043e\u0440\u043a\u0430 \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0445 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u043e\u0432.",
-    intro_weekend: "\u041e\u0431\u0437\u043e\u0440 \u0433\u043b\u0430\u0432\u043d\u043e\u0433\u043e \u0437\u0430 \u043d\u0435\u0434\u0435\u043b\u044e.",
+    intro_daily: "Наша редакционная подборка на сегодня.",
+    intro_weekly: "Наша еженедельная подборка ключевых материалов.",
+    intro_weekend: "Обзор главного за неделю.",
 
-    loading: "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430...",
-    error_load_archive: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0430\u0440\u0445\u0438\u0432",
-    error_load_digest: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0441\u0435\u0433\u043e\u0434\u043d\u044f\u0448\u043d\u0438\u0439 \u0432\u044b\u043f\u0443\u0441\u043a",
-    error_retry: "\u041f\u043e\u043f\u0440\u043e\u0431\u043e\u0432\u0430\u0442\u044c \u0441\u043d\u043e\u0432\u0430",
-    error_connection: "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u0438 \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.",
-    back: "\u041d\u0430\u0437\u0430\u0434",
-    read_original: "\u0427\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u044c\u044e \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e",
-    previous: "\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0430\u044f",
-    next: "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0430\u044f",
-    no_articles: "\u0412 \u044d\u0442\u043e\u043c \u0432\u044b\u043f\u0443\u0441\u043a\u0435 \u043d\u0435\u0442 \u0441\u0442\u0430\u0442\u0435\u0439.",
-    no_summary: "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e.",
+    back: "Назад",
+    today: "Сегодня",
+    archive: "Архив",
+    about: "О проекте",
+    telegram: "Telegram",
+    previous: "Предыдущая",
+    next: "Следующая",
+    dashboard: "Панель управления",
 
-    monday: "\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a",
-    tuesday: "\u0412\u0442\u043e\u0440\u043d\u0438\u043a",
-    wednesday: "\u0421\u0440\u0435\u0434\u0430",
-    thursday: "\u0427\u0435\u0442\u0432\u0435\u0440\u0433",
-    friday: "\u041f\u044f\u0442\u043d\u0438\u0446\u0430",
-    saturday: "\u0421\u0443\u0431\u0431\u043e\u0442\u0430",
-    sunday: "\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435",
+    read_original: "Читать статью полностью",
+    install_app: "Установить приложение",
+    try_again: "Попробовать снова",
 
-    january: "\u042f\u043d\u0432\u0430\u0440\u044c",
-    february: "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
-    march: "\u041c\u0430\u0440\u0442",
-    april: "\u0410\u043f\u0440\u0435\u043b\u044c",
-    may: "\u041c\u0430\u0439",
-    june: "\u0418\u044e\u043d\u044c",
-    july: "\u0418\u044e\u043b\u044c",
-    august: "\u0410\u0432\u0433\u0443\u0441\u0442",
-    september: "\u0421\u0435\u043d\u0442\u044f\u0431\u0440\u044c",
-    october: "\u041e\u043a\u0442\u044f\u0431\u0440\u044c",
-    november: "\u041d\u043e\u044f\u0431\u0440\u044c",
-    december: "\u0414\u0435\u043a\u0430\u0431\u0440\u044c",
+    loading: "Загрузка...",
+    error_load_archive: "Не удалось загрузить архив",
+    error_load_digest: "Не удалось загрузить сегодняшний выпуск",
+    error_connection: "Проверьте подключение и попробуйте снова.",
+    no_articles: "В этом выпуске нет статей.",
+    no_summary: "Описание недоступно.",
+    page_not_found: "Страница не найдена",
+    page_not_found_description: "Страница, которую вы ищете, не существует.",
+    go_to_today: "Перейти к сегодняшнему выпуску",
+
+    monday: "понедельник",
+    tuesday: "вторник",
+    wednesday: "среда",
+    thursday: "четверг",
+    friday: "пятница",
+    saturday: "суббота",
+    sunday: "воскресенье",
+
+    // Genitive case (января, февраля, etc. - used in dates)
+    january_gen: "января",
+    february_gen: "февраля",
+    march_gen: "марта",
+    april_gen: "апреля",
+    may_gen: "мая",
+    june_gen: "июня",
+    july_gen: "июля",
+    august_gen: "августа",
+    september_gen: "сентября",
+    october_gen: "октября",
+    november_gen: "ноября",
+    december_gen: "декабря",
+
+    // Nominative case (Январь, Февраль, etc. - used standalone)
+    january: "Январь",
+    february: "Февраль",
+    march: "Март",
+    april: "Апрель",
+    may: "Май",
+    june: "Июнь",
+    july: "Июль",
+    august: "Август",
+    september: "Сентябрь",
+    october: "Октябрь",
+    november: "Ноябрь",
+    december: "Декабрь",
   },
 };
 
@@ -374,6 +536,7 @@ export function t(key: keyof TranslationKeys, language: Language): string {
 /**
  * Translate a day name from English to the current language.
  * Input: "Monday", "Tuesday", etc. (as returned from the API)
+ * Output: Lowercase day name in target language
  */
 export function translateDay(englishDay: string, language: Language): string {
   if (language === "en") return englishDay;
@@ -394,10 +557,71 @@ export function translateDay(englishDay: string, language: Language): string {
 
 /**
  * Translate a date string like "30 January 2026" to the current language.
- * Only translates the month name; day number and year stay the same.
+ * Handles proper grammatical cases for each language.
+ * 
+ * Examples:
+ * - English: "30 January 2026" (unchanged)
+ * - Spanish: "30 de enero de 2026" (genitive with "de")
+ * - French: "30 janvier 2026" (lowercase month)
+ * - Portuguese: "30 de janeiro de 2026" (genitive with "de")
+ * - Russian: "30 января 2026" (genitive case)
  */
 export function translateDate(englishDate: string, language: Language): string {
   if (language === "en") return englishDate;
+
+  const monthMap: Record<string, keyof TranslationKeys> = {
+    January: "january_gen",
+    February: "february_gen",
+    March: "march_gen",
+    April: "april_gen",
+    May: "may_gen",
+    June: "june_gen",
+    July: "july_gen",
+    August: "august_gen",
+    September: "september_gen",
+    October: "october_gen",
+    November: "november_gen",
+    December: "december_gen",
+  };
+
+  // Parse the date: "30 January 2026"
+  const parts = englishDate.split(" ");
+  if (parts.length !== 3) return englishDate;
+
+  const [day, monthEn, year] = parts;
+  const monthKey = monthMap[monthEn];
+  if (!monthKey) return englishDate;
+
+  const monthTranslated = t(monthKey, language);
+
+  // Format according to language conventions
+  switch (language) {
+    case "es":
+    case "pt-br":
+      // Spanish and Portuguese use "de" preposition: "30 de enero de 2026"
+      return `${day} de ${monthTranslated} de ${year}`;
+    case "fr":
+      // French: "30 janvier 2026" (lowercase month, no preposition)
+      return `${day} ${monthTranslated} ${year}`;
+    case "ru":
+      // Russian: "30 января 2026" (genitive case, no preposition)
+      return `${day} ${monthTranslated} ${year}`;
+    default:
+      return englishDate;
+  }
+}
+
+/**
+ * Translate a month-year string like "January 2026" to the current language.
+ * Used in Archive page grouping.
+ * 
+ * Examples:
+ * - English: "January 2026"
+ * - Spanish: "Enero 2026"
+ * - Russian: "Январь 2026"
+ */
+export function translateMonthYear(englishMonthYear: string, language: Language): string {
+  if (language === "en") return englishMonthYear;
 
   const monthMap: Record<string, keyof TranslationKeys> = {
     January: "january",
@@ -414,14 +638,16 @@ export function translateDate(englishDate: string, language: Language): string {
     December: "december",
   };
 
-  // Replace the English month name with the translated one
-  for (const [eng, key] of Object.entries(monthMap)) {
-    if (englishDate.includes(eng)) {
-      return englishDate.replace(eng, t(key, language));
-    }
-  }
+  // Parse: "January 2026"
+  const parts = englishMonthYear.split(" ");
+  if (parts.length !== 2) return englishMonthYear;
 
-  return englishDate;
+  const [monthEn, year] = parts;
+  const monthKey = monthMap[monthEn];
+  if (!monthKey) return englishMonthYear;
+
+  const monthTranslated = t(monthKey, language);
+  return `${monthTranslated} ${year}`;
 }
 
 /**
