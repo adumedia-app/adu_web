@@ -21,6 +21,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useEditionByDate } from "@/hooks/useEditions";
 import { useLanguage, getTranslatedContent } from "@/lib/language";
+import { t, translateDay, translateDate } from "@/lib/translations";
 import type { Article as ArticleType } from "@/lib/types";
 
 // Swipe threshold
@@ -122,11 +123,13 @@ const ArticlePage = () => {
     }
   };
 
-  // Back label
+  // Back label - translated
   const getBackLabel = () => {
-    if (!digest) return "Back";
+    if (!digest) return t("back", language);
     const parts = digest.date.split(" ");
-    return `${digest.dayOfWeek}, ${parts[0]} ${parts[1]}`;
+    const translatedDay = translateDay(digest.dayOfWeek, language);
+    const translatedDate = `${parts[0]} ${parts[1]}`;
+    return `${translatedDay}, ${translateDate(digest.date, language).split(" ").slice(0, 2).join(" ")}`;
   };
 
   // Reset scroll ONLY after exit animation completes (prevents diagonal jump)
@@ -151,7 +154,7 @@ const ArticlePage = () => {
     return (
       <div className="min-h-screen flex flex-col bg-background safe-area-top">
         <div className="flex-1 flex items-center justify-center px-5">
-          <ErrorMessage message="Article not found" onRetry={handleBack} />
+          <ErrorMessage message={t("page_not_found", language)} onRetry={handleBack} />
         </div>
         <Footer />
       </div>
@@ -250,7 +253,7 @@ const ArticlePage = () => {
               ))
             ) : (
               <p className="text-muted-foreground italic">
-                No summary available.
+                {t("no_summary", language)}
               </p>
             )}
           </div>
@@ -263,7 +266,7 @@ const ArticlePage = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:underline"
             >
-              Read original article
+              {t("read_original", language)}
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
@@ -277,14 +280,14 @@ const ArticlePage = () => {
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-default transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
-                Previous
+                {t("previous", language)}
               </button>
               <button
                 onClick={goNext}
                 disabled={!nextArticle}
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-default transition-colors"
               >
-                Next
+                {t("next", language)}
                 <ChevronRight className="w-4 h-4" />
               </button>
             </nav>

@@ -11,9 +11,12 @@ import ArticleCard from "@/components/ArticleCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useTodayDigest } from "@/hooks/useEditions";
+import { useLanguage } from "@/lib/language";
+import { t, translateDay, translateDate } from "@/lib/translations";
 
 const Index = () => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   const { data: digest, isLoading, error, refetch } = useTodayDigest();
 
   // Loading state
@@ -36,7 +39,7 @@ const Index = () => {
         <Header />
         <div className="flex-1 flex items-center justify-center px-5">
           <ErrorMessage
-            message="Could not load today's digest"
+            message={t("error_load_digest", language)}
             onRetry={() => refetch()}
           />
         </div>
@@ -49,12 +52,19 @@ const Index = () => {
   const getIntroText = () => {
     switch (digest.editionType) {
       case "weekly":
-        return "Our weekly selection of essential reads.";
+        return t("intro_weekly", language);
       case "weekend":
-        return "Catch up on the week's highlights.";
+        return t("intro_weekend", language);
       default:
-        return "Our editorial selection for today.";
+        return t("intro_daily", language);
     }
+  };
+
+  // Get edition type label for display
+  const getEditionSuffix = () => {
+    if (digest.editionType === "weekly") return t("edition_weekly", language);
+    if (digest.editionType === "weekend") return t("edition_weekend", language);
+    return "";
   };
 
   return (
@@ -64,10 +74,10 @@ const Index = () => {
       {/* Date and intro */}
       <div className="px-5 py-4 text-center border-b border-border">
         <p className="date-primary">
-          {digest.dayOfWeek}, {digest.date}
+          {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
           {digest.editionType !== "daily" && (
             <span className="text-muted-foreground">
-              {" "}/ {digest.editionType === "weekly" ? "Weekly" : "Weekend"}
+              {" "}/ {getEditionSuffix()}
             </span>
           )}
         </p>
@@ -80,7 +90,7 @@ const Index = () => {
       <main className="flex-1 px-5">
         {digest.articles.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">
-            No articles in this edition.
+            {t("no_articles", language)}
           </div>
         ) : (
           digest.articles.map((article) => (

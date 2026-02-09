@@ -15,6 +15,7 @@ import {
   t,
   translateDate,
   translateDay,
+  translateMonthYear,
   getTranslatedEditionTypeLabel,
 } from "@/lib/translations";
 import type { Digest } from "@/lib/types";
@@ -85,7 +86,7 @@ const Archive = () => {
             {Object.entries(groupedByMonth).map(([monthYear, monthEditions]) => (
               <div key={monthYear}>
                 <h3 className="text-lg font-medium text-muted-foreground mb-3">
-                  {translateDate(monthYear, language)}
+                  {translateMonthYear(monthYear, language)}
                 </h3>
                 <div className="space-y-2">
                   {monthEditions.map((edition: Digest) => (
@@ -97,7 +98,7 @@ const Archive = () => {
                       <div>
                         <div className="font-medium">
                           {translateDay(edition.dayOfWeek, language)},{" "}
-                          {translateDate(edition.date, language)}
+                          {translateDate(edition.date, language).split(" ").slice(0, 2).join(" ")}
                         </div>
                         <div className="text-sm text-muted-foreground">
                           {getTranslatedEditionTypeLabel(edition.editionType, language)}

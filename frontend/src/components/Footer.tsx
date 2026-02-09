@@ -5,9 +5,12 @@
 
 import { Link, useLocation } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/lib/language";
+import { t } from "@/lib/translations";
 
 const Footer = () => {
   const location = useLocation();
+  const { language } = useLanguage();
   const isArchive = location.pathname === "/archive";
   const isDigest = location.pathname.startsWith("/digest/");
 
@@ -16,11 +19,11 @@ const Footer = () => {
       {isArchive || isDigest ? (
         <>
           <Link to="/" className="footer-nav-link">
-            Today
+            {t("today", language)}
           </Link>
           <span className="footer-nav-separator">|</span>
           <Link to="/about" className="footer-nav-link">
-            About
+            {t("about", language)}
           </Link>
           <span className="footer-nav-separator">|</span>
           <a 
@@ -29,7 +32,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer-nav-link"
           >
-            Telegram
+            {t("telegram", language)}
           </a>
           <span className="footer-nav-separator">|</span>
           <LanguageSelector />
@@ -37,11 +40,11 @@ const Footer = () => {
       ) : (
         <>
           <Link to="/archive" className="footer-nav-link">
-            Archive
+            {t("archive", language)}
           </Link>
           <span className="footer-nav-separator">|</span>
           <Link to="/about" className="footer-nav-link">
-            About
+            {t("about", language)}
           </Link>
           <span className="footer-nav-separator">|</span>
           <a 
@@ -50,7 +53,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer-nav-link"
           >
-            Telegram
+            {t("telegram", language)}
           </a>
           <span className="footer-nav-separator">|</span>
           <LanguageSelector />

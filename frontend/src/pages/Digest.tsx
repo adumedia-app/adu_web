@@ -12,11 +12,14 @@ import ArticleCard from "@/components/ArticleCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ErrorMessage from "@/components/ErrorMessage";
 import { useEditionByDate } from "@/hooks/useEditions";
+import { useLanguage } from "@/lib/language";
+import { t, translateDay, translateDate, getTranslatedEditionTypeLabel } from "@/lib/translations";
 import type { Article } from "@/lib/types";
 
 const Digest = () => {
   const { date } = useParams<{ date: string }>();
   const navigate = useNavigate();
+  const { language } = useLanguage();
   const { data: digest, isLoading, error, refetch } = useEditionByDate(date || "");
 
   // Loading state
@@ -39,7 +42,7 @@ const Digest = () => {
         <Header />
         <div className="flex-1 flex items-center justify-center px-5">
           <ErrorMessage
-            message="Could not load this edition"
+            message={t("error_load_digest", language)}
             onRetry={() => refetch()}
           />
         </div>
@@ -47,18 +50,6 @@ const Digest = () => {
       </div>
     );
   }
-
-  // Get edition label
-  const getEditionLabel = () => {
-    switch (digest.editionType) {
-      case "weekly":
-        return "Weekly Edition";
-      case "weekend":
-        return "Weekend Catch-Up";
-      default:
-        return "Daily Edition";
-    }
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background safe-area-top">
@@ -70,16 +61,16 @@ const Digest = () => {
         className="flex items-center gap-2 px-5 py-3 text-muted-foreground hover:text-foreground border-b border-border"
       >
         <ArrowLeft className="w-4 h-4" />
-        Archive
+        {t("archive", language)}
       </Link>
 
       {/* Date and intro */}
       <div className="px-5 py-4 text-center border-b border-border">
         <p className="date-primary">
-          {digest.dayOfWeek}, {digest.date}
+          {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
         </p>
         <p className="text-muted-foreground mt-1">
-          {getEditionLabel()}
+          {getTranslatedEditionTypeLabel(digest.editionType, language)}
         </p>
       </div>
 
@@ -87,7 +78,7 @@ const Digest = () => {
       <main className="flex-1 px-5">
         {digest.articles.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">
-            No articles in this edition.
+            {t("no_articles", language)}
           </div>
         ) : (
           digest.articles.map((article: Article) => (
