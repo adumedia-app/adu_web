@@ -21,7 +21,7 @@ const About = () => {
           <p>
             <strong>a/d/u</strong>{" "}
             {t("about_intro", language)}{" "}
-
+            <a
               href="https://t.me/a_d_u_media"
               target="_blank"
               rel="noopener noreferrer"
@@ -42,7 +42,7 @@ const About = () => {
           <p>
             {t("about_contact", language)}
             <br />
-
+            <a
               href="mailto:admin@adu.media"
               className="text-primary hover:underline"
             >
