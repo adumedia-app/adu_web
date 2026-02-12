@@ -15,6 +15,17 @@ type TranslationKeys = {
   about_install_text: string;
   about_contact: string;
 
+  // Privacy page
+  privacy_title: string;
+  privacy_intro: string;
+  privacy_cookie_heading: string;
+  privacy_cookie_text: string;
+  privacy_analytics_heading: string;
+  privacy_analytics_text: string;
+  privacy_no_tracking: string;
+  privacy_contact: string;
+  privacy_updated: string;
+
   // Archive page
   archive_title: string;
   archive_empty: string;
@@ -109,6 +120,16 @@ const translations: Record<Language, TranslationKeys> = {
       "a/d/u also lives in an app, providing quick access and a native experience.",
     about_contact: "For suggestions, corrections, or inquiries:",
 
+    privacy_title: "Privacy Policy",
+    privacy_intro: "ADUmedia (adu.media) is a news curation service. We are committed to keeping things simple and respecting your privacy.",
+    privacy_cookie_heading: "Cookies",
+    privacy_cookie_text: "We use a single cookie (adu_language) to remember your preferred reading language. It contains no personal information, is not shared with anyone, and expires after one year. You can clear it at any time through your browser settings.",
+    privacy_analytics_heading: "Analytics",
+    privacy_analytics_text: "We collect anonymous page view statistics to understand which content is most useful. No personal data, IP addresses, or device fingerprints are stored.",
+    privacy_no_tracking: "We do not require registration, do not collect personal data, and do not use any third-party advertising or tracking services.",
+    privacy_contact: "Questions about privacy?",
+    privacy_updated: "Last updated: February 2026",
+
     archive_title: "Archive",
     archive_empty: "No editions yet",
     archive_articles: "articles",
@@ -193,6 +214,16 @@ const translations: Record<Language, TranslationKeys> = {
     about_install_text:
       "a/d/u también está disponible en una aplicación, que proporciona un acceso rápido y una experiencia nativa",
     about_contact: "Para sugerencias, correcciones o consultas:",
+
+    privacy_title: "Política de privacidad",
+    privacy_intro: "ADUmedia (adu.media) es un servicio de noticias de arquitectura. Nos comprometemos a mantener las cosas simples y respetar su privacidad.",
+    privacy_cookie_heading: "Cookies",
+    privacy_cookie_text: "Usamos una única cookie (adu_language) para recordar su idioma de lectura preferido. No contiene información personal, no se comparte con nadie y caduca después de un año. Puede eliminarla en cualquier momento desde la configuración de su navegador.",
+    privacy_analytics_heading: "Estadísticas",
+    privacy_analytics_text: "Recopilamos estadísticas anónimas de visitas a páginas para entender qué contenido es más útil. No se almacenan datos personales, direcciones IP ni huellas digitales de dispositivos.",
+    privacy_no_tracking: "No requerimos registro, no recopilamos datos personales y no utilizamos servicios de publicidad ni rastreo de terceros.",
+    privacy_contact: "¿Preguntas sobre privacidad?",
+    privacy_updated: "Última actualización: febrero de 2026",
 
     archive_title: "Archivo",
     archive_empty: "Aún no hay ediciones",
@@ -280,6 +311,16 @@ const translations: Record<Language, TranslationKeys> = {
       "a/d/u existe également sous forme d'application, offrant un accès rapide et une expérience fluide",
     about_contact: "Pour toute suggestion, correction ou demande de renseignements :",
 
+    privacy_title: "Politique de confidentialité",
+    privacy_intro: "ADUmedia (adu.media) est un service d'actualités en architecture. Nous nous engageons à faire simple et à respecter votre vie privée.",
+    privacy_cookie_heading: "Cookies",
+    privacy_cookie_text: "Nous utilisons un seul cookie (adu_language) pour retenir votre langue de lecture préférée. Il ne contient aucune donnée personnelle, n'est partagé avec personne et expire après un an. Vous pouvez le supprimer à tout moment via les paramètres de votre navigateur.",
+    privacy_analytics_heading: "Statistiques",
+    privacy_analytics_text: "Nous collectons des statistiques anonymes de pages vues pour comprendre quel contenu est le plus utile. Aucune donnée personnelle, adresse IP ou empreinte numérique n'est stockée.",
+    privacy_no_tracking: "Nous ne demandons pas d'inscription, ne collectons pas de données personnelles et n'utilisons aucun service de publicité ou de suivi tiers.",
+    privacy_contact: "Questions sur la confidentialité ?",
+    privacy_updated: "Dernière mise à jour : février 2026",
+
     archive_title: "Archives",
     archive_empty: "Aucune édition pour le moment",
     archive_articles: "articles",
@@ -366,6 +407,16 @@ const translations: Record<Language, TranslationKeys> = {
       "a/d/u também está disponível em um aplicativo, proporcionando acesso rápido e uma experiência nativa",
     about_contact: "Para sugestões, correções ou dúvidas:",
 
+    privacy_title: "Política de privacidade",
+    privacy_intro: "ADUmedia (adu.media) é um serviço de notícias de arquitetura. Estamos comprometidos em manter as coisas simples e respeitar sua privacidade.",
+    privacy_cookie_heading: "Cookies",
+    privacy_cookie_text: "Usamos um único cookie (adu_language) para lembrar seu idioma de leitura preferido. Ele não contém informações pessoais, não é compartilhado com ninguém e expira após um ano. Você pode removê-lo a qualquer momento nas configurações do seu navegador.",
+    privacy_analytics_heading: "Estatísticas",
+    privacy_analytics_text: "Coletamos estatísticas anônimas de visualizações de páginas para entender qual conteúdo é mais útil. Nenhum dado pessoal, endereço IP ou impressão digital de dispositivo é armazenado.",
+    privacy_no_tracking: "Não exigimos cadastro, não coletamos dados pessoais e não utilizamos serviços de publicidade ou rastreamento de terceiros.",
+    privacy_contact: "Dúvidas sobre privacidade?",
+    privacy_updated: "Última atualização: fevereiro de 2026",
+
     archive_title: "Arquivo",
     archive_empty: "Nenhuma edição ainda",
     archive_articles: "artigos",
@@ -451,6 +502,16 @@ const translations: Record<Language, TranslationKeys> = {
     about_install_text:
       "a/d/u также доступен в формате приложения, обеспечивающего быстрый доступ и удобство использования",
     about_contact: "Для предложений, исправлений и запросов:",
+
+    privacy_title: "Политика конфиденциальности",
+    privacy_intro: "ADUmedia (adu.media) -- новостной сервис об архитектуре. Мы стараемся быть максимально простыми и уважать вашу приватность.",
+    privacy_cookie_heading: "Файлы cookie",
+    privacy_cookie_text: "Мы используем один cookie-файл (adu_language) для сохранения выбранного вами языка чтения. Он не содержит личных данных, не передается третьим лицам и действует один год. Вы можете удалить его в настройках браузера.",
+    privacy_analytics_heading: "Аналитика",
+    privacy_analytics_text: "Мы собираем анонимную статистику просмотров страниц, чтобы понимать, какой контент наиболее полезен. Персональные данные, IP-адреса и цифровые отпечатки устройств не сохраняются.",
+    privacy_no_tracking: "Мы не требуем регистрации, не собираем персональные данные и не используем сторонние рекламные или отслеживающие сервисы.",
+    privacy_contact: "Вопросы о конфиденциальности?",
+    privacy_updated: "Последнее обновление: февраль 2026",
 
     archive_title: "Архив",
     archive_empty: "Выпусков пока нет",

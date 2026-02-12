@@ -2,7 +2,7 @@
 /**
  * About Page - with multilingual support
  */
-
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InstallButton from "@/components/InstallButton";
@@ -21,7 +21,7 @@ const About = () => {
           <p>
             <strong>a/d/u</strong>{" "}
             {t("about_intro", language)}{" "}
-            <a
+
               href="https://t.me/a_d_u_media"
               target="_blank"
               rel="noopener noreferrer"
@@ -42,12 +42,18 @@ const About = () => {
           <p>
             {t("about_contact", language)}
             <br />
-            <a
+
               href="mailto:admin@adu.media"
               className="text-primary hover:underline"
             >
               admin@adu.media
             </a>
+          </p>
+
+          <p>
+            <Link to="/privacy" className="text-primary hover:underline">
+              {t("privacy_title", language)}
+            </Link>
           </p>
 
           <div className="divider my-8" />

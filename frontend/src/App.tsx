@@ -15,6 +15,7 @@ import Archive from "./pages/Archive";
 import Digest from "./pages/Digest";
 import ArticlePage from "./pages/Article";
 import About from "./pages/About";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 // Admin pages
@@ -52,6 +53,7 @@ const AppRoutes = () => {
       <Route path="/digest/:date" element={<Digest />} />
       <Route path="/article/:date/:slug" element={<ArticlePage />} />
       <Route path="/about" element={<About />} />
+      <Route path="/privacy" element={<Privacy />} />
 
       {/* Admin routes */}
       <Route 
