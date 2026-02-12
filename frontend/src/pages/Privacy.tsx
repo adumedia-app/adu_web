@@ -39,7 +39,7 @@ const Privacy = () => {
           <p>
             {t("privacy_contact", language)}
             {" "}
-
+            <a
               href="mailto:admin@adu.media"
               className="text-primary hover:underline"
             >
