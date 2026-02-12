@@ -110,7 +110,7 @@ const translations: Record<Language, TranslationKeys> = {
     about_contact: "For suggestions, corrections, or inquiries:",
 
     archive_title: "Archive",
-    archive_empty: "No editions yet.",
+    archive_empty: "No editions yet",
     archive_articles: "articles",
     archive_read_time: "~{time} min",
 
@@ -118,9 +118,9 @@ const translations: Record<Language, TranslationKeys> = {
     edition_weekly: "Weekly",
     edition_weekend: "Weekend Catch-Up",
 
-    intro_daily: "Our editorial selection for today.",
-    intro_weekly: "Our weekly selection of essential reads.",
-    intro_weekend: "Catch up on the week's highlights.",
+    intro_daily: "Our editorial selection for today",
+    intro_weekly: "Our weekly selection of essential reads",
+    intro_weekend: "Catch up on the week's highlights",
 
     back: "Back",
     today: "Today",
@@ -138,11 +138,11 @@ const translations: Record<Language, TranslationKeys> = {
     loading: "Loading...",
     error_load_archive: "Could not load archive",
     error_load_digest: "Could not load today's digest",
-    error_connection: "Please check your connection and try again.",
-    no_articles: "No articles in this edition.",
-    no_summary: "No summary available.",
+    error_connection: "Please check your connection and try again",
+    no_articles: "No articles in this edition",
+    no_summary: "No summary available",
     page_not_found: "Page not found",
-    page_not_found_description: "The page you're looking for doesn't exist.",
+    page_not_found_description: "The page you're looking for doesn't exist",
     go_to_today: "Go to today's digest",
 
     monday: "Monday",
@@ -185,17 +185,17 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "es un resumen diario seleccionado de las noticias más importantes sobre arquitectura, diseño y urbanismo, disponible como aplicación web y en",
     about_editorial:
-      "Cada día, nuestro sistema editorial basado en inteligencia artificial analiza docenas de publicaciones para ofrecerte siete lecturas imprescindibles. Priorizamos grandes proyectos de importancia pública de estudios de arquitectura reconocidos.",
+      "Cada día, nuestro sistema editorial basado en inteligencia artificial analiza docenas de publicaciones para ofrecerte siete lecturas imprescindibles. Priorizamos grandes proyectos de importancia pública de estudios de arquitectura reconocidos",
     about_sources:
-      "Entre nuestras fuentes se incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review y muchas otras. Nuestro objetivo es representar perspectivas globales y voces emergentes junto con publicaciones consolidadas.",
+      "Entre nuestras fuentes se incluyen ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review y muchas otras. Nuestro objetivo es representar perspectivas globales y voces emergentes junto con publicaciones consolidadas",
     about_schedule:
-      "Las ediciones semanales aparecen cada lunes con una selección más amplia de lecturas más largas. Las ediciones de fin de semana, que se publican los martes, cubren todo lo que te hayas podido perder.",
+      "Las ediciones semanales aparecen cada lunes con una selección más amplia de lecturas más largas. Las ediciones de fin de semana, que se publican los martes, cubren todo lo que te hayas podido perder",
     about_install_text:
-      "a/d/u también está disponible en una aplicación, que proporciona un acceso rápido y una experiencia nativa.",
+      "a/d/u también está disponible en una aplicación, que proporciona un acceso rápido y una experiencia nativa",
     about_contact: "Para sugerencias, correcciones o consultas:",
 
     archive_title: "Archivo",
-    archive_empty: "Aún no hay ediciones.",
+    archive_empty: "Aún no hay ediciones",
     archive_articles: "artículos",
     archive_read_time: "~{time} min",
 
@@ -203,9 +203,9 @@ const translations: Record<Language, TranslationKeys> = {
     edition_weekly: "Semanal",
     edition_weekend: "Resumen del fin de semana",
 
-    intro_daily: "Nuestra selección editorial para hoy.",
-    intro_weekly: "Nuestra selección semanal de lecturas esenciales.",
-    intro_weekend: "Ponte al día con lo más destacado de la semana.",
+    intro_daily: "Nuestra selección editorial para hoy",
+    intro_weekly: "Nuestra selección semanal de lecturas esenciales",
+    intro_weekend: "Ponte al día con lo más destacado de la semana",
 
     back: "Volver",
     today: "Hoy",
@@ -223,11 +223,11 @@ const translations: Record<Language, TranslationKeys> = {
     loading: "Cargando...",
     error_load_archive: "No se pudo cargar el archivo",
     error_load_digest: "No se pudo cargar el resumen de hoy",
-    error_connection: "Verifica tu conexión e intenta de nuevo.",
-    no_articles: "No hay artículos en esta edición.",
-    no_summary: "Resumen no disponible.",
+    error_connection: "Verifica tu conexión e intenta de nuevo",
+    no_articles: "No hay artículos en esta edición",
+    no_summary: "Resumen no disponible",
     page_not_found: "Página no encontrada",
-    page_not_found_description: "La página que buscas no existe.",
+    page_not_found_description: "La página que buscas no existe",
     go_to_today: "Ir al resumen de hoy",
 
     monday: "lunes",
@@ -271,17 +271,17 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "est un condensé quotidien des articles les plus importants dans les domaines de l'architecture, du design et de l'urbanisme, disponible sous forme d'application web et sur",
     about_editorial:
-      "Chaque jour, notre système éditorial alimenté par l'IA passe au crible des dizaines de publications pour vous proposer 7 articles incontournables. Nous privilégions les discours critiques aux annonces de produits, les analyses approfondies aux communiqués de presse.",
+      "Chaque jour, notre système éditorial alimenté par l'IA passe au crible des dizaines de publications pour vous proposer 7 articles incontournables. Nous privilégions les discours critiques aux annonces de produits, les analyses approfondies aux communiqués de presse",
     about_sources:
-      "Nos sources comprennent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review et bien d'autres. Notre objectif est de représenter les perspectives mondiales et les voix émergentes en complément des publications établies.",
+      "Nos sources comprennent ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review et bien d'autres. Notre objectif est de représenter les perspectives mondiales et les voix émergentes en complément des publications établies",
     about_schedule:
-      "Les éditions hebdomadaires paraissent chaque lundi avec une sélection plus large d'articles plus longs. Les éditions de rattrapage du week-end, publiées le mardi, couvrent tout ce que vous avez pu manquer.",
+      "Les éditions hebdomadaires paraissent chaque lundi avec une sélection plus large d'articles plus longs. Les éditions de rattrapage du week-end, publiées le mardi, couvrent tout ce que vous avez pu manquer",
     about_install_text:
-      "a/d/u existe également sous forme d'application, offrant un accès rapide et une expérience fluide.",
+      "a/d/u existe également sous forme d'application, offrant un accès rapide et une expérience fluide",
     about_contact: "Pour toute suggestion, correction ou demande de renseignements :",
 
     archive_title: "Archives",
-    archive_empty: "Aucune édition pour le moment.",
+    archive_empty: "Aucune édition pour le moment",
     archive_articles: "articles",
     archive_read_time: "~{time} min",
 
@@ -289,9 +289,9 @@ const translations: Record<Language, TranslationKeys> = {
     edition_weekly: "Hebdomadaire",
     edition_weekend: "Rattrapage du week-end",
 
-    intro_daily: "Notre sélection éditoriale du jour.",
-    intro_weekly: "Notre sélection hebdomadaire de lectures essentielles.",
-    intro_weekend: "Rattrapez les temps forts de la semaine.",
+    intro_daily: "Notre sélection éditoriale du jour",
+    intro_weekly: "Notre sélection hebdomadaire de lectures essentielles",
+    intro_weekend: "Rattrapez les temps forts de la semaine",
 
     back: "Retour",
     today: "Aujourd'hui",
@@ -309,11 +309,11 @@ const translations: Record<Language, TranslationKeys> = {
     loading: "Chargement...",
     error_load_archive: "Impossible de charger les archives",
     error_load_digest: "Impossible de charger le résumé du jour",
-    error_connection: "Vérifiez votre connexion et réessayez.",
-    no_articles: "Aucun article dans cette édition.",
-    no_summary: "Résumé non disponible.",
+    error_connection: "Vérifiez votre connexion et réessayez",
+    no_articles: "Aucun article dans cette édition",
+    no_summary: "Résumé non disponible",
     page_not_found: "Page non trouvée",
-    page_not_found_description: "La page que vous recherchez n'existe pas.",
+    page_not_found_description: "La page que vous recherchez n'existe pas",
     go_to_today: "Aller au résumé du jour",
 
     monday: "lundi",
@@ -357,17 +357,17 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "é um resumo diário com curadoria das notícias mais importantes sobre arquitetura, design e urbanismo, disponível como aplicativo web e no",
     about_editorial:
-      "Todos os dias, nosso sistema editorial alimentado por IA analisa dezenas de publicações para trazer a você 7 leituras essenciais. Priorizamos o discurso crítico em vez de anúncios de produtos, análises longas em vez de comunicados à imprensa.",
+      "Todos os dias, nosso sistema editorial alimentado por IA analisa dezenas de publicações para trazer a você 7 leituras essenciais. Priorizamos o discurso crítico em vez de anúncios de produtos, análises longas em vez de comunicados à imprensa",
     about_sources:
-      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review e muitas outras. Nosso objetivo é representar perspectivas globais e vozes emergentes, juntamente com publicações estabelecidas.",
+      "Nossas fontes incluem ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review e muitas outras. Nosso objetivo é representar perspectivas globais e vozes emergentes, juntamente com publicações estabelecidas",
     about_schedule:
-      "As edições semanais são publicadas todas as segundas-feiras, com uma seleção mais ampla de leituras mais longas. As edições de atualização do fim de semana, às terças-feiras, cobrem tudo o que você pode ter perdido.",
+      "As edições semanais são publicadas todas as segundas-feiras, com uma seleção mais ampla de leituras mais longas. As edições de atualização do fim de semana, às terças-feiras, cobrem tudo o que você pode ter perdido",
     about_install_text:
-      "a/d/u também está disponível em um aplicativo, proporcionando acesso rápido e uma experiência nativa.",
+      "a/d/u também está disponível em um aplicativo, proporcionando acesso rápido e uma experiência nativa",
     about_contact: "Para sugestões, correções ou dúvidas:",
 
     archive_title: "Arquivo",
-    archive_empty: "Nenhuma edição ainda.",
+    archive_empty: "Nenhuma edição ainda",
     archive_articles: "artigos",
     archive_read_time: "~{time} min",
 
@@ -375,9 +375,9 @@ const translations: Record<Language, TranslationKeys> = {
     edition_weekly: "Semanal",
     edition_weekend: "Resumo do fim de semana",
 
-    intro_daily: "Nossa seleção editorial para hoje.",
-    intro_weekly: "Nossa seleção semanal de leituras essenciais.",
-    intro_weekend: "Fique por dentro dos destaques da semana.",
+    intro_daily: "Nossa seleção editorial para hoje",
+    intro_weekly: "Nossa seleção semanal de leituras essenciais",
+    intro_weekend: "Fique por dentro dos destaques da semana",
 
     back: "Voltar",
     today: "Hoje",
@@ -395,11 +395,11 @@ const translations: Record<Language, TranslationKeys> = {
     loading: "Carregando...",
     error_load_archive: "Não foi possível carregar o arquivo",
     error_load_digest: "Não foi possível carregar o resumo de hoje",
-    error_connection: "Verifique sua conexão e tente novamente.",
-    no_articles: "Nenhum artigo nesta edição.",
-    no_summary: "Resumo não disponível.",
+    error_connection: "Verifique sua conexão e tente novamente",
+    no_articles: "Nenhum artigo nesta edição",
+    no_summary: "Resumo não disponível",
     page_not_found: "Página não encontrada",
-    page_not_found_description: "A página que você procura não existe.",
+    page_not_found_description: "A página que você procura não existe",
     go_to_today: "Ir para o resumo de hoje",
 
     monday: "segunda-feira",
@@ -443,17 +443,17 @@ const translations: Record<Language, TranslationKeys> = {
     about_intro:
       "— ежедневный дайджест самых важных новостей в области архитектуры, дизайна и урбанистики, доступный как веб-приложение и в",
     about_editorial:
-      "Каждый день наша редакционная система на базе искусственного интеллекта анализирует десятки изданий, чтобы предложить 7 ключевых публикаций. Мы отдаём приоритет крупным общественно значимым проектам и работам авторитетных архитектурных бюро.",
+      "Каждый день наша редакционная система на базе искусственного интеллекта анализирует десятки изданий, чтобы предложить 7 ключевых публикаций. Мы отдаём приоритет крупным общественно значимым проектам и работам авторитетных архитектурных бюро",
     about_sources:
-      "Среди наших источников — ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие. Мы собираем глобальную повестку, объединяя ведущие профессиональные медиа и нишевые региональные издания.",
+      "Среди наших источников — ArchDaily, Dezeen, Domus, Designboom, Architectural Record, The Architectural Review и многие другие. Мы собираем глобальную повестку, объединяя ведущие профессиональные медиа и нишевые региональные издания",
     about_schedule:
-      "Еженедельные дайджесты выходят по понедельникам и подводят итоги недели. Выпуски, посвящённые выходным, публикуются по вторникам и охватывают всё, что вы могли пропустить.",
+      "Еженедельные дайджесты выходят по понедельникам и подводят итоги недели. Выпуски, посвящённые выходным, публикуются по вторникам и охватывают всё, что вы могли пропустить",
     about_install_text:
-      "a/d/u также доступен в формате приложения, обеспечивающего быстрый доступ и удобство использования.",
+      "a/d/u также доступен в формате приложения, обеспечивающего быстрый доступ и удобство использования",
     about_contact: "Для предложений, исправлений и запросов:",
 
     archive_title: "Архив",
-    archive_empty: "Выпусков пока нет.",
+    archive_empty: "Выпусков пока нет",
     archive_articles: "статей",
     archive_read_time: "~{time} мин",
 
@@ -461,9 +461,9 @@ const translations: Record<Language, TranslationKeys> = {
     edition_weekly: "Еженедельный",
     edition_weekend: "Обзор выходных",
 
-    intro_daily: "Наша редакционная подборка на сегодня.",
-    intro_weekly: "Наша еженедельная подборка ключевых материалов.",
-    intro_weekend: "Обзор главного за неделю.",
+    intro_daily: "Наша редакционная подборка на сегодня",
+    intro_weekly: "Наша еженедельная подборка ключевых материалов",
+    intro_weekend: "Обзор главного за выходные",
 
     back: "Назад",
     today: "Сегодня",
@@ -481,11 +481,11 @@ const translations: Record<Language, TranslationKeys> = {
     loading: "Загрузка...",
     error_load_archive: "Не удалось загрузить архив",
     error_load_digest: "Не удалось загрузить сегодняшний выпуск",
-    error_connection: "Проверьте подключение и попробуйте снова.",
-    no_articles: "В этом выпуске нет статей.",
-    no_summary: "Описание недоступно.",
+    error_connection: "Проверьте подключение и попробуйте снова",
+    no_articles: "В этом выпуске нет статей",
+    no_summary: "Описание недоступно",
     page_not_found: "Страница не найдена",
-    page_not_found_description: "Страница, которую вы ищете, не существует.",
+    page_not_found_description: "Страница, которую вы ищете, не существует",
     go_to_today: "Перейти к сегодняшнему выпуску",
 
     monday: "понедельник",
