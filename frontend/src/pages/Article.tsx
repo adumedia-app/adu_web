@@ -167,6 +167,16 @@ const ArticlePage = () => {
     currentArticle.headline_translations,
     language
   );
+  const displayLine1 = getTranslatedContent(
+    currentArticle.headlineLine1,
+    currentArticle.headline_line_1_translations,
+    language
+  );
+  const displayLine2 = getTranslatedContent(
+    currentArticle.headlineLine2,
+    currentArticle.headline_line_2_translations,
+    language
+  );
   const displayContent = getTranslatedContent(
     currentArticle.content,
     currentArticle.ai_summary_translations,
@@ -175,6 +185,9 @@ const ArticlePage = () => {
   const paragraphs = displayContent
     ? displayContent.split("\n\n").filter((p) => p.trim())
     : [];
+
+  // Two-line headline: use line1/line2 if available, fall back to combined headline
+  const hasTwoLineHeadline = !!(displayLine1 || displayLine2);
 
   // Build animation context
   const animationCtx = {
@@ -223,12 +236,48 @@ const ArticlePage = () => {
           className="px-5 py-6 touch-pan-y"
         >
           <header className="mb-6">
-            <h1 className="text-2xl font-medium leading-tight mb-2">
-              {displayHeadline}
-            </h1>
-            <p className="text-base text-muted-foreground italic">
+            {/* Studio plaque */}
+            {currentArticle.isStudio && (
+              <div className="studio-plaque mb-4">
+                Studio Update
+              </div>
+            )}
+
+            {/* Two-line headline or fallback */}
+            {hasTwoLineHeadline ? (
+              <>
+                {displayLine1 && (
+                  <h1 className="text-2xl font-medium leading-tight">
+                    {displayLine1}
+                  </h1>
+                )}
+                {displayLine2 && (
+                  <p className="text-lg text-muted-foreground leading-tight mt-1">
+                    {displayLine2}
+                  </p>
+                )}
+              </>
+            ) : (
+              <h1 className="text-2xl font-medium leading-tight">
+                {displayHeadline}
+              </h1>
+            )}
+
+            {/* Source */}
+            <p className="text-base text-muted-foreground italic mt-2">
               {currentArticle.source}
             </p>
+
+            {/* Tags */}
+            {currentArticle.tags.length > 0 && (
+              <div className="flex gap-2 mt-3">
+                {currentArticle.tags.slice(0, 2).map((tag, i) => (
+                  <span key={i} className="article-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </header>
 
           {/* Featured image */}

@@ -114,6 +114,27 @@
     @apply border-t-2 border-foreground;
   }
 
+  /* Studio plaque - orange banner matching brand primary */
+  .studio-plaque {
+    display: inline-block;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2px;
+  }
+
+  /* Article tags */
+  .article-tag {
+    @apply text-xs text-muted-foreground;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 2px;
+  }
+
   /* Footer nav */
   .footer-nav {
     @apply flex items-center justify-center gap-4 py-4 text-base;

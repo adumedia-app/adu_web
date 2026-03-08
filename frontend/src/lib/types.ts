@@ -37,7 +37,12 @@ export interface ArticleDetail {
   image_url?: string;
   tags?: string[];
   category?: string;
+  is_studio?: boolean;
+  headline_line_1?: string;
+  headline_line_2?: string;
   headline_translations?: Record<string, string>;
+  headline_line_1_translations?: Record<string, string>;
+  headline_line_2_translations?: Record<string, string>;
   ai_summary_translations?: Record<string, string>;
 }
 
@@ -51,6 +56,8 @@ export interface ArticleDetail {
 export interface Article {
   id: string;
   headline: string;
+  headlineLine1: string;
+  headlineLine2: string;
   slug: string;
   source: string;
   image: string;
@@ -59,7 +66,11 @@ export interface Article {
   content: string;
   readTime: number;
   url: string;
+  tags: string[];
+  isStudio: boolean;
   headline_translations?: Record<string, string>;
+  headline_line_1_translations?: Record<string, string>;
+  headline_line_2_translations?: Record<string, string>;
   ai_summary_translations?: Record<string, string>;
 }
 
@@ -102,6 +113,8 @@ export function mapArticleDetailToArticle(article: ArticleDetail): Article {
   return {
     id: article.id,
     headline: article.title,
+    headlineLine1: article.headline_line_1 || "",
+    headlineLine2: article.headline_line_2 || "",
     slug: article.slug || generateSlug(article.title),
     source: article.source_name,
     image: article.image_url || "",
@@ -110,7 +123,11 @@ export function mapArticleDetailToArticle(article: ArticleDetail): Article {
     content: article.ai_summary,
     readTime: Math.ceil((article.ai_summary || "").split(" ").length / 200),
     url: article.url,
+    tags: article.tags || [],
+    isStudio: article.is_studio || false,
     headline_translations: article.headline_translations || {},
+    headline_line_1_translations: article.headline_line_1_translations || {},
+    headline_line_2_translations: article.headline_line_2_translations || {},
     ai_summary_translations: article.ai_summary_translations || {},
   };
 }

@@ -97,9 +97,15 @@ const Index = () => {
             <ArticleCard
               key={article.id}
               headline={article.headline}
+              headlineLine1={article.headlineLine1}
+              headlineLine2={article.headlineLine2}
               source={article.source}
               image={article.image}
+              tags={article.tags}
+              isStudio={article.isStudio}
               headline_translations={article.headline_translations}
+              headline_line_1_translations={article.headline_line_1_translations}
+              headline_line_2_translations={article.headline_line_2_translations}
               onClick={() => navigate(`/article/${digest.dateIso}/${article.slug}`)}
             />
           ))
