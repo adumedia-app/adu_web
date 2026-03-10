@@ -12,6 +12,7 @@ from datetime import date, datetime
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import Response
+from typesense_sync import get_search_config
 
 from database import (
     get_editions,
@@ -146,6 +147,18 @@ def transform_edition(edition: dict, articles: list = None, use_thumbnails: bool
 
     return result
 
+# =============================================================================
+# Search Index
+# =============================================================================
+
+
+@router.get("/search/config")
+async def search_config():
+    """Return Typesense connection info for the frontend."""
+    config = get_search_config()
+    if not config["host"]:
+        raise HTTPException(status_code=503, detail="Search not configured")
+    return config
 
 # =============================================================================
 # Editions

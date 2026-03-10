@@ -22,3 +22,6 @@ python-dateutil>=2.8.0
 
 # Environment
 python-dotenv>=1.0.0
+
+# Search
+typesense>=0.21.0

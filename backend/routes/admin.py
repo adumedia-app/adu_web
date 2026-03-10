@@ -8,6 +8,7 @@ Protected endpoints for the admin dashboard.
 from datetime import datetime
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query, Depends
+from typesense_sync import full_reindex
 
 from auth import get_current_user, verify_password, create_access_token
 from database import (
@@ -174,6 +175,24 @@ async def remove_from_edition(
         )
     
     return {"message": "Article removed from edition"}
+
+# =============================================================================
+# Search
+# =============================================================================
+
+
+@router.post("/search/reindex")
+async def trigger_reindex(user: dict = Depends(get_current_user)):
+    """Trigger a full Typesense re-index."""
+    try:
+        result = full_reindex()
+        return {
+            "message": "Re-index complete",
+            "indexed": result["indexed"],
+            "errors": result["errors"],
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Re-index failed: {str(e)}")
 
 
 # =============================================================================
