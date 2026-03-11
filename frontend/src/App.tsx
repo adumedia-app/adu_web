@@ -16,6 +16,8 @@ import Digest from "./pages/Digest";
 import ArticlePage from "./pages/Article";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Search from "./pages/Search";
+import Tag from "./pages/Tag";
 import NotFound from "./pages/NotFound";
 
 // Admin pages
@@ -54,6 +56,8 @@ const AppRoutes = () => {
       <Route path="/article/:date/:slug" element={<ArticlePage />} />
       <Route path="/about" element={<About />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/tag/:tagName" element={<Tag />} />
 
       {/* Admin routes */}
       <Route 

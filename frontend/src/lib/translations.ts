@@ -41,6 +41,24 @@ type TranslationKeys = {
   intro_daily: string;
   intro_weekly: string;
   intro_weekend: string;
+  search_placeholder: "Search articles...",
+  search_no_results: "No articles found",
+  search_result: "article",
+  search_results: "articles",
+  search_try_different: "Try a different search term",
+  search_hint: "Search by project name, architect, city, typology...",
+  load_more: "Load more",
+  search: "Search",
+
+  // Search page
+  search_placeholder: string;
+  search_no_results: string;
+  search_result: string;
+  search_results: string;
+  search_try_different: string;
+  search_hint: string;
+  load_more: string;
+  search: string;
 
   // Navigation
   back: string;
@@ -237,6 +255,15 @@ const translations: Record<Language, TranslationKeys> = {
     intro_daily: "Nuestra selección editorial para hoy",
     intro_weekly: "Nuestra selección semanal de lecturas esenciales",
     intro_weekend: "Ponte al día con lo más destacado de la semana",
+    
+    search_placeholder: "Buscar artículos...",
+    search_no_results: "No se encontraron artículos",
+    search_result: "artículo",
+    search_results: "artículos",
+    search_try_different: "Intente con otro término de búsqueda",
+    search_hint: "Busque por nombre de proyecto, arquitecto, ciudad, tipología...",
+    load_more: "Cargar más",
+    search: "Buscar",
 
     back: "Volver",
     today: "Hoy",
@@ -334,6 +361,15 @@ const translations: Record<Language, TranslationKeys> = {
     intro_weekly: "Notre sélection hebdomadaire de lectures essentielles",
     intro_weekend: "Rattrapez les temps forts de la semaine",
 
+    search_placeholder: "Rechercher des articles...",
+    search_no_results: "Aucun article trouvé",
+    search_result: "article",
+    search_results: "articles",
+    search_try_different: "Essayez un autre terme de recherche",
+    search_hint: "Recherchez par nom de projet, architecte, ville, typologie...",
+    load_more: "Charger plus",
+    search: "Rechercher",
+
     back: "Retour",
     today: "Aujourd'hui",
     archive: "Archives",
@@ -430,6 +466,15 @@ const translations: Record<Language, TranslationKeys> = {
     intro_weekly: "Nossa seleção semanal de leituras essenciais",
     intro_weekend: "Fique por dentro dos destaques da semana",
 
+    search_placeholder: "Buscar artigos...",
+    search_no_results: "Nenhum artigo encontrado",
+    search_result: "artigo",
+    search_results: "artigos",
+    search_try_different: "Tente um termo de busca diferente",
+    search_hint: "Busque por nome de projeto, arquiteto, cidade, tipologia...",
+    load_more: "Carregar mais",
+    search: "Buscar",
+
     back: "Voltar",
     today: "Hoje",
     archive: "Arquivo",
@@ -525,6 +570,15 @@ const translations: Record<Language, TranslationKeys> = {
     intro_daily: "Наша редакционная подборка на сегодня",
     intro_weekly: "Наша еженедельная подборка ключевых материалов",
     intro_weekend: "Обзор главного за выходные",
+
+    search_placeholder: "Поиск статей...",
+    search_no_results: "Статьи не найдены",
+    search_result: "статья",
+    search_results: "статей",
+    search_try_different: "Попробуйте другой запрос",
+    search_hint: "Ищите по названию проекта, архитектору, городу, типологии...",
+    load_more: "Загрузить ещё",
+    search: "Поиск",
 
     back: "Назад",
     today: "Сегодня",
