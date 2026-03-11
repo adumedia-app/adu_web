@@ -2,6 +2,7 @@
 /**
  * Header Component — with search icon
  */
+
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 
@@ -16,6 +17,7 @@ const Header = () => {
       >
         <Search size={20} />
       </Link>
+
       <Link to="/" className="inline-block">
         <img 
           src="/logo.png" 
@@ -24,12 +26,11 @@ const Header = () => {
           style={{ maxWidth: "200px" }}
         />
       </Link>
+
       {/* Tagline */}
-      <p className="tagline mt-3" style={{ color: "#333333" }}>
+      <p className="tagline mt-3">
         Curated for Professionals
       </p>
-      {/* Orange accent line — matched to logo */}
-      <div style={{ width: "48px", height: "2px", backgroundColor: "#C8541A", margin: "6px auto 0" }} />
     </header>
   );
 };

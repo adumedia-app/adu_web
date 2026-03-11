@@ -79,14 +79,13 @@ export interface Article {
  */
 export interface Digest {
   id: string;
-  date: string;
-  dateIso: string;
+  date: string;           // Formatted date "30 January 2026"
+  dateIso: string;        // ISO date "2026-01-30"
   dayOfWeek: string;
   isWeekly: boolean;
   editionType: EditionType;
   articles: Article[];
   readTime: number;
-  articleCount?: number;   // ← add this line
 }
 
 // =============================================================================
@@ -147,9 +146,8 @@ export function mapEditionDetailToDigest(edition: EditionDetail): Digest {
     dayOfWeek: edition.day_of_week,
     isWeekly: edition.edition_type === "weekly",
     editionType: edition.edition_type,
-    articles: [],
-    readTime: edition.article_count * 4,
-    articleCount: edition.article_count,   // ← add this line
+    articles,
+    readTime: totalReadTime,
   };
 }
 
