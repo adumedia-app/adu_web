@@ -2,9 +2,11 @@
 /**
  * Article Card Component
  * Shows headline aligned with image with translation support
- * Supports two-line headlines, studio plaque, and tags
+ * Supports two-line headlines, studio plaque
+ * Tags + summary only shown when explicitly enabled (search/tag pages)
  */
 
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLanguage, getTranslatedContent } from "@/lib/language";
 
@@ -14,11 +16,15 @@ interface ArticleCardProps {
   headlineLine2?: string;
   source: string;
   image: string;
+  summary?: string;
   tags?: string[];
   isStudio?: boolean;
+  showTags?: boolean;
+  showSummary?: boolean;
   headline_translations?: Record<string, string>;
   headline_line_1_translations?: Record<string, string>;
   headline_line_2_translations?: Record<string, string>;
+  ai_summary_translations?: Record<string, string>;
   onClick: () => void;
 }
 
@@ -28,20 +34,33 @@ const ArticleCard = ({
   headlineLine2,
   source, 
   image,
+  summary,
   tags,
   isStudio,
+  showTags = false,
+  showSummary = false,
   headline_translations,
   headline_line_1_translations,
   headline_line_2_translations,
+  ai_summary_translations,
   onClick 
 }: ArticleCardProps) => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
 
-  // Get translated headline or fallback to original
+  // Get translated content or fallback to original
   const displayHeadline = getTranslatedContent(headline, headline_translations, language);
   const displayLine1 = getTranslatedContent(headlineLine1 || "", headline_line_1_translations, language);
   const displayLine2 = getTranslatedContent(headlineLine2 || "", headline_line_2_translations, language);
+  const displaySummary = getTranslatedContent(summary || "", ai_summary_translations, language);
   const hasTwoLineHeadline = !!(displayLine1 || displayLine2);
+
+  // Handle tag click — navigate to tag page
+  const handleTagClick = (e: React.MouseEvent, tag: string) => {
+    e.stopPropagation();
+    const cleanTag = tag.replace(/^#/, "").toLowerCase();
+    navigate(`/tag/${encodeURIComponent(cleanTag)}`);
+  };
 
   return (
     <motion.article
@@ -52,7 +71,7 @@ const ArticleCard = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Thumbnail - 4:3 aspect ratio, same height as before */}
+      {/* Thumbnail - 4:3 aspect ratio */}
       <div className="flex-shrink-0 w-[107px] h-20 overflow-hidden bg-secondary rounded">
         {image ? (
           <img
@@ -101,11 +120,24 @@ const ArticleCard = ({
         {/* Source */}
         <p className="article-source mt-1">-- {source}</p>
 
-        {/* Tags */}
-        {tags && tags.length > 0 && (
-          <div className="flex gap-1.5 mt-1.5">
+        {/* Summary preview — only on search/tag pages */}
+        {showSummary && displaySummary && (
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2">
+            {displaySummary}
+          </p>
+        )}
+
+        {/* Tags — only on search/tag pages, clickable */}
+        {showTags && tags && tags.length > 0 && (
+          <div className="flex gap-1.5 mt-2">
             {tags.slice(0, 2).map((tag, i) => (
-              <span key={i} className="article-tag">{tag}</span>
+              <button
+                key={i}
+                onClick={(e) => handleTagClick(e, tag)}
+                className="article-tag hover:bg-secondary hover:text-foreground transition-colors cursor-pointer"
+              >
+                {tag}
+              </button>
             ))}
           </div>
         )}
