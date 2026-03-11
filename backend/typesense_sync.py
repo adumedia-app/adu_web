@@ -76,6 +76,7 @@ COLLECTION_SCHEMA = {
     ],
     # Default fields to search when user types a query
     "default_sorting_field": "fetch_timestamp",
+    "enable_nested_fields": True,
     "token_separators": ["/", "-"],
     "symbols_to_index": ["#"],
 }

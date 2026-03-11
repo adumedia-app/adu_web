@@ -97,7 +97,7 @@ def transform_article(article: dict, use_thumbnail: bool = False) -> dict:
         image_path = article.get("r2_image_path") or article.get("image_key")
 
     # Prefer headline over original_title if available
-    title = article.get("headline") or article.get("original_title", "")
+    title = article.get("headline_line_1") or article.get("headline") or article.get("original_title", "")
 
     return {
         "id": str(article.get("id", "")),
