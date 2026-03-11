@@ -1,7 +1,3 @@
-
-Article 1 · TSX
-Copy
-
 // src/pages/Article.tsx
 /**
  * Article Page - Individual article with SEO-friendly URL
