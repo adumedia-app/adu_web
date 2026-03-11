@@ -105,7 +105,7 @@ const Archive = () => {
                         </div>
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {edition.articles.length || "--"}{" "}
+                        {edition.articleCount ?? "--"}{" "}
                         {t("archive_articles", language)}
                       </div>
                     </Link>
