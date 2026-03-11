@@ -1,3 +1,7 @@
+
+Article 1 · TSX
+Copy
+
 // src/pages/Article.tsx
 /**
  * Article Page - Individual article with SEO-friendly URL
@@ -268,16 +272,6 @@ const ArticlePage = () => {
               {currentArticle.source}
             </p>
 
-            {/* Tags */}
-            {currentArticle.tags.length > 0 && (
-              <div className="flex gap-2 mt-3">
-                {currentArticle.tags.slice(0, 2).map((tag, i) => (
-                  <span key={i} className="article-tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </header>
 
           {/* Featured image */}
@@ -306,6 +300,17 @@ const ArticlePage = () => {
               </p>
             )}
           </div>
+
+          {/* Tags */}
+          {currentArticle.tags.length > 0 && (
+            <div className="flex gap-2 mt-6">
+              {currentArticle.tags.slice(0, 2).map((tag, i) => (
+                <span key={i} className="article-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Read original link */}
           <div className="mt-8 pt-6 border-t border-border">
