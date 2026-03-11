@@ -19,6 +19,15 @@ import type { Article } from "@/lib/types";
 
 const DEBOUNCE_MS = 300;
 
+// Suggestion chips per language
+const SUGGESTIONS: Record<string, string[]> = {
+  en: ["Museum", "Housing", "Chicago", "BIG", "Tower", "School", "Bridge", "Zaha Hadid"],
+  ru: ["Музей", "Жильё", "Чикаго", "Башня", "Школа", "Мост"],
+  es: ["Museo", "Vivienda", "Chicago", "Torre", "Escuela", "Puente"],
+  fr: ["Musée", "Logement", "Chicago", "Tour", "École", "Pont"],
+  "pt-br": ["Museu", "Habitação", "Chicago", "Torre", "Escola", "Ponte"],
+};
+
 const Search = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -32,6 +41,8 @@ const Search = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+
+  const suggestions = SUGGESTIONS[language] || SUGGESTIONS.en;
 
   // Focus input on mount
   useEffect(() => {
@@ -76,21 +87,18 @@ const Search = () => {
   const handleInputChange = (value: string) => {
     setQuery(value);
 
-    // Update URL
     if (value.trim()) {
       setSearchParams({ q: value.trim() }, { replace: true });
     } else {
       setSearchParams({}, { replace: true });
     }
 
-    // Debounce the actual search
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
       doSearch(value);
     }, DEBOUNCE_MS);
   };
 
-  // Clear search
   const handleClear = () => {
     setQuery("");
     setResults([]);
@@ -100,7 +108,12 @@ const Search = () => {
     inputRef.current?.focus();
   };
 
-  // Navigate to article
+  const handleSuggestion = (term: string) => {
+    setQuery(term);
+    setSearchParams({ q: term }, { replace: true });
+    doSearch(term);
+  };
+
   const handleArticleClick = (article: Article & { _edition_date?: string }) => {
     const editionDate = article._edition_date;
     if (editionDate) {
@@ -115,11 +128,11 @@ const Search = () => {
       <Header />
 
       {/* Search bar */}
-      <div className="px-5 py-6 border-b border-border">
+      <div className="px-5 py-8 border-b border-border">
         <div className="relative max-w-xl mx-auto">
           <SearchIcon
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-            size={20}
+            className="absolute left-0 top-1/2 -translate-y-1/2 text-muted-foreground/50"
+            size={17}
           />
           <input
             ref={inputRef}
@@ -127,7 +140,7 @@ const Search = () => {
             value={query}
             onChange={(e) => handleInputChange(e.target.value)}
             placeholder={t("search_placeholder", language)}
-            className="w-full pl-10 pr-10 py-3 bg-secondary/50 border border-border rounded-lg text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+            className="w-full pl-7 pr-8 py-2 bg-transparent border-0 border-b border-border text-base text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-foreground/30 transition-colors"
             autoComplete="off"
             autoCorrect="off"
             spellCheck={false}
@@ -135,16 +148,16 @@ const Search = () => {
           {query && (
             <button
               onClick={handleClear}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute right-0 top-1/2 -translate-y-1/2 text-muted-foreground/40 hover:text-foreground transition-colors"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
           )}
         </div>
 
         {/* Results count */}
         {hasSearched && !isSearching && (
-          <p className="text-center text-sm text-muted-foreground mt-3">
+          <p className="text-center text-xs text-muted-foreground/60 mt-4 tracking-wide">
             {found === 0
               ? t("search_no_results", language)
               : `${found} ${found === 1 ? t("search_result", language) : t("search_results", language)}`}
@@ -174,15 +187,11 @@ const Search = () => {
                   headlineLine2={article.headlineLine2}
                   source={article.source}
                   image={article.image}
-                  summary={article.content}
                   tags={article.tags}
                   isStudio={article.isStudio}
                   headline_translations={article.headline_translations}
                   headline_line_1_translations={article.headline_line_1_translations}
                   headline_line_2_translations={article.headline_line_2_translations}
-                  ai_summary_translations={article.ai_summary_translations}
-                  showTags
-                  showSummary
                   onClick={() => handleArticleClick(article)}
                 />
               ))}
@@ -190,15 +199,39 @@ const Search = () => {
           </AnimatePresence>
         ) : hasSearched && !isSearching ? (
           <div className="py-16 text-center">
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground/60 text-sm mb-8">
               {t("search_try_different", language)}
             </p>
+            {/* Suggestion chips after no results */}
+            <div className="flex flex-wrap justify-center gap-2 max-w-sm mx-auto">
+              {suggestions.map((term) => (
+                <button
+                  key={term}
+                  onClick={() => handleSuggestion(term)}
+                  className="px-3 py-1 text-xs text-muted-foreground border border-border rounded-full hover:border-foreground/30 hover:text-foreground transition-colors"
+                >
+                  {term}
+                </button>
+              ))}
+            </div>
           </div>
         ) : !hasSearched ? (
           <div className="py-16 text-center">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground/50 text-xs tracking-widest uppercase mb-8">
               {t("search_hint", language)}
             </p>
+            {/* Suggestion chips on empty state */}
+            <div className="flex flex-wrap justify-center gap-2 max-w-sm mx-auto">
+              {suggestions.map((term) => (
+                <button
+                  key={term}
+                  onClick={() => handleSuggestion(term)}
+                  className="px-3 py-1 text-xs text-muted-foreground border border-border rounded-full hover:border-foreground/30 hover:text-foreground transition-colors"
+                >
+                  {term}
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
       </main>

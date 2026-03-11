@@ -161,6 +161,15 @@ const translations: Record<Language, TranslationKeys> = {
     intro_weekly: "Our weekly selection of essential reads",
     intro_weekend: "Catch up on the week's highlights",
 
+    search_placeholder: "Search articles...",
+    search_no_results: "No articles found",
+    search_result: "article",
+    search_results: "articles",
+    search_try_different: "Try a different search term",
+    search_hint: "Search by project name, architect, city, typology...",
+    load_more: "Load more",
+    search: "Search",
+
     back: "Back",
     today: "Today",
     archive: "Archive",

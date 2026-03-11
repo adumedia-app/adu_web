@@ -165,7 +165,7 @@ def article_to_typesense_doc(article: dict, edition_date: str = "") -> dict:
     image_url = f"{r2_url}/{image_path}" if image_path and r2_url else ""
 
     # Title — prefer headline over original_title
-    title = article.get("headline") or article.get("original_title") or ""
+    title = article.get("headline_line_1") or article.get("headline") or article.get("original_title") or ""
 
     # Tags — normalize: strip # prefix, lowercase
     raw_tags = article.get("tags") or []
