@@ -147,7 +147,7 @@ export function mapEditionDetailToDigest(edition: EditionDetail): Digest {
     dayOfWeek: edition.day_of_week,
     isWeekly: edition.edition_type === "weekly",
     editionType: edition.edition_type,
-    articles: [],
+    articles: articles,
     readTime: edition.article_count * 4,
     articleCount: edition.article_count,   // ← add this line
   };
