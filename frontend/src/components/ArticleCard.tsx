@@ -118,7 +118,7 @@ const ArticleCard = ({
         )}
 
         {/* Source */}
-        <p className="article-source mt-1">-- {source}</p>
+        <p className="article-source mt-1">{source}</p>
 
         {/* Summary preview — only on search/tag pages */}
         {showSummary && displaySummary && (

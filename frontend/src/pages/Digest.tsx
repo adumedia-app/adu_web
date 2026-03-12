@@ -66,7 +66,7 @@ const Digest = () => {
 
       {/* Date and intro */}
       <div className="px-5 py-4 text-center border-b border-border">
-        <p className="date-primary">
+        <p className="text-lg font-semibold">
           {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
         </p>
         <p className="text-muted-foreground mt-1">
@@ -81,7 +81,8 @@ const Digest = () => {
             {t("no_articles", language)}
           </div>
         ) : (
-          digest.articles.map((article: Article) => (
+          <div className="digest-articles">
+          {digest.articles.map((article: Article) => (
             <ArticleCard
               key={article.id}
               headline={article.headline}
@@ -94,9 +95,11 @@ const Digest = () => {
               headline_translations={article.headline_translations}
               headline_line_1_translations={article.headline_line_1_translations}
               headline_line_2_translations={article.headline_line_2_translations}
+              hideSourceDashes
               onClick={() => navigate(`/article/${digest.dateIso}/${article.slug}`)}
             />
-          ))
+          ))}
+          </div>
         )}
       </main>
 

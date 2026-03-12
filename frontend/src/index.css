@@ -83,6 +83,10 @@
     font-weight: 600;
   }
 
+  .digest-articles .article-headline {
+    @apply font-normal;
+    }
+
   /* Article typography */
   .article-headline {
     @apply text-lg font-medium leading-snug tracking-tight;
