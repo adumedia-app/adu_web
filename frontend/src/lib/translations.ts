@@ -154,12 +154,10 @@ const translations: Record<Language, TranslationKeys> = {
     archive_read_time: "~{time} min",
 
     edition_daily: "Daily",
-    edition_weekly: "Weekly",
     edition_weekend: "Weekend Catch-Up",
 
     intro_daily: "Our editorial selection for today",
-    intro_weekly: "Our weekly selection of essential reads",
-    intro_weekend: "Catch up on the week's highlights",
+    intro_weekend: "Catch up on the weekend's news",
 
     search_placeholder: "Search articles...",
     search_no_results: "No articles found",

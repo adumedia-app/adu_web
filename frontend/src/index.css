@@ -78,9 +78,10 @@
   }
 
   .tagline {
-    @apply text-sm tracking-widest text-muted-foreground uppercase;
+    @apply text-sm tracking-widest uppercase;
     letter-spacing: 0.15em;
     font-weight: 600;
+    color: #333333;
   }
 
   .digest-articles .article-headline {

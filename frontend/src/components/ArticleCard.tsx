@@ -22,6 +22,7 @@ interface ArticleCardProps {
   showTags?: boolean;
   showSummary?: boolean;
   hideSourceDashes?: boolean;
+  lighterHeadlines?: boolean;
   headline_translations?: Record<string, string>;
   headline_line_1_translations?: Record<string, string>;
   headline_line_2_translations?: Record<string, string>;
@@ -41,6 +42,7 @@ const ArticleCard = ({
   showTags = false,
   showSummary = false,
   hideSourceDashes = false,
+  lighterHeadlines = false,
   headline_translations,
   headline_line_1_translations,
   headline_line_2_translations,
@@ -56,6 +58,8 @@ const ArticleCard = ({
   const displayLine2 = getTranslatedContent(headlineLine2 || "", headline_line_2_translations, language);
   const displaySummary = getTranslatedContent(summary || "", ai_summary_translations, language);
   const hasTwoLineHeadline = !!(displayLine1 || displayLine2);
+
+  const headlineWeight = lighterHeadlines ? "font-normal" : "font-semibold";
 
   // Handle tag click — navigate to tag page
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
@@ -103,7 +107,7 @@ const ArticleCard = ({
         {hasTwoLineHeadline ? (
           <>
             {displayLine1 && (
-              <h3 className="font-semibold text-lg leading-snug line-clamp-2">
+              <h3 className={`${headlineWeight} text-lg leading-snug line-clamp-2`}>
                 {displayLine1}
               </h3>
             )}
@@ -114,7 +118,7 @@ const ArticleCard = ({
             )}
           </>
         ) : (
-          <h3 className="font-semibold text-lg leading-snug line-clamp-3">
+          <h3 className={`${headlineWeight} text-lg leading-snug line-clamp-3`}>
             {displayHeadline}
           </h3>
         )}

@@ -81,8 +81,7 @@ const Digest = () => {
             {t("no_articles", language)}
           </div>
         ) : (
-          <div className="digest-articles">
-          {digest.articles.map((article: Article) => (
+          digest.articles.map((article: Article) => (
             <ArticleCard
               key={article.id}
               headline={article.headline}
@@ -95,11 +94,10 @@ const Digest = () => {
               headline_translations={article.headline_translations}
               headline_line_1_translations={article.headline_line_1_translations}
               headline_line_2_translations={article.headline_line_2_translations}
-              hideSourceDashes
+              lighterHeadlines
               onClick={() => navigate(`/article/${digest.dateIso}/${article.slug}`)}
             />
-          ))}
-          </div>
+          ))
         )}
       </main>
 
