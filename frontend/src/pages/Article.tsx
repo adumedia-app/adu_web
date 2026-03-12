@@ -301,9 +301,16 @@ const ArticlePage = () => {
           {currentArticle.tags.length > 0 && (
             <div className="flex gap-2 mt-6">
               {currentArticle.tags.slice(0, 2).map((tag, i) => (
-                <span key={i} className="article-tag">
+                <button
+                  key={i}
+                  className="article-tag hover:opacity-70 transition-opacity cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/tag/${encodeURIComponent(tag)}`);
+                  }}
+                >
                   {tag}
-                </span>
+                </button>
               ))}
             </div>
           )}
