@@ -21,6 +21,7 @@ interface ArticleCardProps {
   isStudio?: boolean;
   showTags?: boolean;
   showSummary?: boolean;
+  hideSourceDashes?: boolean;
   headline_translations?: Record<string, string>;
   headline_line_1_translations?: Record<string, string>;
   headline_line_2_translations?: Record<string, string>;
@@ -39,6 +40,7 @@ const ArticleCard = ({
   isStudio,
   showTags = false,
   showSummary = false,
+  hideSourceDashes = false,
   headline_translations,
   headline_line_1_translations,
   headline_line_2_translations,
