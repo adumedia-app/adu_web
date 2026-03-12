@@ -165,7 +165,8 @@ export function mapEditionSummaryToDigest(edition: EditionSummary): Digest {
     isWeekly: edition.edition_type === "weekly",
     editionType: edition.edition_type,
     articles: [],
-    readTime: edition.article_count * 4, // Estimate
+    readTime: edition.article_count * 4,
+    articleCount: edition.article_count,  // ← add this line
   };
 }
 
