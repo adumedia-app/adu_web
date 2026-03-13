@@ -372,7 +372,7 @@ const ArticlePage = () => {
               <span />
             )}
           </nav>
-          )}
+        
         </motion.article>
       </AnimatePresence>
 
