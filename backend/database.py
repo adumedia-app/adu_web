@@ -97,6 +97,36 @@ def get_latest_edition() -> Optional[Dict[str, Any]]:
     editions = get_editions(limit=1)
     return editions[0] if editions else None
 
+def get_adjacent_edition_dates(edition_date: date) -> Dict[str, Any]:
+    """
+    Get the previous and next edition dates relative to a given date.
+
+    Returns:
+        Dict with prev_edition_date and next_edition_date (ISO strings or None)
+    """
+    client = get_client()
+
+    # Previous edition: closest date BEFORE this one
+    prev_result = client.table("editions")\
+        .select("edition_date")\
+        .lt("edition_date", edition_date.isoformat())\
+        .order("edition_date", desc=True)\
+        .limit(1)\
+        .execute()
+
+    # Next edition: closest date AFTER this one
+    next_result = client.table("editions")\
+        .select("edition_date")\
+        .gt("edition_date", edition_date.isoformat())\
+        .order("edition_date", desc=False)\
+        .limit(1)\
+        .execute()
+
+    return {
+        "prev_edition_date": prev_result.data[0]["edition_date"] if prev_result.data else None,
+        "next_edition_date": next_result.data[0]["edition_date"] if next_result.data else None,
+    }
+
 
 def get_edition_by_id(edition_id: str) -> Optional[Dict[str, Any]]:
     """Get edition by UUID."""

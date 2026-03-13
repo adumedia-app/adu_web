@@ -328,26 +328,50 @@ const ArticlePage = () => {
             </a>
           </div>
 
-          {/* Prev / Next navigation */}
-          {totalArticles > 1 && (
-            <nav className="mt-8 pt-6 border-t border-border flex items-center justify-between gap-4">
+          {/* Prev / Next navigation (articles + day edges) */}
+          <nav className="mt-8 pt-6 border-t border-border flex items-center justify-between gap-4">
+            {/* Left: previous article, OR previous day at first article */}
+            {prevArticle ? (
               <button
                 onClick={goPrev}
-                disabled={!prevArticle}
-                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-default transition-colors"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
                 {t("previous", language)}
               </button>
+            ) : digest?.prevEditionDate ? (
+              <button
+                onClick={() => navigate(`/digest/${digest.prevEditionDate}`)}
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                {t("previous_day", language)}
+              </button>
+            ) : (
+              <span />
+            )}
+
+            {/* Right: next article, OR next day at last article */}
+            {nextArticle ? (
               <button
                 onClick={goNext}
-                disabled={!nextArticle}
-                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-default transition-colors"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {t("next", language)}
                 <ChevronRight className="w-4 h-4" />
               </button>
-            </nav>
+            ) : digest?.nextEditionDate ? (
+              <button
+                onClick={() => navigate(`/digest/${digest.nextEditionDate}`)}
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t("next_day", language)}
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <span />
+            )}
+          </nav>
           )}
         </motion.article>
       </AnimatePresence>

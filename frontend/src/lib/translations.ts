@@ -68,6 +68,8 @@ type TranslationKeys = {
   telegram: string;
   previous: string;
   next: string;
+  previous_day: string;
+  next_day: string;
   dashboard: string;
 
   // Actions
@@ -175,6 +177,8 @@ const translations: Record<Language, TranslationKeys> = {
     telegram: "Telegram",
     previous: "Previous",
     next: "Next",
+    previous_day: "Previous day",
+    next_day: "Next day",
     dashboard: "Dashboard",
 
     read_original: "Read original article",
@@ -279,6 +283,8 @@ const translations: Record<Language, TranslationKeys> = {
     telegram: "Telegram",
     previous: "Anterior",
     next: "Siguiente",
+    previous_day: "Día anterior",
+    next_day: "Día siguiente",
     dashboard: "Panel",
 
     read_original: "Leer artículo original",
@@ -384,6 +390,8 @@ const translations: Record<Language, TranslationKeys> = {
     telegram: "Telegram",
     previous: "Précédent",
     next: "Suivant",
+    previous_day: "Jour précédent",
+    next_day: "Jour suivant",
     dashboard: "Tableau de bord",
 
     read_original: "Lire l'article original",
@@ -489,6 +497,8 @@ const translations: Record<Language, TranslationKeys> = {
     telegram: "Telegram",
     previous: "Anterior",
     next: "Próximo",
+    previous_day: "Dia anterior",
+    next_day: "Próximo dia",
     dashboard: "Painel",
 
     read_original: "Ler artigo original",
@@ -594,6 +604,8 @@ const translations: Record<Language, TranslationKeys> = {
     telegram: "Telegram",
     previous: "Предыдущая",
     next: "Следующая",
+    previous_day: "Предыдущий день",
+    next_day: "Следующий день",
     dashboard: "Панель управления",
 
     read_original: "Читать статью полностью",

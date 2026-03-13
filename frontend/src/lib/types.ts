@@ -21,6 +21,8 @@ export interface EditionSummary {
 export interface EditionDetail extends EditionSummary {
   articles: ArticleDetail[];
   edition_summary?: string;
+  prev_edition_date?: string | null;
+  next_edition_date?: string | null;
 }
 
 // =============================================================================
@@ -86,7 +88,9 @@ export interface Digest {
   editionType: EditionType;
   articles: Article[];
   readTime: number;
-  articleCount?: number;   // ← add this line
+  articleCount?: number;
+  prevEditionDate?: string | null;
+  nextEditionDate?: string | null;
 }
 
 // =============================================================================
@@ -149,7 +153,9 @@ export function mapEditionDetailToDigest(edition: EditionDetail): Digest {
     editionType: edition.edition_type,
     articles: articles,
     readTime: edition.article_count * 4,
-    articleCount: edition.article_count,   // ← add this line
+    articleCount: edition.article_count,
+    prevEditionDate: edition.prev_edition_date || null,
+    nextEditionDate: edition.next_edition_date || null,
   };
 }
 

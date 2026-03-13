@@ -20,6 +20,7 @@ from database import (
     get_latest_edition,
     get_articles_by_ids,
     get_article_by_id,
+    get_adjacent_edition_dates,
 )
 
 
@@ -219,7 +220,13 @@ async def get_today():
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
     # Use thumbnails for today view (list of articles)
-    return transform_edition(edition, articles, use_thumbnails=True)
+    edition_date_obj = date.fromisoformat(edition["edition_date"])
+    adjacent = get_adjacent_edition_dates(edition_date_obj)
+
+    result = transform_edition(edition, articles, use_thumbnails=True)
+    result["prev_edition_date"] = adjacent["prev_edition_date"]
+    result["next_edition_date"] = adjacent["next_edition_date"]
+    return result
 
 
 @router.get("/editions/latest")
@@ -236,7 +243,13 @@ async def get_latest():
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
     # Use thumbnails for list view
-    return transform_edition(edition, articles, use_thumbnails=True)
+    edition_date_obj = date.fromisoformat(edition["edition_date"])
+    adjacent = get_adjacent_edition_dates(edition_date_obj)
+
+    result = transform_edition(edition, articles, use_thumbnails=True)
+    result["prev_edition_date"] = adjacent["prev_edition_date"]
+    result["next_edition_date"] = adjacent["next_edition_date"]
+    return result
 
 
 @router.get("/editions/{edition_date}")
@@ -265,7 +278,12 @@ async def get_by_date(edition_date: str):
     articles = get_articles_by_ids(article_ids) if article_ids else []
 
     # Use thumbnails for digest view
-    return transform_edition(edition, articles, use_thumbnails=True)
+    adjacent = get_adjacent_edition_dates(d)
+
+    result = transform_edition(edition, articles, use_thumbnails=True)
+    result["prev_edition_date"] = adjacent["prev_edition_date"]
+    result["next_edition_date"] = adjacent["next_edition_date"]
+    return result
 
 
 # =============================================================================

@@ -4,7 +4,8 @@
  * Clicking an article navigates to /article/:date/:slug
  */
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
@@ -73,14 +74,43 @@ const Index = () => {
 
       {/* Date and intro */}
       <div className="px-5 py-4 text-center border-b border-border">
-        <p className="date-primary">
-          {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
-          {digest.editionType !== "daily" && (
-            <span className="text-muted-foreground">
-              {" "}/ {getEditionSuffix()}
-            </span>
+        <div className="flex items-center justify-center gap-3">
+          {digest.prevEditionDate ? (
+            <Link
+              to={`/digest/${digest.prevEditionDate}`}
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors p-1"
+              aria-label={t("previous_day", language)}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Link>
+          ) : (
+            <span className="w-7" />
           )}
-        </p>
+
+          <div>
+            <p className="date-primary">
+              {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
+              {digest.editionType !== "daily" && (
+                <span className="text-muted-foreground">
+                  {" "}/ {getEditionSuffix()}
+                </span>
+              )}
+            </p>
+          </div>
+
+          {digest.nextEditionDate ? (
+            <Link
+              to={`/digest/${digest.nextEditionDate}`}
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors p-1"
+              aria-label={t("next_day", language)}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Link>
+          ) : (
+            <span className="w-7" />
+          )}
+        </div>
+
         <p className="text-muted-foreground mt-1">
           {getIntroText()}
         </p>

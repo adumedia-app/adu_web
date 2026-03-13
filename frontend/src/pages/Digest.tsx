@@ -5,7 +5,7 @@
  */
 
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ArticleCard from "@/components/ArticleCard";
@@ -66,9 +66,36 @@ const Digest = () => {
 
       {/* Date and intro */}
       <div className="px-5 py-4 text-center border-b border-border">
-        <p className="text-lg font-semibold">
-          {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
-        </p>
+        <div className="flex items-center justify-center gap-3">
+          {digest.prevEditionDate ? (
+            <Link
+              to={`/digest/${digest.prevEditionDate}`}
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors p-1"
+              aria-label={t("previous_day", language)}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Link>
+          ) : (
+            <span className="w-7" />
+          )}
+
+          <p className="text-lg font-semibold">
+            {translateDay(digest.dayOfWeek, language)}, {translateDate(digest.date, language)}
+          </p>
+
+          {digest.nextEditionDate ? (
+            <Link
+              to={`/digest/${digest.nextEditionDate}`}
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors p-1"
+              aria-label={t("next_day", language)}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Link>
+          ) : (
+            <span className="w-7" />
+          )}
+        </div>
+
         <p className="text-muted-foreground mt-1">
           {getTranslatedEditionTypeLabel(digest.editionType, language)}
         </p>
