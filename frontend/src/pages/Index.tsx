@@ -136,6 +136,7 @@ const Index = () => {
               headline_translations={article.headline_translations}
               headline_line_1_translations={article.headline_line_1_translations}
               headline_line_2_translations={article.headline_line_2_translations}
+              lighterHeadlines
               onClick={() => navigate(`/article/${digest.dateIso}/${article.slug}`)}
             />
           ))
