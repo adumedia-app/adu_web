@@ -239,7 +239,7 @@ const ArticlePage = () => {
             {/* Studio plaque */}
             {currentArticle.isStudio && (
               <div className="studio-plaque mb-4">
-                Studio Update
+                studio update
               </div>
             )}
 

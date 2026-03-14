@@ -99,7 +99,7 @@ const ArticleCard = ({
         {/* Studio plaque */}
         {isStudio && (
           <div className="studio-plaque mb-1.5">
-            Studio Update
+            studio update
           </div>
         )}
 
